@@ -1,0 +1,1 @@
+<?php ?> <?php $_helper = $this->helper('WeltPixel\GoogleTagManager\Helper\Data'); ?> <?php if ($_helper->isEnabled()) : ?> <?php if ($_helper->isDevMoveJsBottomEnabled()) : ?> ##gtm_snippet_scripts## <?php else: ?> <?php echo $_helper->getGtmCodeSnippetForHead(); ?> <?php endif; ?> <?php endif; ?>

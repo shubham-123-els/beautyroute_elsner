@@ -1,0 +1,1 @@
+"Fatal Error: 'Allowed memory size of 2147483648 bytes exhausted (tried to allocate 1944064000 bytes)' in '\/home\/551129.cloudwaysapps.com\/fzmgbsaksm\/public_html\/vendor\/laminas\/laminas-log\/src\/Logger.php' on line 441"

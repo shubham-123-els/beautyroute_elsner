@@ -1,0 +1,23 @@
+<?php /** * BSS Commerce Co. * * NOTICE OF LICENSE * * This source file is subject to the EULA * that is bundled with this package in the file LICENSE.txt. * It is also available through the world-wide-web at this URL: * http://bsscommerce.com/Bss-Commerce-License.txt * * @category BSS * @package Bss_Quickview * @author Extension Team * @copyright Copyright (c) 2019-2020 BSS Commerce Co. ( http://bsscommerce.com ) * @license http://bsscommerce.com/Bss-Commerce-License.txt */ ?> <?php /** * @var \Bss\Quickview\Block\Product\View $block */ ?> <?php $_product = $block->getProduct(); ?> <?php $buttonTitle = __('Add to Basket'); ?> <?php if ($_product->isSaleable()) : ?> <div class="box-tocart"><div class="fieldset"><?php if ($block->shouldRenderQuantity()) : ?> <div class="field qty"><label class="label" for="qty"><span><?php /* @escapeNotVerified */ echo __('Qty') ?></span></label> <!-- <div class="control"><input type="number" name="qty" id="qty" maxlength="12" value="<?php /* @escapeNotVerified */ echo $block->getProductDefaultQty() * 1 ?>" title="<?php /* @escapeNotVerified */ echo __('Qty') ?>" class="input-text qty" data-validate="<?php echo $block->escapeHtml($block->jsonEncoderQuantityValidators()) ?>" /></div> --><div class="control qty_cart"><!-- <div class="qty-ctl"></div> --><input type="number" name="qty" id="qty" value="<?= /* @escapeNotVerified */ $block->getProductDefaultQty() * 1 ?>" title="<?= /* @escapeNotVerified */ __('Qty') ?>" class="input-text qty" data-validate="<?= $block->escapeHtml(json_encode($block->getQuantityValidators())) ?>" /><div class="qty-ctl"><button title="decrease" onclick="changeQty(0); return false;" class="decrease-qty"><i class="fa fa-caret-down" aria-hidden="true"></i></button> <button title="increase" onclick="changeQty(1); return false;" class="increase-qty"><i class="fa fa-caret-up" aria-hidden="true"></i></button></div></div><?php echo $this->getLayout() ->createBlock('Magento\Catalog\Pricing\Render', "product.price.final.clone", [ 'data' => [ 'price_render' => 'product.price.render.default', 'price_type_code' => 'final_price', 'zone' => 'item_view' ] ] ) ->toHtml(); ?></div><?php endif; ?> <div class="actions"><button type="submit" title="<?php /* @escapeNotVerified */ echo $buttonTitle ?>" class="action primary tocart" id="product-addtocart-button"><span><?php /* @escapeNotVerified */ echo $buttonTitle ?></span></button> <?php echo $block->getChildHtml('', true) ?> <a href="#" data-post='<?php echo $this->helper('Magento\Wishlist\Helper\Data')->getAddParams($_product) ?>' class="action towishlist" data-action="add-to-wishlist"><span><?php echo __('Add to Loves'); ?></span></a></div></div></div><?php endif; ?> <?php if ($block->isRedirectToCartEnabled()) : ?> <script type="text/x-magento-init">
+        {
+            "#product_addtocart_form": {
+                "bss_quickview/catalog_product": {
+                    "radioCheckboxClosest": ".nested"
+                }
+            }
+        }</script><?php else : ?> <script type="text/x-magento-init">
+    {
+        ".actions": {
+            "Bss_Quickview/js/bss_tocart": {
+            }
+        }
+    }</script><?php endif; ?> <script>
+        function changeQty(increase) {
+
+            var elementQty = document.getElementsByName("qty")[0];
+            var qty = parseInt(elementQty.value);
+            if (!isNaN(qty)) {
+                qty = increase ? qty + 1 : (qty > 1 ? qty - 1 : 1);
+                elementQty.value = qty;
+            }
+        }</script>

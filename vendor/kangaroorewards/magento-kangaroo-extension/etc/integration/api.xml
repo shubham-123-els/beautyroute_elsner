@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<integrations>
+    <integration name="Kangaroorewards">
+        <resources>
+            <!-- all customer resources -->
+            <resource name="Magento_Customer::customer" />
+            <resource name="Magento_Customer::group" />
+            <resource name="Magento_Customer::manage" />
+            <resource name="Magento_Customer::online" />
+
+            <resource name="Magento_Backend::store" />
+            <resource name="Magento_Backend::admin" />
+            <resource name="Magento_Backend::marketing" />
+            <resource name="Magento_CatalogRule::promo" />
+            <resource name="Magento_CatalogRule::promo_catalog" />
+            <resource name="Magento_SalesRule::quote" />
+
+            <resource name="Magento_Catalog::catalog" />
+            <resource name="Magento_Catalog::catalog_inventory" />
+            <resource name="Magento_Catalog::products" />
+            <resource name="Magento_Catalog::categories" />
+
+            <resource name="Magento_Cart::cart" />
+            <resource name="Magento_Cart::manage" />
+
+            <resource name="Magento_Sales::sales" />
+            <resource name="Magento_Sales::sales_operation" />
+            <resource name="Magento_Sales::sales_order" />
+            <resource name="Magento_Sales::actions" />
+            <resource name="Magento_Sales::actions_view" />
+
+        </resources>
+    </integration>
+</integrations>

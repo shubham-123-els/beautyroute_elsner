@@ -1,0 +1,2 @@
+a:4:{s:4:"hash";s:0:"";s:5:"mtime";i:1668757202;s:6:"expire";i:9999999999;s:4:"tags";s:19:"797_CONFIG,797_MAGE";}
+{"exclude":{"patterns":{"captcha":"\/^captcha\/","customer":"\/^customer\/","downloadable":"\/^downloadable\/","import":"\/^import\/","theme":"\/^theme\/","theme_customization":"\/^theme_customization\/","tmp":"\/^tmp\/","directories-with-dots":"\/^\\.\/","catalog":"\/^catalog\\\/product\/"}}}

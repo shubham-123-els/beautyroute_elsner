@@ -1,0 +1,74 @@
+2022-11-17T07:36:05+00:00 INFO (6): Authorization valid.
+2022-11-17T07:36:07+00:00 INFO (6): Authorization valid.
+2022-11-17T09:00:07+00:00 INFO (6): ****Reports syncing started****
+2022-11-17T09:00:07+00:00 INFO (6): Auth token :
+2022-11-17T09:00:07+00:00 INFO (6): ****Request Info****
+2022-11-17T09:00:07+00:00 INFO (6): array (
+  'type' => 'Request',
+  'method' => 'POST',
+  'url' => 'https://gateway.sezzle.com/v2/authentication',
+  'body' => 
+  array (
+    'public_key' => 'sz_pub_NsmJ1SVHYql8CvdOLCTAJObhf02W2188',
+    'private_key' => 'sz_pr_1j5ywbP0aS6UGHxawLFezXyR4QcqhfbT',
+  ),
+)
+2022-11-17T09:00:07+00:00 INFO (6): ****Response Info****
+2022-11-17T09:00:07+00:00 INFO (6): array (
+  'type' => 'Response',
+  'method' => 'POST',
+  'url' => 'https://gateway.sezzle.com/v2/authentication',
+  'httpStatusCode' => 201,
+)
+2022-11-17T09:00:07+00:00 INFO (6): Auth token : 15e71646-07a3-453d-bc92-6dd1cc52827e
+2022-11-17T09:00:07+00:00 INFO (6): ****Request Info****
+2022-11-17T09:00:07+00:00 INFO (6): array (
+  'type' => 'Request',
+  'method' => 'GET',
+  'url' => 'https://gateway.sezzle.com/v2/settlements/summaries?start-date=2022-10-18&end-date=2022-11-17',
+  'body' => NULL,
+)
+2022-11-17T09:00:08+00:00 INFO (6): ****Response Info****
+2022-11-17T09:00:08+00:00 INFO (6): array (
+  'type' => 'Response',
+  'method' => 'GET',
+  'url' => 'https://gateway.sezzle.com/v2/settlements/summaries?start-date=2022-10-18&end-date=2022-11-17',
+  'httpStatusCode' => 200,
+)
+2022-11-17T09:00:08+00:00 INFO (6): Report sync error(NotFoundException) - No report found.
+2022-11-18T09:00:07+00:00 INFO (6): ****Reports syncing started****
+2022-11-18T09:00:07+00:00 INFO (6): Auth token :
+2022-11-18T09:00:07+00:00 INFO (6): ****Request Info****
+2022-11-18T09:00:07+00:00 INFO (6): array (
+  'type' => 'Request',
+  'method' => 'POST',
+  'url' => 'https://gateway.sezzle.com/v2/authentication',
+  'body' => 
+  array (
+    'public_key' => 'sz_pub_NsmJ1SVHYql8CvdOLCTAJObhf02W2188',
+    'private_key' => 'sz_pr_1j5ywbP0aS6UGHxawLFezXyR4QcqhfbT',
+  ),
+)
+2022-11-18T09:00:08+00:00 INFO (6): ****Response Info****
+2022-11-18T09:00:08+00:00 INFO (6): array (
+  'type' => 'Response',
+  'method' => 'POST',
+  'url' => 'https://gateway.sezzle.com/v2/authentication',
+  'httpStatusCode' => 201,
+)
+2022-11-18T09:00:08+00:00 INFO (6): Auth token : 3f1b0b6f-6b00-4393-843c-44239a89b779
+2022-11-18T09:00:08+00:00 INFO (6): ****Request Info****
+2022-11-18T09:00:08+00:00 INFO (6): array (
+  'type' => 'Request',
+  'method' => 'GET',
+  'url' => 'https://gateway.sezzle.com/v2/settlements/summaries?start-date=2022-10-19&end-date=2022-11-18',
+  'body' => NULL,
+)
+2022-11-18T09:00:08+00:00 INFO (6): ****Response Info****
+2022-11-18T09:00:08+00:00 INFO (6): array (
+  'type' => 'Response',
+  'method' => 'GET',
+  'url' => 'https://gateway.sezzle.com/v2/settlements/summaries?start-date=2022-10-19&end-date=2022-11-18',
+  'httpStatusCode' => 200,
+)
+2022-11-18T09:00:08+00:00 INFO (6): Report sync error(NotFoundException) - No report found.

@@ -1,0 +1,37 @@
+{
+	"version": "1.4.0",
+	"name": "magento2-cloudflare",
+	"description": "Interact with popular Cloudflare features though Magento's backend portal",
+	"author": "Rafael Grigorian",
+	"company": "JetRails®",
+	"license": "MIT",
+	"namespace": "JetRails_Cloudflare",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jetrails/magento2-cloudflare.git"
+	},
+	"dependencies": {
+		"jquery": "^3.5.1",
+		"jquery-ui-dist": "^1.12.1"
+	},
+	"devDependencies": {
+		"@parcel/transformer-sass": "2.0.0-beta.2",
+		"parcel": "^2.0.0-beta.2",
+		"sass": "^1.32.12"
+	},
+	"alias": {
+		"cloudflare": "~/view/adminhtml/web/js"
+	},
+	"entrypoints": {
+		"bundle": "view/adminhtml/web/bundle",
+		"style": "view/adminhtml/web/scss/index.scss",
+		"script": "view/adminhtml/web/js/index.js"
+	},
+	"scripts": {
+		"build:styles": "parcel build --no-source-maps --dist-dir $npm_package_entrypoints_bundle $npm_package_entrypoints_style",
+		"postbuild:styles": "mv $npm_package_entrypoints_bundle/index.css $npm_package_entrypoints_bundle/index.min.css",
+		"build:scripts": "parcel build --no-source-maps --dist-dir $npm_package_entrypoints_bundle $npm_package_entrypoints_script",
+		"postbuild:scripts": "mv $npm_package_entrypoints_bundle/index.js $npm_package_entrypoints_bundle/index.min.js",
+		"build": "rm -rf $npm_package_entrypoints_bundle && yarn build:styles && yarn build:scripts"
+	}
+}

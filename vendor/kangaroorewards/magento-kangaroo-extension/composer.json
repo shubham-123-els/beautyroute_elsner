@@ -1,0 +1,19 @@
+{
+  "name": "kangaroorewards/magento-kangaroo-extension",
+  "description": "Kangaroo Rewards - Loyalty Program",
+  "type": "magento2-module",
+  "version": "2.0.6",
+  "require": {
+    "ext-curl": "*",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Kangaroorewards\\Core\\": ""
+    },
+    "files": [
+      "registration.php"
+    ]
+  },
+  "minimum-stability": "dev"
+}

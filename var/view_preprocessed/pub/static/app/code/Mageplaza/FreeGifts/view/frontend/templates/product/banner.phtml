@@ -1,0 +1,24 @@
+<?php /** * Mageplaza * * NOTICE OF LICENSE * * This source file is subject to the Mageplaza.com license that is * available through the world-wide-web at this URL: * https://www.mageplaza.com/LICENSE.txt * * DISCLAIMER * * Do not edit or add to this file if you wish to upgrade this extension to newer * version in the future. * * @category Mageplaza * @package Mageplaza_FreeGifts * @copyright Copyright (c) Mageplaza (https://www.mageplaza.com/) * @license https://www.mageplaza.com/LICENSE.txt */ use Mageplaza\FreeGifts\Block\Product\Banner; use Mageplaza\FreeGifts\Model\Source\Position; /** @var Banner $block */ $ruleIds = $block->getRuleIds($block->getRuleArea()); ?> <?php if ($block->isEnable() && $ruleIds) : ?> <?php foreach ($ruleIds as $ruleId) : ?> <?php $rule = $block->getRuleById($ruleId); $bannerWidth = $rule->getMpBannerWidth(); $bannerHeight = $rule->getMpBannerHeight(); $bannerShowNextPrev = $rule->getMpShowNextPrevButton(); $bannerShowDots = $rule->getMpShowDots(); $bannerAutoPlay = $rule->getMpAutoPlay(); $bannerAutoTime = $rule->getMpAutoTimeout() ?: 5000; ?> <?php if ($banners = $block->getBannersCollection($ruleId)) : ?> <style> .banner-item-info img.product-image { width: <?= $bannerWidth ? :100 ?>%; height: <?= $bannerHeight ? :130 ?>px; } <?php if ((int) $block->getRuleArea() === Position::ABOVE_CONTENT) : ?> .mp-freegifts-block-content.mp-freegifts-banner-<?= $block->escapeHtmlAttr($ruleId) ?> { order: -2; } <?php endif; ?> <?php if ($bannerShowNextPrev) : ?> .mp-freegifts-banner-<?= $block->escapeHtmlAttr($ruleId) ?> .owl-nav { display: block !important; } <?php endif; ?> <?php if ($bannerShowDots) : ?> .mp-freegifts-banner-<?= $block->escapeHtmlAttr($ruleId) ?> .owl-dots { display: block !important; } <?php endif; ?></style><div class="mp-freegifts-block-content mp-freegifts-banner-<?= $block->escapeHtmlAttr($ruleId) ?>"><div class="banner-grid"><ol class="banner-items"><div id="mp-banner-items-<?= $block->escapeHtmlAttr($ruleId) ?>" class="owl-carousel owl-theme"><?php foreach ($banners as $banner) : ?> <?php $tooltip = $block->getTooltipBanner($banner) ?> <div class="banner-item-info" data-id="<?= /** @noEscape */ $banner->getId() ?>"><?php if ($tooltip) : ?> <div class="mp-fg-tooltip mp-fg-tooltip-<?= /** @noEscape */ $banner->getId() ?>"><?= $block->escapeHtml($tooltip) ?></div><?php endif; ?> <img class="product-image" data-role="image-element" src="<?= $block->escapeUrl($block->getUrlBanner($banner->getFilePath())) ?>" alt="<?= $block->escapeHtmlAttr($banner->getAlt()) ?>"></div><?php endforeach; ?></div></ol></div><script>
+                    require(['jquery', 'mageplaza/core/owl.carousel'], function ($) {
+                        var el       = $('#mp-banner-items-<?= $block->escapeHtmlAttr($ruleId) ?>'),
+                            bannerEl = $('.mp-freegifts-banner-<?= $block->escapeHtmlAttr($ruleId) ?>');
+
+                        <?php if ((int) $block->getRuleArea() === Position::BEFORE_ADD_TO_CART_BUTTON) : ?>
+                        bannerEl.insertBefore('.box-tocart .actions');
+                        <?php endif; ?> el.owlCarousel({
+                            loop: true,
+                            margin: 10,
+                            nav: <?= /** @noEscape */ $bannerShowNextPrev ?>,
+                            dots: <?= /** @noEscape */ $bannerShowDots ?>,
+                            autoplay: <?= /** @noEscape */ $bannerAutoPlay ?>,
+                            autoplayTimeout: <?= /** @noEscape */ $bannerAutoTime ?>
+                        });
+
+                        $('.banner-item-info').hover(function () {
+                            var id = $(this).attr('data-id');
+
+                            $(this).find('.mp-fg-tooltip-' + id).show();
+                        }, function () {
+                            $('.mp-fg-tooltip').hide();
+                        });
+                    });</script></div><?php endif; ?> <?php endforeach; ?> <?php endif; ?>

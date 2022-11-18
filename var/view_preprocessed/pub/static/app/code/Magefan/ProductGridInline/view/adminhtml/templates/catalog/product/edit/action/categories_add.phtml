@@ -1,0 +1,4 @@
+<?php /** * Copyright © Magefan (support@magefan.com). All rights reserved. * Please visit Magefan.com for license details (https://magefan.com/end-user-license-agreement). * Glory to Ukraine! Glory to the heroes! */ ?> <?php /** * @var $block \Magefan\ProductGridInline\Block\Adminhtml\Product\Edit\Action\Attribute\Tab\CategoryList */ ?> <label class="label" for="categories_add">Choose Categories:</label> <select data-placeholder="Choose category..." class="mf_categories_add" name="categories_add[]" id="categories_add" multiple="multiple"><?php foreach ($block->getCategoriesMultiselect() as $value => $category): ?> <option value="<?= $block->escapeHtml($value) ?>"><?= $block->escapeHtml($category) ?></option><?php endforeach; ?></select> <script>
+    require(['jquery', 'domReady!', 'Magefan_ProductGridInline/js/chosen.jquery.min'], function ($) {
+        $("#categories_add").chosen({width: '25%'});
+    });</script>

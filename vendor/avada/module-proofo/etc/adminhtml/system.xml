@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Avada
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the avada.io license that is
+ * available through the world-wide-web at this URL:
+ * https://www.avada.io/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Avada
+ * @package     Avada_Proofo
+ * @copyright   Copyright (c) Avada (https://www.avada.io/)
+ * @license     https://www.avada.io/LICENSE.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="proofo" translate="label" sortOrder="402">
+            <label>Social Proof</label>
+        </tab>
+        <section id="proofo" translate="label" type="text" sortOrder="400" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Accounts</label>
+            <tab>proofo</tab>
+            <resource>Avada_Proofo::configuration</resource>
+            <group id="general" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="enabled" translate="label comment" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Dont' have an API? <a href="https://proofo.io/" target="_blank">click here</a> to know how to create new one.?]]></comment>
+                </field>
+                <field id="app_id" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>App ID</label>
+                    <comment><![CDATA[App ID from Proofo backend. Get <a href="https://app.proofo.io/manage/keys" target="_blank">App ID here</a>.]]></comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="secret_key" translate="label comment" type="obscure" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Secret key</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <comment><![CDATA[Secret key from Proofo backend. ]]></comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="test_connection" translate="label" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label></label>
+                    <button_label>Test connection</button_label>
+                    <button_url>proofo/webhook/testconnection</button_url>
+                    <frontend_model>\Avada\Proofo\Block\Adminhtml\System\Config\Button</frontend_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                    <comment>Switch to the corresponding store view to test the connection. If not, the default config will be used.</comment>
+                </field>
+            </group>
+            <group id="webhook" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Sync</label>
+                <field id="sync_manually" translate="label" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label></label>
+                    <button_label>Sync orders manually</button_label>
+                    <button_url>proofo/webhook/sync</button_url>
+                    <frontend_model>\Avada\Proofo\Block\Adminhtml\System\Config\Sync</frontend_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                    <comment>Switch to the corresponding store view to sync data to correct account. If not, the default config will be used.</comment>
+                </field>
+                <field id="sync_statistic_orders" translate="label" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label></label>
+                    <button_label>Sync orders statistic</button_label>
+                    <button_url>proofo/statistic/sync</button_url>
+                    <frontend_model>\Avada\Proofo\Block\Adminhtml\System\Config\SyncStatistic</frontend_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                    <comment>Sync your orders to Proofo for statistic purpose.</comment>
+                </field>
+                <field id="enabled_webhooks" translate="label" type="multiselect" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>When sync to Proofo</label>
+                    <source_model>Avada\Proofo\Model\Config\Webhooks</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="bundle_as_multiple" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sync bundle product as multiple items</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = true
+[remote "origin"]
+	url = https://github.com/alex-79/magento2-hide-default-store-code-from-url.git
+	fetch = +refs/*:refs/*
+	mirror = true

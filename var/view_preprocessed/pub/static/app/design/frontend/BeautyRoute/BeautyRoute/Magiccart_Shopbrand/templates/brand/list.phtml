@@ -1,0 +1,8 @@
+<?php /** * * @var $block \Magiccart\Shopbrand\Block\ListBrand * */ ?> <?php $selector = 'alo-content-'.uniqid(); $helper = $this->_helper; $productCount = $helper->getConfigModule('list_page_settings/show_product_count'); $brands = $block->getBrands(); $keyword = $this->getRequest()->getParam('keyword'); ?> <?php echo $block->getChildHtml('brand_filter_by_character'); ?> <div class="shop-by-brand <?php /* @escapeNotVerified */ echo $selector ?>" ><?php if(!$brands->count()) : ?> <div class="message info empty"><div><?= $block->escapeHtml(__('We can\'t find brands matching the selection')) ?></div></div><?php return;?> <?php endif;?> <div class="listProduct_sec"><div class="related_product_list_"><div class="img_inner_sec"><?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('brand_page_image')->toHtml();?></div></div><div class="shopbrand"><div class="brand-list grid-slider" <?php foreach ($this->getFrontendCfg() as $opt) :?> data-<?php /* @escapeNotVerified */ echo $opt ?>='<?php /* @escapeNotVerified */ echo $this->getData($opt) ?>' <?php endforeach;?> ><?php foreach ($brands as $brand) : ?> <?php $href = $helper->getLinkBrand($brand); ?> <div class="item"><div class="name"><a class="link-brand" href="<?= /* @escapeNotVerified */ $href ?>"><?= $brand->getTitle(); ?> <?php if ($productCount): ?> <span>(<?= $block->getProductCount($brand) ?>)</span> <?php endif ?></a></div></div><?php endforeach; ?></div></div></div></div><script type="text/javascript">
+    require([
+        'jquery',
+        'gridSlider',
+        ], function($, gridSlider){
+            var el  = $('.<?php echo $selector ?>');
+            if(el.length) el.gridSlider();
+    });</script>

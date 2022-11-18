@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="sales_order_save_after">
+        <observer name="sales_order_state_change_before_OrderState" instance="Kangaroorewards\Core\Observer\UpdateOrderObserver" />
+    </event>
+    <event name="review_save_after">
+        <observer name="review_save_after_post_review" instance="Kangaroorewards\Core\Observer\UpdateReviewObserver" />
+    </event>
+</config>

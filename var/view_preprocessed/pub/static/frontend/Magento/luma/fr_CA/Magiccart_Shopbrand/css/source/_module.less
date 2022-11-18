@@ -1,0 +1,118 @@
+& when (@media-common = true) {
+	.shopbrand-brand-listbrand {
+		.page-title-wrapper {
+			text-align: center;
+			.page-title {
+				display:inline-block;
+			}
+		}
+		.grid-slider {
+			display: none;
+		}
+		.grid-init {
+			.grid-slider {
+				display: block;
+			}
+		}
+	}
+	.shopbrand{
+		text-align: center;
+		display:block
+	}
+	.shop-by-brand {
+		text-align: center;
+	}
+	.shopbrand-list {
+		clear: both;
+	}
+
+	.brand-search {
+		height: 150px;
+		text-align: center;
+	}
+
+	.brand-search-sidebar{
+		.block-search {
+			max-width: 100%;
+		}
+	}
+	.characters{
+		clear: both;
+		padding: 20px 0;
+		display: inline-block;
+		.filter {
+			list-style: none;
+			float: left;
+			.char {
+				float: left;
+				a {
+					display: block;
+					border: 1px solid silver;
+					height: 36px;
+					line-height: 36px;
+					width: 36px;
+					text-align: center;
+					margin-left: 3px;
+					border-radius: 4px;
+					font-weight: 600;
+					text-transform: uppercase;
+				}
+				
+				a:hover, &.active a {
+					background-color: #006bb4;
+					color: #ffffff;
+					border: 1px solid #006bb4;
+				}
+			}
+			.view-all a {
+				text-transform: none;
+			}
+		}
+
+	}
+}
+& when (@media-common = false) {
+	@media (min-width: 768px) {
+		.shop-by-brand {
+			.block-search {
+				float: none;
+				display: inline-block;
+			}
+		}
+		.brand-search-sidebar {
+			.block.block-search {
+				float: none;
+				margin-bottom: 0;
+				padding-left: 0;
+			}			
+		}
+	}
+}
+.brands .alo-content-606c429aa8eaf {
+
+height: 500px!important;
+overflow: hidden!important;
+flex: 0 0 75%!important;
+max-width: 75%!important;
+}
+
+.brands .alo-content-606c429aa8eaf .shopbrand.grid-slider {
+display: flex!important;
+flex-wrap: wrap!important;
+}
+.brands .alo-content-606c429aa8eaf .item {
+width: 100%!important;
+height: 112px!important;
+display: flex!important;
+align-items: center!important;
+justify-content: center!important;
+max-width: 287px!important;
+border: 1px solid #e0e0e0!important;
+margin: 10px!important;
+}
+.brands .alo-content-606c429aa8eaf .shopbrand.grid-slider {
+display: flex!important;
+flex-wrap: wrap!important;
+height: 404px!important;
+overflow: hidden!important;
+}

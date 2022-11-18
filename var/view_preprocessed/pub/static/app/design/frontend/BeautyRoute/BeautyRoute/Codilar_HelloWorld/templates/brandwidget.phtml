@@ -1,0 +1,17 @@
+<?php $media = $block->getMediaUrl(); $brandCollMegamenu = $block->getBrandWidgetCollection(); $i = 1; $brandCollections = []; foreach ($brandCollMegamenu as $key => $value): if ($i < 10) $brandCollections[] = $value; $i++; endforeach; ?> <div class="brand-desktop-item"><?php foreach ($brandCollections as $key => $value): $brandimage = $media.''.$value["image"]; $brandname = $value["title"]; ?> <div class="item"><a href="<?php /* @escapeNotVerified */ echo 'shopbrand/'.$value["urlkey"].'.html' ?>"><img class="brand img-responsive slideimg" src="<?php /* @escapeNotVerified */ echo $brandimage ?>" alt="<?php /* @escapeNotVerified */ echo __($brandname) ?>" title="<?php /* @escapeNotVerified */ echo __($brandname) ?>" /></a></div><?php endforeach; ?></div><div id="owl-demo_custom-featured" class="brand-widget"><?php foreach ($brandCollections as $key => $value): $brandimage = $media.''.$value["image"]; $brandname = $value["title"]; ?> <div class="item"><a href="<?php /* @escapeNotVerified */ echo 'shopbrand/'.$value["urlkey"].'.html' ?>"><img class="brand img-responsive slideimg" src="<?php /* @escapeNotVerified */ echo $brandimage ?>" alt="<?php /* @escapeNotVerified */ echo __($brandname) ?>" title="<?php /* @escapeNotVerified */ echo __($brandname) ?>" /></a></div><?php endforeach; ?></div><script type="text/x-magento-init">
+    {
+        ".brand-widget": {
+            "OwlCarousel": {
+                "autoPlay": false,
+                "lazyLoad":true,
+                "loop":true,
+                "items": 4,
+                "dots": false,
+                "pagination":false,
+                "itemsDesktop": [1199, 3],
+                "itemsDesktopSmall": [768, 3],
+                "itemsMobile": [575, 1],
+                "navigation": true
+        } 
+    }
+}</script>

@@ -1,0 +1,2 @@
+a:4:{s:4:"hash";s:0:"";s:5:"mtime";i:1668757426;s:6:"expire";i:9999999999;s:4:"tags";s:23:"797_REFLECTION,797_MAGE";}
+{"getName":{"type":"string","isRequired":true,"description":null,"parameterCount":0},"setName":{"type":"this","isRequired":true,"description":null,"parameterCount":1},"getValue":{"type":"string","isRequired":true,"description":null,"parameterCount":0},"setValue":{"type":"this","isRequired":true,"description":null,"parameterCount":1}}

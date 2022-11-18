@@ -1,0 +1,1 @@
+<?php $id = $block->getBrand()->getshopbrandId(); $desktop_image = $block->getshopBrand($id)->getdesktop_image(); $mediaurl = $block->geturl('media'); ?> <?php if (!empty($desktop_image)): ?> <div class="desktop_screen"><img src="<?= $block->getMainurl()."media/".$desktop_image ?>"></div><?php endif; ?>

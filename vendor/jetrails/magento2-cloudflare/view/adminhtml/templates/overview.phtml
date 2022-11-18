@@ -1,0 +1,15 @@
+<?php
+
+	if ( $block->isValidAuth () && $block->isValidZone () ) {
+		echo $block->renderSections ( "overview", array (
+			"configuration",
+			"status"
+		));
+	}
+	else {
+		echo $block->renderSections ( "overview", array (
+			"configuration"
+		));
+	}
+
+?>

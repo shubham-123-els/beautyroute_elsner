@@ -1,0 +1,1193 @@
+
+                                                          
+  There are no commands defined in the "cron" namespace.  
+                                                          
+
+
+                                                          
+  There are no commands defined in the "cron" namespace.  
+                                                          
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 322:
+                                                                   
+  SQLSTATE[HY000]: General error: 2006 MySQL server has gone away  
+                                                                   
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 322:
+                                                                   
+  SQLSTATE[HY000]: General error: 2006 MySQL server has gone away  
+                                                                   
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+PHP Fatal error:  Uncaught Exception: User Error: Some transactions have not been committed or rolled back in /home/551129.cloudwaysapps.com/fzmgbsaksm/public_html/vendor/magento/framework/DB/Adapter/Pdo/Mysql.php on line 4050 in /home/551129.cloudwaysapps.com/fzmgbsaksm/public_html/vendor/magento/framework/App/ErrorHandler.php:61
+Stack trace:
+#0 [internal function]: Magento\Framework\App\ErrorHandler->handler()
+#1 /home/551129.cloudwaysapps.com/fzmgbsaksm/public_html/vendor/magento/framework/DB/Adapter/Pdo/Mysql.php(4050): trigger_error()
+#2 [internal function]: Magento\Framework\DB\Adapter\Pdo\Mysql->__destruct()
+#3 {main}
+  thrown in /home/551129.cloudwaysapps.com/fzmgbsaksm/public_html/vendor/magento/framework/App/ErrorHandler.php on line 61
+PHP Fatal error:  Uncaught Exception: User Error: Some transactions have not been committed or rolled back in /home/551129.cloudwaysapps.com/fzmgbsaksm/public_html/vendor/magento/framework/DB/Adapter/Pdo/Mysql.php on line 4050 in /home/551129.cloudwaysapps.com/fzmgbsaksm/public_html/vendor/magento/framework/App/ErrorHandler.php:61
+Stack trace:
+#0 [internal function]: Magento\Framework\App\ErrorHandler->handler()
+#1 /home/551129.cloudwaysapps.com/fzmgbsaksm/public_html/vendor/magento/framework/DB/Adapter/Pdo/Mysql.php(4050): trigger_error()
+#2 [internal function]: Magento\Framework\DB\Adapter\Pdo\Mysql->__destruct()
+#3 {main}
+  thrown in /home/551129.cloudwaysapps.com/fzmgbsaksm/public_html/vendor/magento/framework/App/ErrorHandler.php on line 61
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+PHP Fatal error:  Uncaught Exception: User Error: Some transactions have not been committed or rolled back in /home/551129.cloudwaysapps.com/fzmgbsaksm/public_html/vendor/magento/framework/DB/Adapter/Pdo/Mysql.php on line 4050 in /home/551129.cloudwaysapps.com/fzmgbsaksm/public_html/vendor/magento/framework/App/ErrorHandler.php:61
+Stack trace:
+#0 [internal function]: Magento\Framework\App\ErrorHandler->handler()
+#1 /home/551129.cloudwaysapps.com/fzmgbsaksm/public_html/vendor/magento/framework/DB/Adapter/Pdo/Mysql.php(4050): trigger_error()
+#2 [internal function]: Magento\Framework\DB\Adapter\Pdo\Mysql->__destruct()
+#3 {main}
+  thrown in /home/551129.cloudwaysapps.com/fzmgbsaksm/public_html/vendor/magento/framework/App/ErrorHandler.php on line 61
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+
+
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+In Abstract.php line 144:
+                                                     
+  SQLSTATE[HY000] [2006] MySQL server has gone away  
+                                                     
+
+In Abstract.php line 128:
+                                                     
+  SQLSTATE[HY000] [2006] MySQL server has gone away  
+                                                     
+
+In Abstract.php line 128:
+                                                                      
+  PDO::__construct(): Error while reading greeting packet. PID=25063  
+                                                                      
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+
+
+
+In Abstract.php line 144:
+In Abstract.php line 144:
+                                                     
+  SQLSTATE[HY000] [2006] MySQL server has gone away  
+                                                     
+                                                     
+
+  SQLSTATE[HY000] [2006] MySQL server has gone away  
+                                                     
+
+In Abstract.php line 128:
+                                                     
+  SQLSTATE[HY000] [2006] MySQL server has gone away  
+In Abstract.php line 128:
+                                                     
+
+                                                     
+  SQLSTATE[HY000] [2006] MySQL server has gone away  
+                                                     
+
+In Abstract.php line 128:
+                                                                      
+In Abstract.php line 128:
+  PDO::__construct(): Error while reading greeting packet. PID=24351  
+                                                                      
+                                                                      
+
+  PDO::__construct(): Error while reading greeting packet. PID=24354  
+                                                                      
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+In Abstract.php line 144:
+                                                     
+  SQLSTATE[HY000] [2006] MySQL server has gone away  
+                                                     
+
+In Abstract.php line 128:
+                                                     
+  SQLSTATE[HY000] [2006] MySQL server has gone away  
+                                                     
+
+In Abstract.php line 144:
+                                                     
+  SQLSTATE[HY000] [2006] MySQL server has gone away  
+In Abstract.php line 128:
+                                                     
+                                                                      
+
+  PDO::__construct(): Error while reading greeting packet. PID=24341  
+                                                                      
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+In Abstract.php line 128:
+                                                     
+  SQLSTATE[HY000] [2006] MySQL server has gone away  
+                                                     
+
+In Abstract.php line 128:
+                                                                      
+  PDO::__construct(): Error while reading greeting packet. PID=24335  
+                                                                      
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 144:
+                                                     
+  SQLSTATE[HY000] [2006] MySQL server has gone away  
+                                                     
+
+In Abstract.php line 128:
+                                                     
+  SQLSTATE[HY000] [2006] MySQL server has gone away  
+                                                     
+
+In Abstract.php line 128:
+                                                                      
+  PDO::__construct(): Error while reading greeting packet. PID=24337  
+                                                                      
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                                     
+  SQLSTATE[HY000] [2006] MySQL server has gone away  
+                                                     
+
+In Abstract.php line 128:
+                                                     
+  SQLSTATE[HY000] [2006] MySQL server has gone away  
+                                                     
+
+In Abstract.php line 128:
+                                                                      
+  PDO::__construct(): Error while reading greeting packet. PID=24347  
+                                                                      
+
+In Abstract.php line 305:
+                                                                   
+  SQLSTATE[HY000]: General error: 2006 MySQL server has gone away  
+                                                                   
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+
+
+
+In Abstract.php line 144:
+                                                     
+  SQLSTATE[HY000] [2006] MySQL server has gone away  
+                                                     
+
+In Abstract.php line 128:
+                                                     
+  SQLSTATE[HY000] [2006] MySQL server has gone away  
+                                                     
+
+In Abstract.php line 128:
+                                                                     
+  PDO::__construct(): Error while reading greeting packet. PID=6975  
+                                                                     
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+In Abstract.php line 144:
+                                                     
+  SQLSTATE[HY000] [2006] MySQL server has gone away  
+                                                     
+
+In Abstract.php line 128:
+                                                     
+  SQLSTATE[HY000] [2006] MySQL server has gone away  
+                                                     
+
+In Abstract.php line 128:
+                                                                     
+  PDO::__construct(): Error while reading greeting packet. PID=6999  
+                                                                     
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+
+
+In Abstract.php line 144:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+In Abstract.php line 128:
+                                             
+  SQLSTATE[HY000] [2002] Connection refused  
+                                             
+
+cron:run [--group GROUP] [--bootstrap BOOTSTRAP]
+

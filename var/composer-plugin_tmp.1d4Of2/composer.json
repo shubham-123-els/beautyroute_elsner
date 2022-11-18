@@ -1,0 +1,22 @@
+{
+    "repositories": {
+        "noon-hide-default-store-code": {
+            "type": "git",
+            "url": "https://github.com/alex-79/magento2-hide-default-store-code-from-url.git"
+        },
+        "0": {
+            "type": "composer",
+            "url": "https://repo.magento.com/"
+        },
+        "packagist.org": {
+            "type": "composer",
+            "url": "https?://repo.packagist.org",
+            "allow_ssl_downgrade": true
+        }
+    },
+    "require": {
+        "magento/composer-root-update-plugin": "1.1.2"
+    },
+    "prefer-stable": true,
+    "minimum-stability": "stable"
+}

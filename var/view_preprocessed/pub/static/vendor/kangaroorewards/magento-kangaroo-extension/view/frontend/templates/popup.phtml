@@ -1,0 +1,16 @@
+<link rel="stylesheet" href="<?php echo $block->getKangarooAPIUrl(); ?>/magento/initCss?storeId=<?php echo $block->getStoreId(); ?>&amp;domain=<?php echo urlencode($block->getBaseStoreUrl()); ?>" type="text/css"><div class="kangaroo-container" style="display: none;"><div class="wrapper"><div class="arrow arrow-top"></div><div class="kangaroo-inner"><div class="kangaroo-controls"><a class="hide">x</a></div><div class="kangaroo-items"><div class="message points item"></div></div></div><div class="arrow kangaroo-arrow"></div></div></div><div class="kangaroo-widget" style="display: none;"><div class="kangaroo-wrapper"><div class="points"><span class="amount"></span></div><div class="name-box"><div class="arrow"><span class="icon icon-up-arrow" id="kangaroo-icon-program-name"></span></div><span class="name"></span></div><br style="clear:both"></div></div><div class="kangaroo-welcome-overlay" style="display: none;"><div class="kangaroo-welcome-modal"></div></div><script>
+    var KangarooApps;</script><script type="text/x-magento-init">
+        {
+            "*": {
+                "Kangaroorewards_Core/js/main": {
+                    "plugin_version": "2.0.6",
+                    "baseStoreUrl": "<?php echo $block->getBaseStoreUrl(); ?>",
+                    "storeId":<?php echo $block->getStoreId(); ?>,
+                    "isProductPage":<?php echo (int)$block->isProductPage(); ?>,
+                    "currentProduct": <?php echo json_encode($block->getCurrentProduct());?>,
+                    "isCartExist": <?php echo (int)$block->isShoppingCartExist(); ?>,
+                    "kangarooAPIUrl":"<?php echo $block->getKangarooAPIUrl(); ?>",
+                    "cart": <?php echo json_encode($block->getCart()); ?>
+                }
+            }
+        }</script>

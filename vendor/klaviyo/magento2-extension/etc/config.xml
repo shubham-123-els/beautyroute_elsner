@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <klaviyo_reclaim_general>
+            <general>
+                <private_api_key backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
+            </general>
+        </klaviyo_reclaim_general>
+        <klaviyo_reclaim_user>
+            <klaviyo_user>
+                <username>klaviyo</username>
+                <password backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
+            </klaviyo_user>
+        </klaviyo_reclaim_user>
+        <klaviyo_reclaim_webhook>
+            <klaviyo_webhooks>
+                <webhook_secret backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
+            </klaviyo_webhooks>
+        </klaviyo_reclaim_webhook>
+        <klaviyo_reclaim_consent_at_checkout>
+            <email_consent>
+                <consent_text>Subscribe for email updates</consent_text>
+            </email_consent>
+        </klaviyo_reclaim_consent_at_checkout>
+        <klaviyo_reclaim_consent_at_checkout>
+            <sms_consent>
+                <consent_text>**By checking this box and entering your phone number above, you consent to receive marketing text messages (such as [promotion codes] and [cart reminders]) from [company name] at the number provided, including messages sent by autodialer. Consent is not a condition of any purchase. Message and data rates may apply. Message frequency varies. You can unsubscribe at any time by replying STOP or clicking the unsubscribe link (where available) in one of our messages. View our Privacy Policy [link] and Terms of Service [link].</consent_text>
+            </sms_consent>
+        </klaviyo_reclaim_consent_at_checkout>
+        <klaviyo_reclaim_consent_at_checkout>
+            <sms_consent>
+                <sort_order>200</sort_order>
+            </sms_consent>
+        </klaviyo_reclaim_consent_at_checkout>
+        <klaviyo_reclaim_consent_at_checkout>
+            <email_consent>
+                <sort_order>0</sort_order>
+            </email_consent>
+        </klaviyo_reclaim_consent_at_checkout>
+        <klaviyo_reclaim_consent_at_checkout>
+            <sms_consent>
+                <label_text>Subscribe for SMS updates**</label_text>
+            </sms_consent>
+        </klaviyo_reclaim_consent_at_checkout>
+    </default>
+</config>

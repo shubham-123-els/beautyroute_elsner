@@ -1,0 +1,41 @@
+<?php $newCatUrl = $block->getNewcatUrl(); $trendCatUrl = $block->getTrendcatUrl(); $newProducts = $block->getNewProducts(); $trendingProducts = $block->getTrendingProducts(); $helper = $this->helper("Elsnertech\StorePrice\Helper\NewData"); $currentCountry = $helper->countryName(); $groupType = $helper->getCurrentCustomeType(); $ProfessionalText = $helper->getProfessionalText(); $currentStore = $helper->CurrentStore(); ?> <div class="home-tred-new-section treding_new"><div class="home-tred-new-tabes-section btn_viewall_sec"><div class="tred-new-tabes trending-new-button"><button class="treding-product-tab active"><h2><?= /* @noEscape */ __('Trending'); ?></h2></button> <button class="new-product-tab"><h2><?= /* @noEscape */ __('New'); ?></h2></button></div><div class="trending_view_all"><a href="<?= $escaper->escapeUrl($block->getTrendcatUrl()) ?>" class="trnd-new-url"><?= /* @noEscape */__('View All'); ?></a></div></div><section class="trndprd" id="tranding_block"><div class="trend-product-container"><?php foreach ($trendingProducts as $trendingProduct): ?> <?php $mobileImage = $block->getMainurl()."media/catalog/product/".$trendingProduct->getproductImageTrending();?> <div class="product_tranding_new1_<?php echo $trendingProduct->getId(); ?>"><div class="images_sec"><img src="<?= $mobileImage ?>" alt="<?= $trendingProduct->getName() ?>"><div class="upper_text"><a href="<?= $trendingProduct->getProductUrl(); ?>"><h3><?= $trendingProduct->getName() ?></h3></a> <?php if($helper->getAttributeOpetion($trendingProduct->getId(),"profession_type")=="B2B"): ?> <?php if($groupType!="Salon"): ?> <?php else: ?> <div class="price_ comman_tr"><p class="price"><?php echo __('Price: '); ?> <?= /* @noEscape */ $block->getProductPrice($trendingProduct) ?></p></div><?php endif; ?> <?php else: ?> <div class="price_ comman_tr"><p class="price"><?php echo __('Price: '); ?> <?= /* @noEscape */ $block->getProductPrice($trendingProduct) ?></p></div><?php endif; ?> <div class="star_ comman_tr"><?php $ratingSummary = $block->getRatingSummary($trendingProduct); ?> <?php if ($ratingSummary): ?> <div class="rating-summary item" itemprop="reviewRating" itemscope="" ><div class="rating-result" title="<?php echo $ratingSummary; ?>%"><meta itemprop="worstRating" content="1"><meta itemprop="bestRating" content="100"><span style="width:<?php echo $ratingSummary; ?>%"><span itemprop="ratingValue"><?php echo $ratingSummary; ?>%</span></span> <?php $vote = $block->getRating($trendingProduct->getId()); $totalavg = $vote['count']['avg']; ?> <div class="rating-summary"><span><?= $totalavg ?>/5</span></div></div></div><?php endif; ?></div><div class="cart_btn"><form data-role="tocart-form" action="<?= $block->getAddToCartUrl($trendingProduct) ?>" method="post" id="product_addtocart_form_trending"><?php echo $block->getBlockHtml('formkey')?> <?php if($helper->getAttributeOpetion($trendingProduct->getId(),"profession_type")=="B2B"): ?> <?php if($groupType!="Salon"): ?> <a href="<?= $block->geturl('customer/account/create') ?>" class="professional-search"><p class="professional-login"><?= __("Professional Use Only") ?></p></a> <?php else: ?> <button type="submit" title="<?php echo __('Add to cart'); ?>" class="action tocart primary" disabled><span> <i class="fa fa-shopping-cart" aria-hidden="true"></i><?= $escaper->escapeHtml(__('Add to Cart')) ?></span></button> <?php endif; ?> <?php else: ?> <button type="submit" title="<?php echo __('Add to cart'); ?>" class="action tocart primary" disabled><span> <i class="fa fa-shopping-cart" aria-hidden="true"></i><?= $escaper->escapeHtml(__('Add to Cart')) ?></span></button> <?php endif; ?></form></div></div></div></div><?php endforeach; ?></div><div class="new-product-container" style="display: none;"><?php foreach ($newProducts as $newProduct): ?> <?php $mobilenewImage = $block->getMainurl()."media/catalog/product/".$newProduct->getProductImageNewMobile();?> <div class="product_tranding_new2_<?php echo $newProduct->getId(); ?>"><div class="images_sec"><img src="<?= $mobilenewImage ?>" alt="<?= $newProduct->getName() ?>"><div class="upper_text"><a href="<?= $newProduct->getProductUrl(); ?>"><h3><?= $newProduct->getName() ?></h3></a> <?php if($helper->getAttributeOpetion($newProduct->getId(),"profession_type")=="B2B"): ?> <?php if($groupType!="Salon"): ?> <?php else: ?> <div class="price_ comman_tr"><p class="price"><?php echo __('Price: '); ?> <?= /* @noEscape */ $block->getProductPrice($newProduct) ?></p></div><?php endif; ?> <?php else: ?> <div class="price_ comman_tr"><p class="price"><?php echo __('Price: '); ?> <?= /* @noEscape */ $block->getProductPrice($newProduct) ?></p></div><?php endif; ?> <div class="star_ comman_tr"><?php $ratingSummary = $block->getRatingSummary($newProduct); ?> <?php if ($ratingSummary): ?> <div class="rating-summary item" itemprop="reviewRating" itemscope="" ><div class="rating-result" title="<?php echo $ratingSummary; ?>%"><meta itemprop="worstRating" content="1"><meta itemprop="bestRating" content="100"><span style="width:<?php echo $ratingSummary; ?>%"><span itemprop="ratingValue"><?php echo $ratingSummary; ?>%</span></span> <?php $vote = $block->getRating($newProduct->getId()); $totalavg = $vote['count']['avg']; ?> <div class="rating-summary"><span><?= $totalavg ?>/5</span></div></div></div><?php endif; ?></div><div class="cart_btn"><form data-role="tocart-form" action="<?= $block->getAddToCartUrl($newProduct) ?>" method="post" id="product_addtocart_formnew"><?php echo $block->getBlockHtml('formkey')?> <?php if($helper->getAttributeOpetion($newProduct->getId(),"profession_type")=="B2B"): ?> <?php if($groupType!="Salon"): ?> <a href="<?= $block->geturl('customer/account/create') ?>" class="professional-search"><p class="professional-login"><?= __("Professional Use Only") ?></p></a> <?php else: ?> <button type="submit" title="<?php echo __('Add to cart'); ?>" class="action tocart primary" disabled><span> <i class="fa fa-shopping-cart" aria-hidden="true"></i><?= $escaper->escapeHtml(__('Add to Cart')) ?></span></button> <?php endif; ?> <?php else: ?> <button type="submit" title="<?php echo __('Add to cart'); ?>" class="action tocart primary" disabled><span> <i class="fa fa-shopping-cart" aria-hidden="true"></i><?= $escaper->escapeHtml(__('Add to Cart')) ?></span></button> <?php endif; ?></form></div></div></div></div><?php endforeach; ?></div></section></div><script type="text/javascript">
+    require(['jquery'], function($){
+
+      $(document).ready( function() {
+        $(".new-product-tab").click(function(){
+            $(".trend-product-container").css("display","none");
+            $(".new-product-container").css("display","flex");
+            $(".treding-product-tab").removeClass('active');
+            $(".new-product-tab").addClass("active");
+        });
+
+        $(".treding-product-tab").click(function(){
+            $(".trend-product-container").css("display","flex");
+            $(".new-product-container").css("display","none");
+            $(".treding-product-tab").addClass('active');
+            $(".new-product-tab").removeClass("active");
+        });
+      });
+    });</script><script type="text/x-magento-init">
+{
+   ".home-tred-new-section": {
+        "Codilar_HelloWorld/js/homeCustomization": {
+            "newCatUrl": "<?= $newCatUrl; ?>",
+            "trendCatUrl": "<?= $trendCatUrl ?>"
+        }
+  }
+}</script><script type="text/x-magento-init">
+    {
+        "#product_addtocart_formnew": {
+            "catalogAddToCart": {
+                "bindSubmit": true
+            }
+        }
+    }</script><script type="text/x-magento-init">
+    {
+        "#product_addtocart_form_trending": {
+            "catalogAddToCart": {
+                "bindSubmit": true
+            }
+        }
+    }</script>

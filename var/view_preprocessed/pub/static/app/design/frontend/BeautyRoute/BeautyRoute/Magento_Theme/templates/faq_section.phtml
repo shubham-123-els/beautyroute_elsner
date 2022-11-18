@@ -1,0 +1,40 @@
+<style type="text/css"> .hide{ display: none !important; } .faq-box.open-all .hide { display: block !important; } .faq-box.close .faqhide { display: block !important; }</style><script>
+    require(['jquery', 'jquery/ui'], function($){
+        $(document).ready(function(){
+          setInterval(function(){ $('.faqhide').addClass("hide"); }, 2000);
+          
+          $('.faq-box h3').click(function(){
+            $('.faq-box h3').not(this).next().slideUp().parent().removeClass('open');
+            $(this).next().slideToggle().parent().toggleClass('close');
+          });
+
+          $(".open-all").on('click',function(){
+            $(".open-all").removeClass("open-all");
+              if($('.faq-box').hasClass('close')){
+                $(".open-all").removeClass("close");
+              }
+          });
+
+          $('.b1').click(function(){
+            if($('.faqhide').hasClass('hide'))
+            {
+              $("div").removeAttr("style");
+              $(".faqhide").removeClass("hide");
+            }     
+            $('.faq-box').removeClass("close");
+            $('.faq-box').removeClass("open-all");
+            $(".faqhide").addClass("hide"); 
+           });
+
+          $('.b2').click(function(){
+            $(".faq-box").addClass("close");
+            $(".faqhide").removeClass("hide");
+            if($('.faqhide').css('display') == 'none')
+            {
+              $("div").removeAttr("style");
+            }
+
+            $("#displayPanel div").removeAttr("style");
+           });
+        });
+    });</script>

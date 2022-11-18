@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+    <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+   
+    <route url="/V1/storelocal/" method="GET">
+        <service class="Kangaroorewards\Core\Api\StoreManagementInterface" method="getStoreAddressInfo"/>
+        <resources>
+            <resource ref="Magento_Backend::store"/>
+        </resources>
+    </route>
+
+    <route url="/V1/kangarooCredential/" method="POST">
+        <service class="Kangaroorewards\Core\Api\KangarooCredentialRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Magento_Backend::admin"/>
+        </resources>
+    </route>
+
+
+
+    <route url="/V1/kangaroo/translation" method="GET">
+        <service class="Kangaroorewards\Core\Api\KangarooEndpointInterface" method="translation"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/kangaroo/transaction" method="GET">
+        <service class="Kangaroorewards\Core\Api\KangarooEndpointInterface" method="transaction"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/kangaroo/balance" method="GET">
+        <service class="Kangaroorewards\Core\Api\KangarooEndpointInterface" method="balance"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/kangaroo/saveSetting" method="GET">
+        <service class="Kangaroorewards\Core\Api\KangarooEndpointInterface" method="saveSetting"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/kangaroo/redeem" method="GET">
+        <service class="Kangaroorewards\Core\Api\KangarooEndpointInterface" method="redeem"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/kangaroo/welcomeMessage" method="GET">
+        <service class="Kangaroorewards\Core\Api\KangarooEndpointInterface" method="welcomeMessage"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/kangaroo/redeemCatalog" method="GET">
+        <service class="Kangaroorewards\Core\Api\KangarooEndpointInterface" method="redeemCatalog"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/kangaroo/getProductOffer" method="GET">
+        <service class="Kangaroorewards\Core\Api\KangarooEndpointInterface" method="getProductOffer"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/kangaroo/getShoppingCartItemPrice" method="GET">
+        <service class="Kangaroorewards\Core\Api\KangarooEndpointInterface" method="getShoppingCartItemPrice"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/kangaroo/getShoppingCartSubtotal" method="GET">
+        <service class="Kangaroorewards\Core\Api\KangarooEndpointInterface" method="getShoppingCartSubtotal"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/kangaroo/redeemOffer" method="GET">
+        <service class="Kangaroorewards\Core\Api\KangarooEndpointInterface" method="redeemOffer"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/kangaroo/version" method="GET">
+        <service class="Kangaroorewards\Core\Api\KangarooEndpointInterface" method="version"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+
+    <route url="/V1/kangaroo/reclaim" method="POST">
+        <service class="Kangaroorewards\Core\Api\KangarooEndpointInterface" method="reclaim"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+
+    <route url="/V1/kangaroo/surveyAnswers" method="POST">
+        <service class="Kangaroorewards\Core\Api\KangarooEndpointInterface" method="surveyAnswers"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+</routes>

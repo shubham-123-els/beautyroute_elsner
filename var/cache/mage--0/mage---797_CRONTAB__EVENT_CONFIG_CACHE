@@ -1,0 +1,2 @@
+a:4:{s:4:"hash";s:0:"";s:5:"mtime";i:1668757203;s:6:"expire";i:9999999999;s:4:"tags";s:19:"797_CONFIG,797_MAGE";}
+{"catalog_product_get_final_price":{"catalogrule":{"instance":"Magento\\CatalogRule\\Observer\\ProcessAdminFinalPriceObserver","name":"catalogrule"}},"default":{"cron_observer":{"instance":"Magento\\Cron\\Observer\\ProcessCronQueueObserver","name":"cron_observer"}},"sales_model_service_quote_submit_success":{"qbonline_syncOrder_cron":{"instance":"Magenest\\QuickBooksOnline\\Observer\\Order\\Create","name":"qbonline_syncOrder_cron"}}}

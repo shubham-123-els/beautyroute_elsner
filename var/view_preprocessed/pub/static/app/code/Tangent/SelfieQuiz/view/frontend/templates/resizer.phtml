@@ -1,0 +1,33 @@
+<script>
+    function bindEvent(element, eventName, eventHandler) {
+        if (element.addEventListener){
+            element.addEventListener(eventName, eventHandler, false);
+        } else if (element.attachEvent) {
+            element.attachEvent('on' + eventName, eventHandler);
+        }
+    }
+
+    bindEvent(window, 'message', function (e) {
+        switch (typeof e.data) {
+            case 'string':
+                if(e.data == 'scrollTop'){
+                    
+                    const offsetTop = document.getElementById("tangent-iframe").offsetTop - 100;
+                      scroll({
+                        top: offsetTop,
+                        behavior: "smooth"
+                      });
+
+                }
+                break;
+            case 'number':
+                var height = e.data;
+                var ex_height = document.getElementById("tangent-iframe").style.height;
+                if(height != ex_height){
+                    document.getElementById("tangent-iframe").setAttribute("style","height:"+ height+"px");
+                }
+                break;
+            default:
+                break;
+        }
+    });</script>

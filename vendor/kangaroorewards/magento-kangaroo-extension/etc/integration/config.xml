@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<integrations>
+    <integration name="Kangaroorewards">
+        <email>info@kangaroorewards.com</email>
+        <endpoint_url>https://www.kangaroorewards.com/pos/magento/endpoint</endpoint_url>
+        <identity_link_url>https://www.kangaroorewards.com/pos/magento/login</identity_link_url>
+    </integration>
+</integrations>
