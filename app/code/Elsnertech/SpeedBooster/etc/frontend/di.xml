@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * @author Elsner Team
+ * @copyright Copyright © Elsner Technologies Pvt. Ltd (https://www.elsner.com/)
+ * @package Elsnertech_SpeedBooster
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\LayoutInterface">
+        <plugin name="Elsnertech_SpeedBooster::replaceTagsInHtml" type="Elsnertech\SpeedBooster\Plugin\ReplaceTagsInHtml"/>
+    </type>
+
+    <type name="Magento\Swatches\Helper\Data">
+        <plugin name="Elsnertech_SpeedBooster::correctImagesInAjaxResponse" type="Elsnertech\SpeedBooster\Plugin\CorrectImagesInAjaxResponse"/>
+    </type>
+
+    <type name="Magento\Catalog\Block\Product\View\Gallery">
+        <plugin name="Elsnertech_SpeedBooster::addImagesToGalleryImagesJson" type="Elsnertech\SpeedBooster\Plugin\AddImagesToGalleryImagesJson"/>
+    </type>
+
+    <type name="Magento\ConfigurableProduct\Block\Product\View\Type\Configurable">
+        <plugin name="Elsnertech_SpeedBooster::addImagesToConfigurableJsonConfig" type="Elsnertech\SpeedBooster\Plugin\AddImagesToConfigurableJsonConfig"/>
+    </type>
+</config>

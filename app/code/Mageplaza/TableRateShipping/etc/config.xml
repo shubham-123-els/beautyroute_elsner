@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_TableRateShipping
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <carriers>
+            <mptablerate>
+                <model>Mageplaza\TableRateShipping\Model\Carrier\TableRate</model>
+                <active>0</active>
+                <title>Table Rate</title>
+                <specificerrmsg>The selected shipping method is not applicable to your order. Please contact us for more details.</specificerrmsg>
+                <sallowspecific>0</sallowspecific>
+                <include_virtual_price>1</include_virtual_price>
+                <volume_weight>weight</volume_weight>
+                <weight_attribute>weight</weight_attribute>
+                <user_attribute_1>ts_dimensions_length</user_attribute_1>
+                <user_attribute_2>ts_dimensions_width</user_attribute_2>
+                <user_attribute_3>ts_dimensions_height</user_attribute_3>
+                <shipping_factor>5000</shipping_factor>
+                <showmethod>0</showmethod>
+            </mptablerate>
+        </carriers>
+    </default>
+</config>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+    	<script src="Magento_Customer::js/customercustom.js"/>
+    	<css src="css/broutecustom.css"/>
+        <css src="css/beautyroute.css"/>
+    	<css src="BeautyCustom_RouteReview::css/slick.css"/>
+    	<css src="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" src_type="url"/>
+    </head>
+	<body>
+        <referenceBlock name="cookie-status-check" remove="true"/>
+    </body>
+</page> 
+
+
+

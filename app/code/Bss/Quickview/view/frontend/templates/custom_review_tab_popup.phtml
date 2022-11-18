@@ -1,0 +1,48 @@
+
+        <?php
+        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+        $product = $objectManager->get('Magento\Framework\Registry')
+        ->registry('current_product'); //get current product
+        $productId = $product->getId();
+        $reviewFactory = $objectManager->create('Magento\Review\Model\Review');
+        $product = $objectManager->create('Magento\Catalog\Model\Product')
+        ->load($productId);
+        $storeManager = $objectManager->create('\Magento\Store\Model\StoreManagerInterface');
+        $storeId = $storeManager->getStore()
+        ->getStoreId();
+        $reviewFactory->getEntitySummary($product, $storeId);
+        $ratingSummary = $product->getRatingSummary()
+        ->getRatingSummary();
+        $reviewCount = $product->getRatingSummary()
+        ->getReviewsCount();
+        ?>
+<?php if ($ratingSummary) { ?>
+    <div class="rating-title-popup">  
+<div class="star_ comman_tr">
+<div class="product-reviews-summary short">
+    <div class="rating-summary">
+        <div title="<?php echo (int)$ratingSummary; ?>%" class="rating-result">
+            <span style="width:<?php echo (int)$ratingSummary; ?>%"><span><?php echo (int)$ratingSummary; ?>%</span></span>
+        </div>
+    </div>
+    <?php
+    $blockObj = $block->getLayout()
+        ->createBlock('Codilar\HelloWorld\Block\ProductNewTrend');
+    $vote = $blockObj->getRating($productId);
+    $totalavg = $vote['count']['avg'];
+    ?>
+<div class="rating-summary">
+      <span><?php if (isset($totalavg)) { echo $totalavg;} ?>/5</span>
+    </div>
+</div>
+
+</div>
+<div class="edition-exculisve">
+    <span>Limited edtion</span>
+     <span>Exclusive</span>
+    
+</div>
+</div>
+    <?php
+} ?>
+    

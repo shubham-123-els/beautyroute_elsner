@@ -1,0 +1,23 @@
+<?php $crumbs = $block->getCrumbs(); ?>
+<?php if ($crumbs && is_array($crumbs)): ?>
+<div class="container">
+    <div class="breadcrumbs">
+        <ul class="items">
+            <?php
+            foreach ($crumbs as $crumbName => $crumbInfo): ?>
+                <li class="item <?php echo $crumbName == 0 ? "home" : ""; ?>">
+                    <?php if ($crumbInfo['link']): ?>
+                        <a href="<?= /* @escapeNotVerified */
+                        $crumbInfo['link'] ?>" title="<?= $block->escapeHtml($crumbInfo['title']) ?>">
+                            <?= $block->escapeHtml($crumbInfo['label']) ?>
+                        </a>
+                    <?php else: ?>
+                        <strong><?= $block->escapeHtml($crumbInfo['label']) ?></strong>
+                    <?php endif; ?>
+                </li>
+                <?php
+            endforeach; ?>
+        </ul>
+    </div>
+</div>
+<?php endif; ?>

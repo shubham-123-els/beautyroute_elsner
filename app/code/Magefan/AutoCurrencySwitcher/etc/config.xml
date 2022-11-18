@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magefan (support@magefan.com). All rights reserved.
+ * Please visit Magefan.com for license details (https://magefan.com/end-user-license-agreement).
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <mfautocurrencyswitcher>
+            <general>
+                <mfmodule>AutoCurrencySwitcher</mfmodule>
+                <round_step>5</round_step>
+                <ceil_step>5</ceil_step>
+                <floor_step>5</floor_step>
+                <round_prices>1</round_prices>
+            </general>
+            <extension_restrictions>
+                <user_agent>bot
+facebook
+yahoo</user_agent>
+            </extension_restrictions>
+        </mfautocurrencyswitcher>
+    </default>
+</config>

@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- <referenceContainer name="header-wrapper">
+           <block class="Magento\Framework\View\Element\Template" name="customtext" after="logo" template="Magento_Theme::header.phtml" cacheable="false"  />
+        </referenceContainer> -->
+
+        <referenceContainer name="header-wrapper">
+            <block class="Elsnertech\Customization\Block\Theme" name="custom_header_links"  template="Magento_Theme::link.phtml" cacheable="false" />
+            <!-- <block class="Magento\Framework\View\Element\Template" name="customheaderremove" before="logo" template="Magento_Theme::Remove_Default_code.phtml" /> -->
+        </referenceContainer>
+
+        <block class="Magento\Cms\Block\Block" name="top_header_block">
+            <arguments>
+                <argument name="block_id" xsi:type="string">top_header_block</argument>
+            </arguments>
+        </block>
+
+        <block class="Magento\Cms\Block\Block" name="foo_beauty_block">
+            <arguments>
+                <argument name="block_id" xsi:type="string">foo_beauty_block</argument>
+            </arguments>
+        </block>
+
+        <block class="Magento\Cms\Block\Block" name="foo_quick_links">
+            <arguments>
+                <argument name="block_id" xsi:type="string">foo_quick_links</argument>
+            </arguments>
+        </block>
+        
+        <block class="Magento\Cms\Block\Block" name="foo_contact_block">
+            <arguments>
+                <argument name="block_id" xsi:type="string">foo_contact_block</argument>
+            </arguments>
+        </block>
+
+        <!-- Move Element -->
+        <move element="top_header_block" destination="header.panel" before="-" />
+        
+        <move element="minicart" destination="header-wrapper" before="top.links" /> 
+        <move element="top.links" destination="header-wrapper" after="-" />
+        <move element="foo_beauty_block" destination="footer" after="-" />
+        <move element="foo_quick_links" destination="footer" after="foo_beauty_block" />
+        <move element="foo_contact_block" destination="footer" after="foo_quick_links" />
+        <move element="copyright" destination="before.body.end"/>
+
+        <!-- Remove Element -->
+        <referenceBlock name="my-account-link" remove="true"/>
+        <referenceBlock name="advanced-search-link" remove="true"/>    
+        <referenceBlock name="footer_links" remove="true" />
+        <referenceBlock name="form.subscribe" remove="true"/> 
+        <referenceBlock name="report.bugs" remove="true" />
+        <referenceBlock name="register-link" remove="true" /> 
+        <referenceBlock name="authorization-link" remove="true" />
+    </body>
+</page>

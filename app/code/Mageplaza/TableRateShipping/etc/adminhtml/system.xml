@@ -1,0 +1,114 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_TableRateShipping
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="carriers" type="text" sortOrder="320" showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="mptablerate" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="15" translate="label">
+                <label>Table Rate Shipping by Mageplaza</label>
+                <field id="active" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="10" translate="label comment" type="select">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Select Yes to enable this module</comment>
+                </field>
+                <field id="title" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Carrier Title</label>
+                </field>
+                <field id="sallowspecific" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="40" translate="label" type="select" canRestore="1">
+                    <label>Ship to Applicable Countries</label>
+                    <frontend_class>shipping-applicable-country</frontend_class>
+                    <source_model>Magento\Shipping\Model\Config\Source\Allspecificcountries</source_model>
+                </field>
+                <field id="specificcountry" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="50" translate="label" type="multiselect">
+                    <label>Ship to Specific Countries</label>
+                    <can_be_empty>1</can_be_empty>
+                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                </field>
+                <field id="include_virtual_price" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Include Virtual Products in Price Calculation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="volume_weight" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Use Volumetric Weight Calculation</label>
+                    <source_model>Mageplaza\TableRateShipping\Model\Source\VolumeWeight</source_model>
+                </field>
+                <field id="weight_attribute" translate="label" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Select Weight Attribute</label>
+                    <source_model>Mageplaza\TableRateShipping\Model\Source\VolumeAttribute</source_model>
+                    <depends>
+                        <field id="volume_weight">weight</field>
+                    </depends>
+                </field>
+                <field id="v_attribute" translate="label comment" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Select Volumetric (V) Attribute</label>
+                    <source_model>Mageplaza\TableRateShipping\Model\Source\VolumeAttribute</source_model>
+                    <comment>Support both input types: V or LxWxH</comment>
+                    <depends>
+                        <field id="volume_weight">v_attribute</field>
+                    </depends>
+                </field>
+                <field id="user_attribute_1" translate="label" type="select" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Attribute 1</label>
+                    <source_model>Mageplaza\TableRateShipping\Model\Source\VolumeAttribute</source_model>
+                    <depends>
+                        <field id="volume_weight">user_attribute</field>
+                    </depends>
+                </field>
+                <field id="user_attribute_2" translate="label" type="select" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Attribute 2</label>
+                    <source_model>Mageplaza\TableRateShipping\Model\Source\VolumeAttribute</source_model>
+                    <depends>
+                        <field id="volume_weight">user_attribute</field>
+                    </depends>
+                </field>
+                <field id="user_attribute_3" translate="label" type="select" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Attribute 3</label>
+                    <source_model>Mageplaza\TableRateShipping\Model\Source\VolumeAttribute</source_model>
+                    <depends>
+                        <field id="volume_weight">user_attribute</field>
+                    </depends>
+                </field>
+                <field id="shipping_factor" translate="label comment" type="text" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Shipping Factor</label>
+                    <depends>
+                        <field id="volume_weight" separator=",">v_attribute,user_attribute</field>
+                    </depends>
+                    <comment><![CDATA[<a href="https://en.wikipedia.org/wiki/Dimensional_weight" target="_blank">What is shipping factor?</a>]]></comment>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+                <field id="showmethod" translate="label" type="select" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Show Method if Not Applicable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <frontend_class>shipping-skip-hide</frontend_class>
+                </field>
+                <field id="specificerrmsg" translate="label comment" type="textarea" sortOrder="160" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Displayed Error Message</label>
+                    <comment>Displayed on the View Cart Page, the Checkout Page</comment>
+                </field>
+                <field id="sort_order" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="170" translate="label" type="text">
+                    <label>Sort Order</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

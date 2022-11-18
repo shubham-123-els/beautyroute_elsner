@@ -1,0 +1,24 @@
+<?php
+/**
+ * @category    FishPig
+ * @package     FishPig_WordPress
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<?php if ($post = $block->getPost()): ?>
+    <div class="post-view">
+        <div class="post-entry">
+            <?php if ($image = $post->getImage()): ?>
+                <div class="post-image">
+                    <a href="<?= $block->escapeUrl($post->getUrl()) ?>" title="<?= $block->escapeHtml($post->getPostTitle()) ?>"><img src="<?= $image->getAvailableImage() ?>" alt="<?= $block->escapeHtml($post->getPostTitle()) ?>"/></a>
+                </div>
+            <?php endif; ?>
+            <?php if (!$post->isViewableForVisitor()): ?>
+                <?= $block->getPasswordProtectHtml() ?>
+            <?php elseif (($content = trim($post->getContent())) !== ''): ?>
+                <div class="post-content"><?= $content ?></div>
+            <?php endif; ?>
+        </div>
+        <?= $block->getChildHtml('comments') ?>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,14 @@
+<?php $dynamicText=" "; ?>
+<?php $subtotal = $block->getCartSubTotal(); ?>
+<?php $current_currency = $block->getBaseCurrencyCode(); ?>
+<?php $mediaUrl = $block->getMediaUrl(); 
+      $shiptruck       ='<img src="'.$mediaUrl.'shiptruck.png"/>'; ?>
+<?php $totalfreeshippingamount = $block->getMinimumOrderAmountForFreeShipCheckout(); 
+    if ($subtotal < $totalfreeshippingamount && $current_currency!="USD") {
+        $dynamicText = $totalfreeshippingamount - $subtotal;
+        $dynamicText = "<div class='free-amount'><strong>".__('You are only %1 from the Free Shipping. Shipping & Returns', $block->getCurrentCurrency()."$".$dynamicText)."</strong></div>";
+    }
+?>
+<script type="text/javascript">
+    window.dynamicText = "<?php echo $dynamicText; ?>";
+</script>

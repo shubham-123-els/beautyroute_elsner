@@ -1,0 +1,284 @@
+<style>
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width:80%;
+    margin:0 auto;
+    margin-top: 2%;
+}
+.row>div{
+    text-align:center;
+    padding:10px;
+}
+.p-name{
+    width: 80%;
+    margin: 0 auto;
+}
+.p-price{
+    margin: 10px;
+}
+.add2cart_btn{
+    font-size: 14px;
+    width:fit-content;
+    background: #000;
+    color: #fff;
+    padding: 8px 15px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+a:hover{
+    text-decoration:none;
+}
+#page-heading{
+    padding:3%;
+    margin:0 auto;
+    text-align:center;
+    padding-bottom:2%
+}
+#static-text{
+    text-align: center;
+    width: 60%;
+    margin: 0 auto;
+    font-size: 20px;
+    padding-bottom: 2%;
+}
+.custom_add2cart{
+    background:#000!important;
+    border:none!important;
+}
+#add_all_to_cart{
+    cursor:pointer;
+    background: #000;
+    color: #fff;
+    font-size: 16px;
+    padding: 7px 17px;
+    margin:0 auto;
+    width:fit-content;
+}
+.pdt-inner-div{
+    padding: 3%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+</style>
+<?php 
+
+function CallAPI($method, $url, $data = false){
+    
+    $curl = curl_init();
+
+    switch ($method){
+        case "POST":
+            curl_setopt($curl, CURLOPT_POST, 1);
+
+            if ($data)
+                curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+            break;
+        case "PUT":
+            curl_setopt($curl, CURLOPT_PUT, 1);
+            break;
+        default:
+            if ($data)
+                $url = sprintf("%s?%s", $url, http_build_query($data));
+    }
+
+    // Optional Authentication:
+    curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+    curl_setopt($curl, CURLOPT_USERPWD, "username:password");
+
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+
+    $result = curl_exec($curl);
+
+    curl_close($curl);
+
+    return $result;
+
+}
+
+$response_id = $this->getRequest()->getParam('resp_id');
+$api_url = "https://service.tangent.ai/shopify/get-checkout-products?resp_id=".$response_id;
+
+$api_output = CallAPI("GET", $api_url);
+$result = json_decode($api_output, true);
+if (empty($result['products'])){
+    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $redirect = $objectManager->get('\Magento\Framework\App\Response\Http');
+    $redirect->setRedirect($block->geturl('selfie-quiz'));
+}
+$products_ids = $result['products'];
+$full_id = "";
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$helperImport = $objectManager->get('\Magento\Catalog\Helper\Image');
+$cart = $objectManager->create('Magento\Checkout\Model\Cart');  
+
+?>
+
+<h1 id="page-heading">Product for you</h1>
+
+<div class="container">
+
+    <div style="display:flex;justify-content:center;padding:3%">
+        <img src="<?php echo $result['selfie_url'] ?>">
+    </div>
+
+    <?php if($result['description']!==""){ ?>
+        <div style="padding: 3%;padding-bottom: 5%;">
+            <p><?php echo $result['description'] ?></p>
+        </div>
+    <?php } ?>
+    
+    <p id="static-text">Thanks for completing the quiz. Based on your answers to the quiz we recommend the following products for you</p>
+    <?php 
+        foreach ($products_ids as $product_id){?>
+            <span class="pdt_ids" style="display:none" id="<?php echo $product_id; ?>">
+                <?php
+                    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+                    $product = $objectManager->create('Magento\Catalog\Model\Product')->load($product_id);
+                    $addToCartUrl = $objectManager->get('Magento\Checkout\Helper\Cart')->getAddUrl($product);
+                    echo $addToCartUrl.'form_key/';
+                ?>
+            </span>
+    <?php } ?>
+
+    <form action="<?php echo $block->getBaseUrl().'tangent/checkout/add/' ?>" method="post"> 
+        <div class="btn">
+             <input type="hidden" id="product_ids" name="product_ids" value="<?php echo implode(',', $products_ids); ?>">
+            <button type="submit" class="action tocart primary">
+                <span id="add_all_to_cart">ADD ALL TO CART</span>
+            </button>
+        </div>   
+    </form>
+    
+    <div class="row" style="display:flex">
+    
+        <?php
+            foreach ($products_ids as $product_id) {
+                $product = $objectManager->create('Magento\Catalog\Model\Product')->load($product_id);
+
+                $listBlock = $objectManager->get('\Magento\Catalog\Block\Product\ListProduct');
+                $addToCartUrl =  $listBlock->getAddToCartUrl($product);
+            ?>
+            
+            <div class="col-lg-4">
+            
+                <div class="pdt-inner-div">
+                       
+                    <a href="#">
+                        <?php
+                        $imageUrl = $helperImport->init($product, 'product_page_image_small')
+                                        ->setImageFile($product->getSmallImage()) // image,small_image,thumbnail
+                                        ->resize(380)
+                                        ->getUrl();
+                        
+                        ?>
+                       <img src="<?php echo $imageUrl; ?>" alt="" srcset="">
+                    </a>
+                
+                    <p class="p-name">
+                        <b>
+                            <?php echo $product->getName();?>
+                        </b>
+                    </p>
+                
+                    <p class="p-price">
+                        <?php
+                            echo $product->getPriceModel()->getFormattedPrice($product)
+                        ?>
+                    </p>
+
+                    <form class="addproduct_form" data-role="tocart-form" action="<?php echo $addToCartUrl; ?>" method="post"> 
+                        <?php echo $block->getBlockHtml('formkey')?>
+                        <div class="btn">
+                            <button type="submit" title="Add to Cart" class="action tocart primary custom_add2cart">
+                                <span>ADD TO CART</span>
+                            </button>
+                        </div>   
+                    </form>
+                    
+                </div>
+
+           </div>
+
+        <?php } ?>
+
+    </div>
+
+</div>
+
+
+<script type="application/javascript">
+    
+function AddToMagentoCart() {
+    var pdt_ids = document.getElementsByClassName('pdt_ids');
+    for (var i = 0; i < pdt_ids.length; ++i) {
+        var item = pdt_ids[i];  
+        console.log(item.innerHTML);
+        console.log(item.id);
+        var addToCartUrl = item.innerHTML;
+        // add form key
+        var formKey = jQuery.cookie("form_key");
+        addToCartUrl += formKey;
+
+        // add options
+        var formData = new FormData();
+        formData.append("selected_configurable_option", "");
+        formData.append("related_product", "");
+        formData.append("product", parseInt(item.id));
+        formData.append("form_key", formKey);
+        formData.append("qty", 1);
+
+        // make POST call with the custom options as body element
+        var request = jQuery.ajax({
+            url: addToCartUrl,
+            method: "POST",
+            processData: false,
+            contentType: false,
+            data: formData
+        }).done(function( response ) { // redirect to cart if call was successful
+            console.log("response ",response);
+            // window.location = "http://example.com/checkout/cart"; // <--- set correct redirect link
+        }).fail(function( jqXHR, textStatus ) {
+            console.log("Couldn't add product to cart. " + textStatus);
+        });
+    }
+    // var addToCartUrl = "<?php
+    // $productId = 391;
+    // $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    // $product = $objectManager->create('Magento\Catalog\Model\Product')->load($productId);
+    // $addToCartUrl = $objectManager->get('Magento\Checkout\Helper\Cart')->getAddUrl($product);
+    // echo $addToCartUrl.'form_key/'; ?>";
+
+    // console.log("addtocarturl ",addToCartUrl);
+    // // add form key
+    // var formKey = jQuery.cookie("form_key");
+    // addToCartUrl += formKey;
+
+    // // add options
+    // var formData = new FormData();
+    // formData.append("selected_configurable_option", "");
+    // formData.append("related_product", "");
+    // formData.append("form_key", formKey);
+    // formData.append("qty", 1);
+
+    // // make POST call with the custom options as body element
+    // var request = jQuery.ajax({
+    //     url: addToCartUrl,
+    //     method: "POST",
+    //     processData: false,
+    //     contentType: false,
+    //     data: formData
+    // }).done(function( response ) { // redirect to cart if call was successful
+    //     console.log("response ",response);
+    //     // window.location = "http://example.com/checkout/cart"; // <--- set correct redirect link
+    // }).fail(function( jqXHR, textStatus ) {
+    //     console.log("Couldn't add product to cart. " + textStatus);
+    // });
+};
+</script>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Created By: MageDelight Pvt. Ltd
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+   <table name="magiccart_shopbrand" resource="default" engine="innodb" comment="Magiccart Shopbrand">
+      <column xsi:type="varchar" name="desktop_image" nullable="false" length="255" comment="Desktop Image" />
+      <column xsi:type="varchar" name="mobile_image" nullable="false" length="255" comment="Mobile Image" />
+      <column xsi:type="varchar" name="short_description" nullable="false" length="255" comment="Short Description" />
+   </table>
+</schema>

@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_TableRateShipping
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="mageplaza_tablerate_method" resource="default" engine="innodb" comment="Mageplaza TableRateShipping Method">
+        <column xsi:type="int" name="method_id" padding="10" unsigned="true" nullable="false" identity="true"/>
+        <column xsi:type="varchar" name="name" length="255"/>
+        <column xsi:type="mediumtext" name="description"/>
+        <column xsi:type="smallint" name="status" nullable="false" default="0"/>
+        <column xsi:type="varchar" name="calculate_rule" length="255"/>
+        <column xsi:type="varchar" name="image" length="255"/>
+        <column xsi:type="varchar" name="store_id" length="255"/>
+        <column xsi:type="varchar" name="customer_group" length="255"/>
+        <column xsi:type="mediumtext" name="labels"/>
+        <column xsi:type="mediumtext" name="comments"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="method_id"/>
+        </constraint>
+        <index referenceId="MPTABLERATE_METHOD_ID" indexType="btree">
+            <column name="method_id"/>
+        </index>
+    </table>
+    <table name="mageplaza_tablerate_rate" resource="default" engine="innodb" comment="Mageplaza TableRateShipping Rate">
+        <column xsi:type="int" name="rate_id" padding="10" unsigned="true" nullable="false" identity="true"/>
+        <column xsi:type="int" name="method_id" padding="10" unsigned="true"/>
+        <column xsi:type="varchar" name="name" length="255"/>
+        <column xsi:type="varchar" name="product_fixed_rate" length="255"/>
+        <column xsi:type="varchar" name="product_percentage_rate" length="255"/>
+        <column xsi:type="varchar" name="weight_fixed_rate" length="255"/>
+        <column xsi:type="varchar" name="order_fixed_rate" length="255"/>
+        <column xsi:type="varchar" name="delivery" length="255"/>
+        <column xsi:type="varchar" name="country_id" length="255"/>
+        <column xsi:type="varchar" name="region" length="255"/>
+        <column xsi:type="varchar" name="postcode_from" length="255"/>
+        <column xsi:type="varchar" name="postcode_to" length="255"/>
+        <column xsi:type="varchar" name="postcode_range" length="255"/>
+        <column xsi:type="varchar" name="postcode" length="255"/>
+        <column xsi:type="varchar" name="postcode_from_alpha" length="255"/>
+        <column xsi:type="varchar" name="postcode_from_num" length="255"/>
+        <column xsi:type="varchar" name="postcode_to_alpha" length="255"/>
+        <column xsi:type="varchar" name="postcode_to_num" length="255"/>
+        <column xsi:type="varchar" name="weight_from" length="255"/>
+        <column xsi:type="varchar" name="weight_to" length="255"/>
+        <column xsi:type="varchar" name="subtotal_from" length="255"/>
+        <column xsi:type="varchar" name="subtotal_to" length="255"/>
+        <column xsi:type="varchar" name="qty_from" length="255"/>
+        <column xsi:type="varchar" name="qty_to" length="255"/>
+        <column xsi:type="varchar" name="shipping_group" length="255"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="rate_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="MPTABLERATE_RATE_ID_METHOD_ID"
+                table="mageplaza_tablerate_rate" column="method_id" referenceTable="mageplaza_tablerate_method"
+                referenceColumn="method_id" onDelete="CASCADE"/>
+        <index referenceId="MPTABLERATE_RATE_ID" indexType="btree">
+            <column name="rate_id"/>
+        </index>
+        <index referenceId="MPTABLERATE_RATE_METHOD_ID" indexType="btree">
+            <column name="method_id"/>
+        </index>
+    </table>
+</schema>

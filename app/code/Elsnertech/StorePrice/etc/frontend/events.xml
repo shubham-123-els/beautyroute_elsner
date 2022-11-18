@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="checkout_cart_product_add_after">
+   		<observer name="set_custom_price_after_add_to_cart" instance="Elsnertech\StorePrice\Observer\CustomPrice" />
+    </event>
+    <event name="catalog_product_load_after">
+		<observer name="product_price" instance="Elsnertech\StorePrice\Observer\ProductPrice" />
+    </event>
+    <event name="catalog_product_collection_load_after">
+        <observer name="product_collection" instance="Elsnertech\StorePrice\Observer\CatagoryListing"/>
+    </event>
+</config>

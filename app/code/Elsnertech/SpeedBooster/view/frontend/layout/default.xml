@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Elsner Team
+ * @copyright Copyright © Elsner Technologies Pvt. Ltd (https://www.elsner.com/)
+ * @package Elsnertech_SpeedBooster
+ */
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+   <body>
+        <referenceContainer name="footer-container">
+            <container name="before.body.end" as="before_body_end" after="-" label="Page Bottom" >
+                <block class="Magento\Framework\View\Element\Template" name="js" template="Elsnertech_SpeedBooster::js.phtml" />
+            </container>
+        </referenceContainer>
+    </body>
+</page>

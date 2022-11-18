@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © 2016 Magenest. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">qbonline_queue_listing.qbonline_queue_listing_data_source</item>
+            <item name="deps" xsi:type="string">qbonline_queue_listing.qbonline_queue_listing_data_source</item>
+        </item>
+        <item name="spinner" xsi:type="string">qbonline_queue_columns</item>
+        <item name="buttons" xsi:type="array">
+            <item name="view_logs" xsi:type="array">
+                <item name="name" xsi:type="string">view_request</item>
+                <item name="label" xsi:type="string" translate="true">View Log(s)</item>
+                <item name="class" xsi:type="string">back</item>
+                <item name="url" xsi:type="string">*/log/index</item>
+            </item>
+            <item name="add_customer" xsi:type="string">Magenest\QuickBooksOnline\Block\Adminhtml\Queue\AddCusButton</item>
+            <item name="add_product" xsi:type="string">Magenest\QuickBooksOnline\Block\Adminhtml\Queue\AddProductButton</item>
+            <item name="add_order" xsi:type="string">Magenest\QuickBooksOnline\Block\Adminhtml\Queue\AddOrderButton</item>
+            <item name="add_invoice" xsi:type="string">Magenest\QuickBooksOnline\Block\Adminhtml\Queue\AddInvoiceButton</item>
+            <item name="add_creditmemos" xsi:type="string">Magenest\QuickBooksOnline\Block\Adminhtml\Queue\AddCreditMemoButton</item>
+
+            <item name="sync_queue" xsi:type="array">
+                <item name="name" xsi:type="string">sync_queue</item>
+                <item name="label" xsi:type="string" translate="true">Sync Now</item>
+                <item name="sortOrder" xsi:type="number">300</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">*/*/sync</item>
+            </item>
+        </item>
+    </argument>
+    <dataSource name="qbonline_queue_listing_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Magenest\QuickBooksOnline\Ui\Queue\Collection</argument>
+            <argument name="name" xsi:type="string">qbonline_queue_listing_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">queue_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">queue_id</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+
+    <container name="listing_top">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="template" xsi:type="string">ui/grid/toolbar</item>
+            </item>
+        </argument>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+        <bookmark name="bookmarks">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="namespace" xsi:type="string">qbonline_queue_listing</item>
+                    </item>
+                </item>
+            </argument>
+        </bookmark>
+        <massaction name="listing_massaction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="selectProvider" xsi:type="string">qbonline_queue_listing.qbonline_queue_listing.qbonline_queue_columns.ids</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/tree-massactions</item>
+                    <item name="indexField" xsi:type="string">queue_id</item>
+                </item>
+            </argument>
+            <action name="delete">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">delete</item>
+                        <item name="label" xsi:type="string" translate="true">Delete</item>
+                        <item name="url" xsi:type="url" path="*/*/massDelete"/>
+                        <item name="confirm" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">Delete Queue(s)</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure to delete selected queue(s)?</item>
+                        </item>
+                    </item>
+                </argument>
+            </action>
+            <action name="mass_sync">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">resync</item>
+                        <item name="label" xsi:type="string" translate="true">Sync</item>
+                        <item name="url" xsi:type="url" path="*/*/masssync"/>
+                    </item>
+                </argument>
+            </action>
+        </massaction>
+    </container>
+
+    <columns name="qbonline_queue_columns">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="storageConfig" xsi:type="array">
+                    <item name="provider" xsi:type="string">qbonline_queue_listing.qbonline_queue_listing.listing_top.bookmarks</item>
+                    <item name="namespace" xsi:type="string">current</item>
+                </item>
+                <item name="childDefaults" xsi:type="array">
+                    <item name="fieldAction" xsi:type="array">
+                        <item name="provider" xsi:type="string">qbonline_queue_listing.qbonline_queue_listing.qbonline_queue_columns.actions</item>
+                        <item name="target" xsi:type="string">applyAction</item>
+                        <item name="params" xsi:type="array">
+                            <item name="0" xsi:type="string">edit</item>
+                            <item name="1" xsi:type="string">${ $.$data.rowIndex }</item>
+                        </item>
+                    </item>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="provider" xsi:type="string">qbonline_queue_listing.qbonline_queue_listing.listing_top.bookmarks</item>
+                        <item name="root" xsi:type="string">columns.${ $.index }</item>
+                        <item name="namespace" xsi:type="string">current.${ $.storageConfig.root }</item>
+                    </item>
+                </item>
+            </item>
+        </argument>
+        <selectionsColumn name="ids">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="indexField" xsi:type="string">queue_id</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+            </argument>
+        </selectionsColumn>
+        <column name="queue_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">textRange</item>
+                    <item name="sorting" xsi:type="string">desc</item>
+                    <item name="label" xsi:type="string" translate="true">ID</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                </item>
+            </argument>
+        </column>
+        <column name="type">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magenest\QuickBooksOnline\Model\Config\Source\Type</item>
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">select</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
+                    <item name="dataType" xsi:type="string">select</item>
+                    <item name="label" xsi:type="string" translate="true">Type</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
+                </item>
+            </argument>
+        </column>
+        <column name="type_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">textRange</item>
+                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                    <item name="label" xsi:type="string" translate="true">Entity/Increment ID</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
+                </item>
+            </argument>
+        </column>
+        <column name="website_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">textRange</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="label" xsi:type="string" translate="true">Website ID</item>
+                    <item name="sortOrder" xsi:type="number">60</item>
+                </item>
+            </argument>
+        </column>
+        <column name="enqueue_time" class="Magento\Ui\Component\Listing\Columns\Date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">dateRange</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
+                    <item name="dataType" xsi:type="string">date</item>
+                    <item name="label" xsi:type="string" translate="true">Enqueue Time</item>
+                    <item name="sortOrder" xsi:type="number">70</item>
+                </item>
+            </argument>
+        </column>
+    </columns>
+</listing>

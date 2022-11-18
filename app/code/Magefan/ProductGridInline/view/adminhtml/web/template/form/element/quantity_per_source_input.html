@@ -1,0 +1,40 @@
+<!--
+/**
+ * Copyright © Magefan (support@magefan.com). All rights reserved.
+ * Please visit Magefan.com for license details (https://magefan.com/end-user-license-agreement).
+ */
+-->
+<input class="admin__control-text" type="hidden"
+       data-bind="
+        event: {change: userChanges},
+        value: value,
+        valueUpdate: valueUpdate,
+        attr: {
+            name: inputName,
+            placeholder: placeholder,
+            'aria-describedby': noticeId,
+            id: uid,
+            disabled: disabled,
+            maxlength: 255
+    }"/>
+
+<div class="data-grid-cell-content">
+    <ul data-bind="foreach: { data: getSourceItemsData(), as: '$sourceItemData' }">
+        <li>
+            <label data-bind="attr:{for: $sourceItemData.source_code}, i18n: $sourceItemData.source_name"></label>
+            <input class="admin__control-text" type="text"
+                   data-bind="
+                        event: {blur: $parent.updateQty},
+                        value: qty,
+                        valueUpdate: $parent.valueUpdate,
+                        attr: {
+                            name: inputName,
+                            placeholder: $parent.placeholder,
+                            'aria-describedby': noticeId,
+                            id: uid,
+                            disabled: $parent.disabled,
+                            maxlength: 255
+                    }"/>
+        </li>
+    </ul>
+</div>

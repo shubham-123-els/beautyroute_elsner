@@ -1,0 +1,61 @@
+<?php
+$minimumFreeShippingAmount = $block->getMinimumOrderAmountForFreeShip();
+$cartprice = $block->getCartGrandTotal();
+$storeCode = $block->getStoreCode();
+$shipprice = $block->getShipPrice($minimumFreeShippingAmount);
+$newprice = $block->getNewPrice($minimumFreeShippingAmount, $cartprice);
+$mediaUrl = $block->getMediaUrl();
+$shiptruck ='<img src="'.$mediaUrl.'shiptruck.png"/>';
+$maouse ='<img src="'.$mediaUrl.'maouse.png"/>';
+$flagfr ='';
+if($storeCode =='fr') $flagfr = 1;
+?>
+<?php if($block->getBaseCurrencyCode()!="USD"): ?>
+    <?php if(str_replace(',','.',$minimumFreeShippingAmount) > str_replace(',','.',$cartprice)): ?>
+        <div class="product-shipping-custom"><?= $shiptruck ?>
+            <?php if($storeCode =='en'): ?>
+                <p><?= __('You are only %1 from the Free Shipping. Shipping & Returns', $block->getCurrentCurrency()."$".$newprice); ?></p>
+            <?php else: ?>
+                <p><?= __('Vous êtes seulement $US%1 de la livraison gratuite. Expédition & retours', $block->getCurrentCurrency()."$".$newprice); ?></p>
+            <?php endif; ?>
+        </div>
+
+        <div class="product-shipping-custom"><?= $maouse ?>
+            <?php if($storeCode =='en'): ?>
+                <p><?= __('Online Only Reservation not affered for this item'); ?></p>
+            <?php else: ?>
+                <p><?= __('Réservation en ligne uniquement non effectuée pour cet article'); ?></p>
+            <?php endif; ?>
+        </div>
+    <?php else: ?>
+        <div class="product-shipping-custom">
+            <?= $shiptruck ?>
+            <?php if($storeCode =='en'): ?>
+                <p><?= __('You are eligible for the Free Shipping. Shipping & Returns'); ?></p>
+            <?php else: ?>
+                <p><?= __('Vous êtes éligible à la livraison gratuite. Expédition & retours'); ?></p>
+            <?php endif; ?>
+        </div>
+
+        <div class="product-shipping-custom">
+            <?= $maouse ?>
+            <?php if($storeCode =='en'): ?>
+                <p><?= __('Online Only Reservation not affered for this item'); ?></p>
+            <?php else: ?>
+                <p><?= __('Réservation en ligne uniquement non effectuée pour cet article'); ?></p>
+            <?php endif; ?>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>
+<script>
+    require(['jquery'], function($){
+        $(document).on('change', "select[name='country_id']", function(){
+            var data= $(this).val();
+            if (data=="US") {
+                $(".product-shipping-custom").css('display',"none");
+            } else {
+                $(".product-shipping-custom").css('display',"flex");
+            }
+        }); 
+    });
+</script>

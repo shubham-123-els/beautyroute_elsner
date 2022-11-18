@@ -1,0 +1,35 @@
+<?php
+/*
+ * @category    Sezzle
+ * @package     Sezzle_Sezzlepay
+ * @copyright   Copyright (c) Sezzle (https://www.sezzle.com/)
+ */
+?>
+<?php
+use Sezzle\Sezzlepay\Block\Adminhtml\System\Config\SezzleRegisterAdmin;
+
+/** @var $block SezzleRegisterAdmin */
+?>
+<div style="background-color:#eee;padding:1em;border:1px solid #ddd;">
+Module Version : <?php echo $block->getSezzleModuleVersion(); ?>
+</div>
+<div id="sezzle_config">
+    <br/>
+    <div data-mage-init='{
+        "Sezzle_Sezzlepay/js/config": <?php echo /* @noEscape */
+        $block->getJsonConfig() ?> }'
+         id="sezzle_config">
+
+        <span class="sezzle-register">
+          <button>
+              <span><?= $block->escapeHtml(__('Register for Sezzle')); ?></span>
+          </button>
+        </span>
+        <span class="sezzle-or">
+        &nbsp; <?= $block->escapeHtml(__('or')); ?> &nbsp;
+          <a href="#" id="sezzle-config-skip">
+            <?= $block->escapeHtml(__("I've already setup Sezzle, I want to edit my settings")); ?>
+          </a>
+        </span>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Directory\Model\ResourceModel\Region\Collection">
+        <plugin name="plugin_filter_inactive_regions"
+                type="Elsnertech\Customization\Model\Plugin\RegionCollection"
+                sortOrder="10"
+                disabled="false"/>
+    </type> 
+
+    <type name="Magento\Shipping\Model\Shipping">
+        <plugin disabled="false" name="elsnertech_shippingmethod_chage" sortOrder="11" type="Elsnertech\Customization\Model\Plugin\Shipping"/>
+    </type> 
+
+    <type name="Magento\Checkout\Block\Checkout\AttributeMerger">
+        <plugin name="elsner_checkout_phone_number"
+                type="Elsnertech\Customization\Model\Block\Checkout\PhonePlugin" sortOrder="12"/>
+    </type>
+
+</config>

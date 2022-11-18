@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_TableRateShipping
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Mageplaza_TableRateShipping::css/method-form.css"/>
+    </head>
+    <body>
+        <referenceContainer name="left">
+            <block class="Mageplaza\TableRateShipping\Block\Adminhtml\Method\Edit\Tabs" name="mptablerate_method_edit_tabs">
+                <block class="Mageplaza\TableRateShipping\Block\Adminhtml\Method\Edit\Tab\Main" name="mptablerate_method_edit_tabs.main" as="main"/>
+                <block class="Mageplaza\TableRateShipping\Block\Adminhtml\Method\Edit\Tab\Labels" name="mptablerate_method_edit_tabs.labels" as="labels"/>
+                <container name="mptablerate_method_edit_tabs.rate" as="rate">
+                    <block class="Mageplaza\TableRateShipping\Block\Adminhtml\Method\Edit\Tab\Rate\Button" name="rate.button" as="button">
+                        <block class="Mageplaza\TableRateShipping\Block\Adminhtml\Import\Edit" name="mptablerate_method_edit_tabs.import_form" as="import_form"/>
+                    </block>
+                    <block class="Mageplaza\TableRateShipping\Block\Adminhtml\Method\Edit\Tab\Rate\Grid" name="rate.grid" as="grid"/>
+                </container>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Mageplaza\TableRateShipping\Block\Adminhtml\Method\Edit" name="mptablerate_method_edit_content"/>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+		<tab id="mconnect" translate="label" sortOrder="300">
+            <label>M-Connect</label>
+        </tab>
+        <section id="mconnect_iconlib" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Image Icon Library</label>
+            <tab>mconnect</tab>
+            <resource>Mconnect_Iconlib::Config_Iconlib</resource>
+			<group id="active" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Licence Key Activation</label>
+				<field id="licence_key" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Licence Key</label>					
+				</field>
+				<field id="serial_key" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Serial Key</label>					
+				</field>
+			</group>	  
+			<group id="general" translate="label" type="text" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+				<field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Enable/Disable</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>		
+				<field id="associationlimit" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Icon Association Limit</label>
+					<validate>validate-greater-than-zero</validate>
+					<comment><![CDATA[Max No. of Icons to associate with the particular Product.]]></comment>
+					<depends>
+						<field id="active">1</field>
+					</depends>
+                </field>
+            </group>
+			<group id="icon_image_display_setting" translate="label" type="text" sortOrder="14" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Icon Image Display Setting</label>
+                <field id="enable_display" translate="label" type="select" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Icon Display Style Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					 <comment><![CDATA[Reflect the Icon image attributes [border/height/width].]]></comment>
+					 <depends>
+							<field id="mconnect_iconlib/general/active">1</field>
+					</depends>
+                </field>
+				<field id="enable_border" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Icon Image Border Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<depends>
+						<field id="mconnect_iconlib/general/active">1</field>
+						<field id="enable_display">1</field>
+					</depends>
+                </field>
+				<field id="icon_image_width" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Icon Image Width</label>
+					<validate>validate-greater-than-zero</validate>
+					<depends>
+						<field id="mconnect_iconlib/general/active">1</field>
+						<field id="enable_display">1</field>
+					</depends>
+                </field>
+				<field id="icon_image_height" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Icon Image Height</label>
+					<validate>validate-greater-than-zero</validate>
+					<depends>
+						<field id="mconnect_iconlib/general/active">1</field>
+						<field id="enable_display">1</field>
+					</depends>
+                </field>
+				 <field id="display_icon_randomly_enabled" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Display Icons Randomly Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					 <comment><![CDATA[Display Icons in Random order.]]></comment>
+						<depends>
+							<field id="mconnect_iconlib/general/active">1</field>
+						</depends>
+                </field> 
+            </group>	
+        </section>
+    </system>
+</config>

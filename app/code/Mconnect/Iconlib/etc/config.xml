@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <mconnect_iconlib>
+			<general>
+				<active>1</active>
+				<associationlimit>5</associationlimit>
+            </general>      
+			<icon_image_display_setting>
+					<enable_display>1</enable_display>
+					<enable_border>1</enable_border>
+					<icon_image_width>150</icon_image_width>
+					<icon_image_height>150</icon_image_height>
+					<display_icon_randomly_enabled>1</display_icon_randomly_enabled>	
+			</icon_image_display_setting>	
+        </mconnect_iconlib>      
+    </default>
+</config>

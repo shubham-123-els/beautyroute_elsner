@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">  
+	<body>  
+
+        <referenceContainer name="product.info.main">
+            <block class="Mconnect\Iconlib\Block\Iconlib" name="iconlib" template="Mconnect_Iconlib::iconlib.phtml" after="product.info.price" />
+        </referenceContainer>
+		<referenceBlock name="product.info.details" >
+            <block class="Mconnect\Iconlib\Block\Iconlib" name="detailed_iconlib_tab" 
+			as="iconlib" group="detailed_info" ifconfig="mconnect_iconlib/general/active">               
+                <arguments>  
+						<argument name="template" xsi:type="helper" helper="Mconnect\Iconlib\Helper\Data::getIconlibTemplate"></argument>
+                        <argument name="title" translate="true" xsi:type="string">Product Icons</argument>
+                  </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>
+
+ 
+ 
+
+
+
+
+
+

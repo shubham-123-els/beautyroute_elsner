@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magefan (support@magefan.com). All rights reserved.
+ * Please visit Magefan.com for license details (https://magefan.com/end-user-license-agreement).
+ */
+-->
+<page>
+    <head>
+        <css src="Magefan_ProductGridInline::css/chosen.min.css"/>
+    </head>
+    <body>
+        <referenceBlock  name="attributes_tabs">
+            <block class="Magefan\ProductGridInline\Block\Adminhtml\Product\Edit\Action\Attribute\Tab\Categories"
+                   name="mf_tab_categories"
+                   template="Magefan_ProductGridInline::catalog/product/edit/action/categories_tab.phtml"
+                   ifconfig = "mfproductgridinline/general/enabled">
+            <block class="Magefan\ProductGridInline\Block\Adminhtml\Product\Edit\Action\Attribute\Tab\CategoryList"
+                   name="mf_categories_list_add"
+                   template="Magefan_ProductGridInline::catalog/product/edit/action/categories_add.phtml"/>
+            <block class="Magefan\ProductGridInline\Block\Adminhtml\Product\Edit\Action\Attribute\Tab\CategoryList"
+                   name="mf_categories_list_remove"
+                   template="Magefan_ProductGridInline::catalog/product/edit/action/categories_remove.phtml"/>
+            </block>
+            <action method="addTab">
+                <argument name="name" xsi:type="string">mf_tab_categories</argument>
+                <argument name="block" xsi:type="string">mf_tab_categories</argument>
+            </action>
+        </referenceBlock>
+    </body>
+</page>

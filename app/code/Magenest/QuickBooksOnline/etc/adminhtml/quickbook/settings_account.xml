@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <group id="asset" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+        <label>Asset Account Settings</label>
+        <field id="id" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Account</label>
+            <source_model>Magenest\QuickBooksOnline\Model\Config\Source\Account</source_model>
+            <config_path>qbonline/account/asset_id</config_path>
+        </field>
+    </group>
+    <group id="expense" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+        <label>Expense Account Settings</label>
+        <field id="id" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Account</label>
+            <source_model>Magenest\QuickBooksOnline\Model\Config\Source\Account</source_model>
+            <config_path>qbonline/account/expense_id</config_path>
+        </field>
+    </group>
+    <group id="income" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+        <label>Income Account Settings</label>
+        <field id="id" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Account</label>
+            <source_model>Magenest\QuickBooksOnline\Model\Config\Source\Account</source_model>
+            <config_path>qbonline/account/income_id</config_path>
+        </field>
+    </group>
+</include>

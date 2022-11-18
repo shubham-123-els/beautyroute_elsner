@@ -1,0 +1,18 @@
+@qbo-icons-admin__font-name-path: 'Magenest_QuickBooksOnline::fonts/icomoon';
+@qbo-icons-admin__font-name : 'QuickBooksOnline';
+
+.lib-font-face(
+  @family-name: @qbo-icons-admin__font-name,
+  @font-path: @qbo-icons-admin__font-name-path,
+  @font-weight: normal,
+  @font-style: normal
+);
+
+.admin__menu .item-integration.parent.level-0 > a:before,
+.admin__menu .item-integration.level-0 > a:before {
+  font-family: @qbo-icons-admin__font-name;
+  font-size: 4rem;
+  line-height: 2px;
+  padding: 1rem;
+  content: "\e929";
+}

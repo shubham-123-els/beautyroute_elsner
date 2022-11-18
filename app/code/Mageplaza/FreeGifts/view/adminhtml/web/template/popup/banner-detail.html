@@ -1,0 +1,76 @@
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_FreeGifts
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<div id="mp_free_gifts_details" class="image-panel">
+    <div class="image-panel-preview"><img src="<%- data.iconUrl %>" alt="<%- data.fileAlt %>"/></div>
+    <div class="image-panel-controls admin__scope-old">
+        <fieldset class="admin__fieldset fieldset-image-panel">
+            <div class="admin__field field-image-label">
+                <label class="admin__field-label" for="image-label">
+                    <span><%- label.fileAlt %></span>
+                </label>
+                <span class="admin__field-control">
+                    <input id="image-label" class="admin__control-input"
+                           name="rule[banner][<%- data.fileId %>][alt]" type="text" value=""/>
+                </span>
+            </div>
+            <div class="admin__field field-image-size">
+                <label class="admin__field-label">
+                    <span><%- label.fileSize %></span>
+                </label>
+                <span class="admin__field-control"><%- data.fileSize %></span>
+            </div>
+            <div class="admin__field field-image-resolution">
+                <label class="admin__field-label">
+                    <span><%- label.fileResolution %></span>
+                </label>
+                <span class="admin__field-control"><%- data.fileResolution %></span>
+            </div>
+            <div class="admin__field field-image-tooltip">
+                <label class="admin__field-label">
+                    <span><%- label.fileTooltip %></span>
+                </label>
+                <span class="admin__field-control">
+                    <table class="admin__control-table" id="attribute-labels-table">
+                        <thead>
+                        <tr>
+                            <% _.each(options.storeView, function(store, key) { %>
+                            <th class="col-store-view"><span><%- store.name %></span></th>
+                            <% }); %>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <% _.each(options.storeView, function(store, key) { %>
+                            <td class="col-store-view">
+                                    <input id="image-tooltip" class="admin__control-input"
+                                           name="rule[banner][<%- data.fileId %>][tooltip][<%- store.code %>]" type="text" value=""/>
+                                </td>
+                            <% }); %>
+                        </tr>
+                        </tbody>
+                    </table>
+                </span>
+            </div>
+        </fieldset>
+    </div>
+</div>
+</div>

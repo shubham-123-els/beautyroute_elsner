@@ -1,0 +1,148 @@
+<?php
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_ImportExportCore
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2020 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+
+//  @codingStandardsIgnoreFile
+
+?>
+
+<?php /** @var  $block \Bss\ImportExportCore\Block\Adminhtml\Export\Before */?>
+
+<script>
+    window.BssImportExport = {
+        "versions": <?= json_encode($block->getVersionInfo()) ?>,
+        "configs": <?= json_encode($block->getConfigs()) ?>
+    };
+</script>
+
+<script>
+    require([
+        'Magento_Ui/js/modal/alert',
+        'jquery',
+        'prototype'
+    ], function(alert, $j){
+
+//<![CDATA[
+        // Temporary Class will be replaced after refactoring of import/export functionality
+        VarienExport = Class.create();
+        VarienExport.prototype = {
+            initialize: function() {
+                /**
+                 * Previous selected entity for grid
+                 * @type {string}
+                 */
+                this.previousEntity = '';
+            },
+
+            /**
+             * Update version number
+             */
+            updateModuleVersion: function () {
+                if (window.BssImportExport && window.BssImportExport.versions) {
+                    if (this.previousEntity) {
+                        if (window.BssImportExport.versions[this.previousEntity]) {
+                            $("bss-version-number").update(window.BssImportExport.versions[this.previousEntity]);
+                            $("bss-version").show();
+                            return;
+                        }
+                    }
+
+                    $("bss-version").hide();
+                }
+            },
+
+            /**
+             * Get Url to redirect after entity selected
+             * @param {string} entity
+             * @return {string}|{Boolean}
+             */
+            getEntityDirectUrl: function(entity) {
+                if (window.BssImportExport && window.BssImportExport.configs) {
+                    if (entity) {
+                        if (window.BssImportExport.configs[entity]) {
+                            var entityConfig = window.BssImportExport.configs[entity];
+                            if (entityConfig.type == "redirect" && entityConfig.url) {
+                                return entityConfig.url;
+                            }
+                        }
+                    }
+                }
+                return false;
+            },
+
+            /**
+             * Post form data and process response via AJAX
+             */
+            getFilter: function() {
+                if ($('entity') && $F('entity')) {
+                    var url    = "<?= $block->escapeJs($block->escapeUrl($block->getUrl('*/*/getFilter'))) ?>";
+                    var entity = $F('entity');
+
+                    if (this.getEntityDirectUrl(entity)) {
+                        window.location.href = this.getEntityDirectUrl(entity);
+                        return;
+                    }
+
+                    if (entity != this.previousEntity) {
+                        this.previousEntity = entity;
+                        url += ((url.slice(-1) != '/') ? '/' : '') + 'entity/' + entity;
+                        new Ajax.Request(url, {
+                            method:      'post',
+                            evalScripts: true,
+                            onComplete:  function(transport) {
+                                var responseText = transport.responseText.replace(/>\s+</g, '><');
+                                $('export_filter_form_container').update(responseText);
+                                $('export_filter_container').show();
+                                $j('#export_filter_form_container').trigger('contentUpdated');
+                            }.bind(this)
+                        });
+                    }
+                } else {
+                    this.previousEntity = '';
+                    $('export_filter_container').hide();
+                }
+
+                this.updateModuleVersion();
+            }
+        };
+
+        /**
+         * Continue export process after filter settings
+         *
+         * return void
+         */
+        getFile = function() {
+            if ($('entity') && $F('entity')) {
+                var form      = $j('#export_filter_form');
+                var oldAction = form.attr("action");
+                var url = oldAction + ((oldAction.slice(-1) != '/') ? '/' : '') + 'entity/' + $F('entity')
+                    + '/file_format/' + $F('file_format');
+                form.attr("action", url);
+                form.submit();
+                form.attr("action", oldAction);
+            } else {
+                alert({
+                    content: '<?= $block->escapeHtml(__('Invalid data')); ?>'
+                });
+            }
+        };
+
+        varienExport = new VarienExport();
+//]]>
+
+    });
+</script>

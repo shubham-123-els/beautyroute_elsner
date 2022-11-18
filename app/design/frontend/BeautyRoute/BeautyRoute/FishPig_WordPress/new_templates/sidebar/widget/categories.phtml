@@ -1,0 +1,74 @@
+<?php
+/**
+ * @category    FishPig
+ * @package     FishPig_WordPress
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<?php   
+    $helper = $this->helper('Elsnertech\Customization\Helper\Data');
+    $currentStore = $helper->getStoreName();
+    $webConfig = $helper->getwebConfig(); ?>
+<?php $showEmpty = $block->canShowEmpty() ?>
+<?php $categories = $block->getCategories() ?>
+<?php if (count($categories) > 0): ?>
+    <div class="block block-blog block-blog-categories-sidebar">
+        <?php if ($title = $block->getTitle()): ?>
+            <div class="block-title">
+                <strong><?= $block->escapeHtml(__($title)) ?></strong>
+            </div>
+        <?php endif; ?>
+        <div class="block-content">
+            <ul class="level0" id="wp-category-list">
+                <?php if ($block->getDropdown()): ?>
+                    <li class="level0 item">
+                        <select name="blog-archive-dropdown" onchange="if (this.value!=='#'){window.location.href=this.value;}">
+                            <option value="#"><?= __('Select Category') ?></option>
+                            <?php foreach ($categories as $category): ?>
+                                <option value="<?= $block->escapeUrl($category->getUrl()) ?>"<?php if ($block->isCurrentCategory($category)): ?> selected="selected"<?php endif; ?>><?= $block->escapeHtml($category->getName()) ?> <?php if ($block->getCount()): ?> (<?= $block->escapeHtml($category->getPostCount()) ?>)<?php endif; ?></option>
+                                <?php if ($block->getHierarchical()): ?>
+                                    <?php $children = $category->getChildrenTerms() ?>
+                                    <?php if (count($children) > 0): ?>
+                                        <?php foreach ($children as $child): ?>
+                                            <option value="<?= $block->escapeUrl($child->getUrl()) ?>"<?php if ($block->isCurrentCategory($child)): ?> selected="selected"<?php endif; ?>>&nbsp;&nbsp;<?= $block->escapeHtml($child->getName()) ?> <?php if ($block->getCount()): ?> (<?= $block->escapeHtml($child->getPostCount()) ?>)<?php endif; ?></option>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </select>
+                    </li>
+                <?php else: ?>
+                    <?php foreach ($categories as $category): ?>
+                        <li class="level0 item<?php if ($block->isCurrentCategory($category)): ?> active<?php endif; ?>">
+                            
+                            <?php 
+                                $categoryUrl = $category->getUrl();
+                                if ($currentStore=="French") {
+                                    $categoryUrl = str_replace($webConfig,$webConfig."fr/",$categoryUrl);
+                                }
+                            ?>
+
+
+                            <a  class="level0" href="<?= $categoryUrl ?>" title="<?= $block->escapeHtml($category->getName()) ?>">
+                                <?= $block->escapeHtml($category->getName()) ?>
+                            </a><?php if ($block->getCount()): ?> (<?= $block->escapeHtml($category->getPostCount()) ?>)<?php endif; ?>
+                            <?php if ($block->getHierarchical()): ?>
+                                <?php $children = $category->getChildrenTerms() ?>
+                                <?php if (count($children) > 0): ?>
+                                    <ul class="level1">
+                                        <?php foreach ($children as $child): ?>
+                                            <?php if ($showEmpty || $child->getPostCount() > 0): ?>
+                                            <li class="level1 item<?php if ($block->isCurrentCategory($child)): ?> active<?php endif; ?>">&raquo; <a href="<?= $child->getUrl() ?>" title="<?= $child->getName() ?>" class="level1"><?= $block->escapeHtml($child->getName()) ?></a><?php if ($block->getCount()): ?> (<?= $block->escapeHtml($child->getPostCount()) ?>)<?php endif; ?>
+                                            </li>
+                                            <?php endif; ?>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                        </li>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </ul>
+        </div>
+    </div>
+<?php endif; ?>

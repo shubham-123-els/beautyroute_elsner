@@ -1,0 +1,60 @@
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_TableRateShipping
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<form id="co-shipping-method-form" data-bind="blockLoader: isLoading, visible: isVisible()">
+    <p class="field note" data-bind="visible: (!isLoading() && shippingRates().length <= 0)">
+        <!-- ko text: $t('Sorry, no quotes are available for this order at this time')--><!-- /ko -->
+    </p>
+    <fieldset class="fieldset rate" data-bind="visible: (shippingRates().length > 0)">
+        <dl class="items methods" data-bind="foreach: shippingRateGroups">
+            <dt class="item-title"><span data-bind="text: $data"></span></dt>
+            <dd class="item-options" data-bind="foreach: { data:$parent.getRatesForGroup($data), as: 'method' }">
+                <div data-bind="css: {'field choice item': available, 'message error': !available} ">
+                    <!-- ko ifnot: (available) -->
+                    <div data-bind="text: error_message"></div>
+                    <!-- /ko -->
+                    <!-- ko if: (available) -->
+                    <input type="radio"
+                           class="radio"
+                           data-bind="
+                                click: $parents[1].selectShippingMethod,
+                                checked: $parents[1].selectedShippingMethod,
+                                attr: {
+                                        value: carrier_code + '_' + method_code,
+                                        id: 's_method_' + carrier_code + '_' + method_code
+                                        }
+                                "/>
+                    <!-- ko if: (method.extension_attributes && method.extension_attributes.mptablerate_image) -->
+                    <img data-bind="attr: {src: method.extension_attributes.mptablerate_image, alt: 'method-image'}">
+                    <!-- /ko -->
+                    <label class="label" data-bind="attr: {for: 's_method_' + carrier_code + '_' + method_code}">
+                        <!-- ko text: $data.method_title --><!-- /ko -->
+                        <each args="element.getRegion('price')" render=""/>
+                    </label>
+                    <!-- ko if: (method.extension_attributes && method.extension_attributes.mptablerate_comment) -->
+                    <div class="mp-comment" data-bind="html: method.extension_attributes.mptablerate_comment"></div>
+                    <!-- /ko -->
+                    <!-- /ko -->
+                </div>
+            </dd>
+        </dl>
+    </fieldset>
+</form>

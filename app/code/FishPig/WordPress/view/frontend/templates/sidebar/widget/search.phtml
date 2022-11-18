@@ -1,0 +1,33 @@
+<?php
+/**
+ * @category    FishPig
+ * @package     FishPig_WordPress
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+/**
+ * Add filters using hidden inputs:
+ *
+ * <input type="hidden" name="cat" value="enter_category_slug" />
+ * <input type="hidden" name="tag" value="enter_tag_slug" />
+ */
+?>
+<div class="block block-blog block-blog-search">
+    <?php if ($title = $block->getTitle()): ?>
+        <div class="block-title">
+            <strong><?= $block->escapeHtml(__($title)) ?></strong>
+        </div>
+    <?php endif; ?>
+    <div class="block-content">
+        <form method="get" action="<?= $block->escapeUrl($block->getFormActionUrl()) ?>" id="blog-search-form">
+            <div class="blog-search">
+                <?php if ($block->getPostType()): ?>
+                <div class="no-display">
+                    <input type="hidden" name="post_type" value="<?= $block->escapeHtml($block->getPostType()) ?>" />
+                </div>
+                <?php endif; ?>
+                <input type="text" name="s" class="input-text" title="<?= $block->escapeHtml(__('Search Posts')) ?>" value="<?= $block->escapeHtml($block->getSearchTerm()) ?>"/>
+                <button class="button" title="<?= $block->escapeHtml(__('Search')) ?>" type="submit"><span><span><?= $block->escapeHtml(__('Search')) ?></span></span></button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<?php $data = $block->isCustomerLogin(); ?>
+<?php if ($data == 0) : ?>
+    <?php $show = $block->isShow(); ?>
+    <?php if ($show == 1) : ?>
+        <li class="custom-link">
+            <a id="register_wholesale"
+               href="<?= /* @noEscape */ $block->getUrl('wholesale/account/create') ?>"
+               class="register-wholesale">
+                <span class="custom-title"><?= /* @noEscape */ __('Register as Wholesaler'); ?></span>
+            </a>
+        </li>
+    <?php endif; ?>
+<?php endif; ?>

@@ -1,0 +1,8 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/Module/etc/module.xsd">
+    <module name="MageArray_Customeractivation" setup_version="1.0.4" schema_version="1.0.4">
+        <sequence>
+            <module name="Magento_Customer"/>
+        </sequence>
+    </module>
+</config>

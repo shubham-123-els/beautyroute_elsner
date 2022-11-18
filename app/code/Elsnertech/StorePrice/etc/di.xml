@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Directory\Controller\Currency\SwitchAction">
+        <plugin name="elsnertech_storePrice_directory_currency_switch_plugin" type="Elsnertech\StorePrice\Plugin\Magento\Directory\Controller\Currency\SwitchAction" sortOrder="1" />
+    </type>
+</config>

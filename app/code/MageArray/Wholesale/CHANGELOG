@@ -1,0 +1,22 @@
+MageArray_Wholesale
+
+-------------
+  CHANGELOG
+-------------
+
+===== 1.0.0 =====
+ * Initial stable M2 release
+
+===== 1.0.1 =====
+ * Add New Features (File Upload)
+
+===== 1.0.2 =====
+ * Compatibility with Magento 2.3
+ * Bug Fix
+ 
+===== 1.0.3 =====
+ * Compatibility with Magento 2.3.3
+
+===== 1.0.4 =====
+ * Compatibility with Magento 2.3.5
+ * Compatibility with MageArray CustomerAttribute Extension 

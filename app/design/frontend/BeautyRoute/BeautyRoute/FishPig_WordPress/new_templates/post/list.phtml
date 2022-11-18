@@ -1,0 +1,32 @@
+<?php
+/**
+ * @category    FishPig
+ * @package     FishPig_WordPress
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<?php   
+    $helper = $this->helper('Elsnertech\Customization\Helper\Data');
+    $currentStore = $helper->getStoreName();
+    $webConfig = $helper->getwebConfig(); ?>
+<?php $posts = $block->getPosts() ?>
+<?php if (count($posts) > 0): ?>
+    <div class="post-list-wrapper">
+        <ol class="post-list grid">
+            <?php foreach ($posts as $post): ?>
+                <?php if ($renderedPostHtml = $block->renderPost($post)): ?>
+                    <li class="item<?php if ($post->isSticky()): ?> featured is-sticky<?php endif; ?> <?= $block->escapeHtml($post->getPostFormat()) ?>">
+                        <?php 
+                            if ($currentStore=="French") {
+                                $renderedPostHtml = str_replace($webConfig."pub/","/pub/",$renderedPostHtml);
+                                $renderedPostHtml = str_replace($webConfig,$webConfig."fr/",$renderedPostHtml);
+                            }
+                        ?>
+                        <?= $renderedPostHtml ?>
+                    </li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </ol>
+        <?= $block->getPagerHtml() ?>
+    </div>
+<?php endif; ?>

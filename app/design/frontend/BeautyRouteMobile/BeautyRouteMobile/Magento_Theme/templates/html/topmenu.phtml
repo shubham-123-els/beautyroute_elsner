@@ -1,0 +1,58 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ * Top menu for store
+ *
+ * @var $block \Magento\Theme\Block\Html\Topmenu
+ */
+$columnsLimit = $block->getColumnsLimit() ?: 0;
+$_menuHtml = $block->getHtml('level-top', 'submenu', $columnsLimit)
+?>
+
+<nav class="navigation" data-action="navigation">
+    <ul data-mage-init='{"menu":{"responsive":true, "expanded":true, "position":{"my":"left top","at":"left bottom"}}}'>
+        <?= /* @noEscape */ $_menuHtml?>
+        <?= $block->getChildHtml() ?>
+    </ul>
+</nav>
+
+
+<script>
+
+require(['jquery'], function($){
+
+    $(".a").click(function(){
+	  window.open($('.a').attr("href"));
+    });
+
+    $(".b").click(function(){
+        window.open($('.b').attr("href"));
+    });
+
+    $(".c").click(function(){
+        window.open($('.c').attr("href"));
+    });
+
+    $(".d").click(function(){
+        window.open($('.d').attr("href"));
+    });
+
+    $(".e").click(function(){
+        window.open($('.e').attr("href"));
+    });
+
+    $(".f").click(function(){
+        window.open($('.f').attr("href"));
+    });
+
+    $(".g").click(function(){
+        window.open($('.g').attr("href"));
+    });
+
+});
+
+</script>

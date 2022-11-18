@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_SeoDashboard
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="styles"/>
+    <head>
+        <css src="Mageplaza_SeoDashboard::css/style.css"/>
+    </head>
+    <body>
+        <referenceBlock name="dashboard">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Mageplaza_SeoDashboard::dashboard/index.phtml</argument>
+            </action>
+            <block name="mpSeoDashboard" ifconfig="seo/dashboard/enable" template="Mageplaza_SeoDashboard::dashboard/dashboard.phtml">
+                <block class="Mageplaza\SeoDashboard\Block\Adminhtml\Grids" name="mpSeoDbGrids" ifconfig="seo/dashboard/dashboard_enable"/>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

@@ -1,0 +1,73 @@
+<?php $currentProduct = $block->getCurrentProduct(); ?>
+<?php $crossSellProducts = $currentProduct->getCrossSellProducts(); ?>
+       
+<?php if (!empty($crossSellProducts)): ?>
+   <div class="heading_sec">
+      <h2><?php echo __('Explore this product'); ?></h2>
+   </div>
+   <div class="treding_new explore-custom pdp-explore">
+      <section class="trndprd" id="tranding_block">
+         <div class="trend-product-container">
+            <?php $crossSellProducts = array_slice($crossSellProducts, 0, 2); ?>
+            <?php	foreach ($crossSellProducts as $crossSellProduct): ?>
+                  <?php $crossSellProduct = $block->getProduct($crossSellProduct->getId()); ?>
+                  <div class="product_tranding_new">
+                        <div class="images_sec">
+                              <img src="<?= $block->getProductImageUrl($crossSellProduct);?>" alt="<?= $crossSellProduct->getName() ?>">
+                        </div>
+                        <div class="upper_text">
+                           
+                           <a href="<?php echo $crossSellProduct->getProductUrl(); ?>">
+                                 <h3><?= $crossSellProduct->getName() ?></h3>
+                           </a>
+
+                           <div class="price_ comman_tr">
+                                 <p><?php echo __('Price:'); ?></p>
+                                 <p><?= $this->helper('Magento\Framework\Pricing\Helper\Data')->currency($crossSellProduct->getPrice(),true,false); ?></p>
+                           </div>
+
+                           <div class="star_ comman_tr">
+                                 <?php $ratingSummary = $block->getRatingSummary($crossSellProduct); ?>
+                                 <?php if($ratingSummary): ?>
+                                    <div class="product-reviews-summary short">
+                                       <div class="rating-summary">
+                                          <div title="<?php echo (int)$ratingSummary; ?>%" class="rating-result">
+                                             <span style="width:<?php echo (int)$ratingSummary; ?>%"><span><?php echo (int)$ratingSummary; ?>%</span></span>
+                                          </div>
+                                       </div>
+                                       <?php
+                                          $vote = $block->getRating($crossSellProduct->getId());
+                                          $totalavg = $vote['count']['avg'];
+                                          ?>
+                                       <div class="rating-summary">
+                                          <span><?php if(isset($totalavg)) echo $totalavg; ?>/5</span>
+                                       </div>
+                                    </div>
+                                 <?php endif; ?>
+                           </div>
+                           <div class="cart_btn">
+                                <form data-role="tocart-form" action="<?= $block->getAddToCartUrl($crossSellProduct) ?>" 
+                                    method="post" 
+                                    id="product_addtocart_for_explore"> 
+                                    <?php echo $block->getBlockHtml('formkey')?>
+                                    <button type="submit" title="<?= __('Add to Cart'); ?>" class="action tocart primary">
+                                        <span><?= __('Add to Cart'); ?></span>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                  </div>
+            <?php endforeach; ?>
+         </div>
+      </section>
+   </div>
+   <script type="text/x-magento-init">
+      {
+         "#product_addtocart_for_explore": {
+               "catalogAddToCart": {
+                  "bindSubmit": true
+               }
+         }
+      }
+   </script>
+<?php endif; ?>

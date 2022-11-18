@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ *  @category  BSS
+ *  @package   Bss_ImportExportCore
+ *  @author    Extension Team
+ *  @copyright Copyright (c) 2020 BSS Commerce Co. ( http://bsscommerce.com )
+ *  @license   http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Bss_ImportExportCore::bss_import"
+             title="Import by BSS"
+             module="Bss_ImportExportCore"
+             sortOrder="50"
+             action="bssimportexport/import/index"
+             parent="Magento_Backend::system_convert"
+             resource="Bss_ImportExportCore::bss_import" />
+        <add id="Bss_ImportExportCore::bss_export"
+             title="Export by BSS"
+             module="Bss_ImportExportCore"
+             sortOrder="60"
+             action="bssimportexport/export/index"
+             parent="Magento_Backend::system_convert"
+             resource="Bss_ImportExportCore::bss_export" />
+    </menu>
+</config>

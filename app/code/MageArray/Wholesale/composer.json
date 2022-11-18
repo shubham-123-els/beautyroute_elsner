@@ -1,0 +1,17 @@
+{
+  "name": "magearray/module-wholesale",
+  "description": "Wholesale Magento 2 Extension By MageArray ",
+  "type": "magento2-module",
+  "version": "1.0.4",
+  "license": [
+    "proprietary"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "MageArray\\Wholesale\\": ""
+    }
+  }
+}

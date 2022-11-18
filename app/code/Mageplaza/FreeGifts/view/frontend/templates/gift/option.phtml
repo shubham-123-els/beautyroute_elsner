@@ -1,0 +1,73 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_FreeGifts
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+use Mageplaza\FreeGifts\Block\Gift\Option;
+
+/** @var Option $block */
+$gift = $block->getGiftData();
+?>
+
+<div id="<?= /* @noEscape */ 'mpfreegifts-option-modal-' .$gift['id'] ?>" class="mpfreegifts-option-modal">
+    <form id="<?= /* @noEscape */ 'mpfreegifts-option-form-' .$gift['id'] ?>"
+          enctype="multipart/form-data" class="mpfreegifts-option-form">
+        <input type="hidden" name="rule_id" value="<?= /* @noEscape */ $gift['rule_id'] ?>" />
+        <input type="hidden" name="gift_id" value="<?= /* @noEscape */ $gift['id'] ?>" />
+        <input type="hidden" name="gift_name" value="<?= /* @noEscape */ $gift['name'] ?>" />
+
+        <?= $block->getConfigOptionHtml() ?>
+        <?= $block->getCustomOptionHtml() ?>
+        <?php if ($block->isMultiFreeGifts()) : ?>
+            <div class="mpfreegifts-gift-qty">
+                <label class="label"><span>Qty: </span></label>
+                <input type="number" name="qty"
+                       class="mpfreegifts-gift-input-qty mpfreegifts-gift-input-qty-<?= /* @noEscape */ $gift['id'] ?>">
+                <div class="mp-validation-message-box mp-error-qty-<?= /* @noEscape */ $gift['id'] ?>">
+                    <div class="mp-mage-error">
+                        <?= $block->escapeHtml(__('Please specify the quantity of product(s).')) ?>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+    </form>
+
+    <div class="mpfreegifts-option-form-footer">
+        <?php if (!$block->getIsRemoveGrouped()) : ?>
+            <button class="action primary"
+                    id="<?= /* @noEscape */ 'mpfreegifts-option-add-' .$gift['id'] ?>"
+                    type="button">
+                <?= $block->escapeHtml(__('Add Gift')) ?>
+            </button>
+        <?php else : ?>
+            <button class="action primary mpfreegifts-action-remove"
+                    id="<?= /* @noEscape */ 'mpfreegifts-option-remove-' .$gift['id'] ?>"
+                    type="button">
+                <?= $block->escapeHtml(__('Remove')) ?>
+            </button>
+        <?php endif; ?>
+    </div>
+
+    <script type="text/x-magento-init">
+        {
+            "<?= /* @noEscape */ '#mpfreegifts-option-form-' .$gift['id'] ?>": {
+                "Magento_Catalog/js/validate-product": {}
+            }
+        }
+    </script>
+</div>

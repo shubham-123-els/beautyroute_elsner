@@ -1,0 +1,80 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var \Magento\ConfigurableProduct\Pricing\Render\FinalPriceBox$block */
+/** @var \Magento\Framework\Pricing\Price\PriceInterface $priceModel */
+$priceModel = $block->getPriceType('regular_price');
+/** @var \Magento\Framework\Pricing\Price\PriceInterface $finalPriceModel */
+$finalPriceModel = $block->getPriceType('final_price');
+$idSuffix = $block->getIdSuffix() ? $block->getIdSuffix() : '';
+$schema = ($block->getZone() == 'item_view') ? true : false;
+
+$_product = $block->getPriceType('final_price')->getProduct();
+?>
+<span class="normal-price">
+    <p class="current-sku"><?= $_product->getSku() ?></p>
+    <p class="new-price"></p>
+    <?= /* @noEscape */ $block->renderAmount($finalPriceModel->getAmount(), [
+        'display_label' => __('As low as'),
+        'price_id' => $block->getPriceId('product-price-' . $idSuffix),
+        'price_type' => 'finalPrice',
+        'include_container' => true,
+        'schema' => $schema,
+    ]);
+?>
+</span>
+
+<?php if ($block->hasSpecialPrice()) : ?>
+    <span class="old-price sly-old-price">
+        <?= /* @noEscape */ $block->renderAmount($priceModel->getAmount(), [
+            'display_label'     => __('Regular Price'),
+            'price_id'          => $block->getPriceId('old-price-' . $idSuffix),
+            'price_type'        => 'oldPrice',
+            'include_container' => true,
+            'skip_adjustments'  => true
+        ]); ?>
+    </span>
+<?php endif; ?>
+
+<?php if ($block->showMinimalPrice()) : ?>
+    <?php if ($block->getUseLinkForAsLowAs()) :?>
+        <a href="<?= $block->escapeUrl($block->getSaleableItem()->getProductUrl()) ?>" class="minimal-price-link">
+            <?= /* @noEscape */ $block->renderAmountMinimal() ?>
+        </a>
+    <?php else :?>
+        <span class="minimal-price-link">
+            <?= /* @noEscape */ $block->renderAmountMinimal() ?>
+        </span>
+    <?php endif?>
+<?php endif; ?>
+
+
+<script type="text/javascript">
+        require(['jquery'],function($){ 
+            jQuery(document).on('click', '.swatch-option',function(){
+                var optionId = jQuery('.current-sku').html()+'-'+jQuery(this).attr("aria-label");
+                var heightValue = jQuery('.current-sku').html();
+                var weightValue = optionId;
+                var url = '<?= $block->geturl(); ?>'+"storeprice/index/index";
+                jQuery.ajax({
+                    url: url,
+                    type: "POST",
+                    data: {numone:weightValue},
+                    cache: false,
+                    success: function(response){
+                        var oldprice = jQuery('.normal-price .price').html();
+                        var trimStr = $.trim(response);
+                        if (trimStr==oldprice) {
+                            $('.new-price').html('');
+                        } else {
+                            $(".price").addClass("old-price");
+                            $('.new-price').html(trimStr);
+                        }
+                    }
+                });
+            });         
+        }); 
+</script>

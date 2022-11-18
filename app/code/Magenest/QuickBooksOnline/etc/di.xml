@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2017 Magenest. All rights reserved.
+ * See COPYING.txt for license details.
+ *
+ * Magenest_QuickBooksOnline extension
+ * NOTICE OF LICENSE
+ *
+ * @category Magenest
+ * @package  Magenest_QuickBooksOnline
+ * @author   Magenest JSC
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Magenest\QuickBooksOnline\Model\ResourceModel\PaymentMethods\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_qbonline_payment_methods</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\QuickBooksOnline\Model\ResourceModel\PaymentMethods</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Magenest\QuickBooksOnline\Model\ResourceModel\Queue\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_qbonline_queue</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\QuickBooksOnline\Model\ResourceModel\Queue</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Magenest\QuickBooksOnline\Model\ResourceModel\Tax\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_qbonline_tax</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\QuickBooksOnline\Model\ResourceModel\Tax</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="qbonline_payment_methods_listing_data_source" xsi:type="string">Magenest\QuickBooksOnline\Model\ResourceModel\PaymentMethods\Grid\Collection</item>
+                <item name="qbonline_queue_listing_data_source" xsi:type="string">Magenest\QuickBooksOnline\Model\ResourceModel\Queue\Grid\Collection</item>
+                <item name="qbonline_tax_listing_data_source" xsi:type="string">Magenest\QuickBooksOnline\Model\ResourceModel\Tax\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magenest\QuickBooksOnline\Logger\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">qbonline_logger</argument>
+            <argument name="handlers"  xsi:type="array">
+                <item name="default" xsi:type="object">Magenest\QuickBooksOnline\Logger\Handler</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

@@ -1,0 +1,26 @@
+<?php
+/*
+ * @category    Sezzle
+ * @package     Sezzle_Sezzlepay
+ * @copyright   Copyright (c) Sezzle (https://www.sezzle.com/)
+ */
+?>
+<?php
+use Sezzle\Sezzlepay\Block\Widget\PDP;
+
+/** @var $block PDP */
+?>
+<?php if ($block->isWidgetEnabledForPDP()): ?>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "widgetRenderer": {
+                "merchant_uuid" : "<?php echo $block->getMerchantUUID(); ?>",
+                "price" : "<?php echo $block->getItemPrice() ?>",
+                "alignment" : "<?php echo $block->getAlignment() ?>",
+                "widget_type" : "<?php echo $block->getWidgetType(); ?>"
+            }
+        }
+    }
+</script>
+<?php endif; ?>

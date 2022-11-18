@@ -1,0 +1,53 @@
+<?php
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_UrlRewriteImportExport
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2020 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+?>
+<?php
+// @codingStandardsIgnoreFile
+
+/**
+ * @var $block \Bss\UrlRewriteImportExport\Block\Adminhtml\Export\Filter\Script
+ */
+?>
+<div class="export_download_container">
+
+</div>
+<script>
+    require(["jquery"], function ($) {
+        $("#export_filter_form").ready(function(){
+            $("#bss-export-btn").click(function(e){
+                e.preventDefault();
+                e.stopPropagation();
+                var exportByValue = $("select[name='export-by']").val();
+                var entityTypeValue = $("select[name='entity-type']").val();
+                var storeIdValue = $("select[name='store-id']").val();
+                var redirectTypeValue = $("select[name='redirect-type']").val();
+                var url = "<?php echo $block->getUrl('bssurlrewriteimportexport/export/export') ?>";
+                $.ajax({
+                    url: url,
+                    type: "POST",
+                    showLoader: true,
+                    data: {exportBy:exportByValue,entityType:entityTypeValue,storeId:storeIdValue,redirectType:redirectTypeValue},
+                    cache: false,
+                    success: function(response){
+                        $('.export_download_container').html(response.output);
+                    }
+                });
+            });
+        });
+    });
+</script>

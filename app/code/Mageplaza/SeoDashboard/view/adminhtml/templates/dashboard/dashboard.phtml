@@ -1,0 +1,32 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_SeoDashboard
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+// @codingStandardsIgnoreFile
+?>
+<?php
+$seoDashboard = $block->getChildHtml('mpSeoDbGrids');
+if (!empty($seoDashboard)) :
+    ?>
+    <div class="mp-seo-db-head dashboard-item-title"><?= $block->escapeHtml(__('Mageplaza SEO Report')) ?></div>
+    <?= $seoDashboard ?>
+    <div id="mp_seo_db_grid_tab_content" class="dashboard-store-stats-content"></div>
+<?php endif; ?>
+

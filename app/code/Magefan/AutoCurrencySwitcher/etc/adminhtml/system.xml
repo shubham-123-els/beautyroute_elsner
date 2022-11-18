@@ -1,0 +1,1332 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Copyright © Magefan (support@magefan.com). All rights reserved.
+ * Please visit Magefan.com for license details (https://magefan.com/end-user-license-agreement).
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="magefan" sortOrder="110" translate="label">
+            <label>Magefan Extensions</label>
+        </tab>
+        <section id="mfautocurrencyswitcher" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+            <label>Auto Currency Switcher</label>
+            <tab>magefan</tab>
+            <resource>Magefan_AutoCurrencySwitcher::config_magefan_autocurrencyswitcher</resource>
+            <group id="general" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+                <label>General</label>
+                <attribute type="expanded">1</attribute>
+                <field id="version" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>Magefan\AutoCurrencySwitcher\Block\Adminhtml\System\Config\Form\Info</frontend_model>
+                </field>
+                <field id="ip_location" translate="label comment" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>Magefan\GeoIp\Block\Adminhtml\System\Config\Form\IpInfo</frontend_model>
+                </field>
+                <field id="enabled" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="20" translate="label" type="select">
+                    <label>Enable Extension</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="key" translate="label" type="text" sortOrder="21" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Product Key</label>
+                    <frontend_model>Magefan\Community\Block\Adminhtml\System\Config\Form\ProductKeyField</frontend_model>
+                </field>
+
+                <field id="round_prices" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="25" translate="label" type="select">
+                    <label>Round Prices</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="round_base_prices" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="26" translate="label" type="select">
+                    <label>Round Base Currency Prices</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>If enabled, base currency prices will be rounded too.</comment>
+                    <depends>
+                        <field id="round_prices">1</field>
+                    </depends>
+                </field>
+                <field id="round_algorithm" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="27" translate="label" type="select">
+                    <label>Round Algorithm</label>
+                    <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Round\Algorithm</source_model>
+                    <depends>
+                        <field id="round_prices">1</field>
+                    </depends>
+                </field>
+                <field id="round_step" translate="label comment" type="text" sortOrder="28" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Round Step (X)</label>
+                    <depends>
+                        <field id="round_algorithm">2</field>
+                    </depends>
+                    <comment>Recommended to use for stores with only 2 currencies.</comment>
+                </field>
+                <field id="ceil_step" translate="label comment" type="text" sortOrder="29" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Ceil Step (X)</label>
+                    <depends>
+                        <field id="round_algorithm">3</field>
+                    </depends>
+                    <comment>Recommended to use for stores with only 2 currencies.</comment>
+                </field>
+                <field id="floor_step" translate="label comment" type="text" sortOrder="29" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Floor Step (X)</label>
+                    <depends>
+                        <field id="round_algorithm">9</field>
+                    </depends>
+                    <comment>Recommended to use for stores with only 2 currencies.</comment>
+                </field>
+            </group>
+            <group id="extension_restrictions" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+                <label>Extension Restrictions</label>
+                <attribute type="expanded">1</attribute>
+
+                <field id="user_agent" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="20" translate="label" type="textarea">
+                    <label>User Agents</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enter User Agents for which extension should be disabled.</comment>
+                </field>
+            </group>
+            <group id="display_currency" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+                <label>Display Currency By Country</label>
+                <group id="africa" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>AFRICA</label>
+                    <field id="dz" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Algeria</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ao" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Angola</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="bj" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Benin</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="bw" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Botswana</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="bf" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Burkina Faso</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="bi" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Burundi</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="cm" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Cameroon</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="cv" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Cape Verde</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="cf" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Central African Republic</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+
+                    </field>
+                    <field id="td" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Chad</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="km" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Comoros</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="cg" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Congo - Brazzaville</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="cd" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Congo - Kinshasa</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="dj" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Djibouti</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="eg" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Egypt</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="gq" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Equatorial Guinea</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="er" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Eritrea</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="et" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Ethiopia</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ga" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Gabon</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="gm" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Gambia</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="gh" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Ghana</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="gn" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Guinea</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="gw" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Guinea-Bissau</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ke" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Kenya</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ls" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Lesotho</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="lr" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Liberia</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ly" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Libya</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="mg" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Madagascar</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="mw" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Malawi</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ml" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Mali</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="mr" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Mauritania</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+
+                    </field>
+                    <field id="mu" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Mauritius</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+
+                    </field>
+                    <field id="ma" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Morocco</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="mz" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Mozambique</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="na" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Namibia</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ne" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Niger</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ng" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Nigeria</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="rw" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Rwanda</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="st" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>São Tomé &amp; Príncipe</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="sn" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Senegal</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="sc" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Seychelles</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="sl" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Sierra Leone</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="so" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Somalia</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="za" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>South Africa</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="sd" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Sudan</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="sz" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Swaziland</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="tz" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Tanzania</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="tg" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Togo</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="tn" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Tunisia</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ug" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Uganda</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="zm" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Zambia</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="zw" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Zimbabwe</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                </group>
+                <group id="asia" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>ASIA</label>
+                    <field id="az" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Azerbaijan</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="af" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Afghanistan</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="bh" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                            <label>Bahrain</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="bd" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Bangladesh</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="bt" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Bhutan</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="kh" translate="label" type="select" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Cambodia</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="cn" translate="label" type="select" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>China</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="cx" translate="label" type="select" sortOrder="8" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Christmas Island</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="cc" translate="label" type="select" sortOrder="9" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Cocos (Keeling) Islands</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ge" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Georgia</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="hk" translate="label" type="select" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Hong Kong SAR China</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="in" translate="label" type="select" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>India</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="id" translate="label" type="select" sortOrder="13" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Indonesia</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ir" translate="label" type="select" sortOrder="14" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Iran</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="iq" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Iraq</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="il" translate="label" type="select" sortOrder="16" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Israel</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="jp" translate="label" type="select" sortOrder="17" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Japan</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="jo" translate="label" type="select" sortOrder="18" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Jordan</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="kz" translate="label" type="select" sortOrder="18" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Kazakhstan</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="kw" translate="label" type="select" sortOrder="19" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Kuwait</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="kg" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Kyrgyzstan</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="la" translate="label" type="select" sortOrder="21" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Laos</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="lb" translate="label" type="select" sortOrder="22" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Lebanon</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="mo" translate="label" type="select" sortOrder="23" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Macau SAR China</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="my" translate="label" type="select" sortOrder="24" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Malaysia</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="mv" translate="label" type="select" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Maldives</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="mn" translate="label" type="select" sortOrder="26" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Mongolia</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="mm" translate="label" type="select" sortOrder="27" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Myanmar (Burma)</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="np" translate="label" type="select" sortOrder="28" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Nepal</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="kp" translate="label" type="select" sortOrder="29" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>North Korea</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="om" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Oman</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="pk" translate="label" type="select" sortOrder="31" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Pakistan</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ph" translate="label" type="select" sortOrder="32" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Philippines</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="qa" translate="label" type="select" sortOrder="33" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Qatar</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="sa" translate="label" type="select" sortOrder="34" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Saudi Arabia</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="sg" translate="label" type="select" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Singapore</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="kr" translate="label" type="select" sortOrder="36" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>South Korea</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="lk" translate="label" type="select" sortOrder="37" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Sri Lanka</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="sy" translate="label" type="select" sortOrder="38" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Syria</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="tw" translate="label" type="select" sortOrder="39" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Taiwan</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="tj" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Tajikistan</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="th" translate="label" type="select" sortOrder="41" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Thailand</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="tm" translate="label" type="select" sortOrder="43" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Turkmenistan</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ae" translate="label" type="select" sortOrder="44" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>United Arab Emirates</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="uz" translate="label" type="select" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Uzbekistan</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="vn" translate="label" type="select" sortOrder="46" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Vietnam</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ye" translate="label" type="select" sortOrder="47" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Yemen</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                </group>
+                <group id="europe" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>EUROPE</label>
+                    <field id="ax" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Åland Islands</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="al" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Albania</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ad" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Andorra</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="am" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Armenia</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="at" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Austria (Eurozone)</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="by" translate="label" type="select" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Belarus</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="be" translate="label" type="select" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Belgium (Eurozone)</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ba" translate="label" type="select" sortOrder="8" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Bosnia &amp; Herzegovina</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="bg" translate="label" type="select" sortOrder="9" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Bulgaria</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="hr" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Croatia</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="cy" translate="label" type="select" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Cyprus (Eurozone)</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="cz" translate="label" type="select" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Czech Republic</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="dk" translate="label" type="select" sortOrder="13" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Denmark</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ee" translate="label" type="select" sortOrder="14" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Estonia (Eurozone)</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="fo" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Faroe Islands</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="fi" translate="label" type="select" sortOrder="16" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Finland (Eurozone)</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="fr" translate="label" type="select" sortOrder="17" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>France (Eurozone)</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="de" translate="label" type="select" sortOrder="18" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Germany (Eurozone)</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="gi" translate="label" type="select" sortOrder="19" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Gibraltar</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="gr" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Greece (Eurozone)</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="gg" translate="label" type="select" sortOrder="21" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Guernsey</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="hu" translate="label" type="select" sortOrder="22" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Hungary</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="is" translate="label" type="select" sortOrder="23" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Iceland</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ie" translate="label" type="select" sortOrder="24" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Ireland (Eurozone)</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="im" translate="label" type="select" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Isle of Man</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="it" translate="label" type="select" sortOrder="26" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Italy (Eurozone)</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="je" translate="label" type="select" sortOrder="27" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Jersey</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    
+                    <field id="lv" translate="label" type="select" sortOrder="29" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Latvia (Eurozone)</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="li" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Liechtenstein</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="lt" translate="label" type="select" sortOrder="31" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Lithuania  (Eurozone)</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="lu" translate="label" type="select" sortOrder="32" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Luxembourg  (Eurozone)</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="mk" translate="label" type="select" sortOrder="33" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Macedonia</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="mt" translate="label" type="select" sortOrder="34" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Malta  (Eurozone)</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="md" translate="label" type="select" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Moldova</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="mc" translate="label" type="select" sortOrder="36" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Monaco</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="me" translate="label" type="select" sortOrder="37" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Montenegro</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="nl" translate="label" type="select" sortOrder="38" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Netherlands (Eurozone)</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="no" translate="label" type="select" sortOrder="39" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Norway</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="pl" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Poland</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="pt" translate="label" type="select" sortOrder="41" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Portugal (Eurozone)</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ro" translate="label" type="select" sortOrder="42" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Romania</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="sm" translate="label" type="select" sortOrder="43" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>San Marino</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="rs" translate="label" type="select" sortOrder="44" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Serbia</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="sk" translate="label" type="select" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Slovakia (Eurozone)</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="si" translate="label" type="select" sortOrder="46" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Slovenia (Eurozone)</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="es" translate="label" type="select" sortOrder="48" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Spain (Eurozone)</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="sj" translate="label" type="select" sortOrder="49" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Svalbard &amp; Jan Mayen</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="se" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Sweden</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ch" translate="label" type="select" sortOrder="51" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Switzerland</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="tr" translate="label" type="select" sortOrder="52" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Turkey</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ua" translate="label" type="select" sortOrder="53" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Ukraine</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="gb" translate="label" type="select" sortOrder="54" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>United Kingdom</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="va" translate="label" type="select" sortOrder="55" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Vatican City</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ru" translate="label" type="select" sortOrder="56" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Russia</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                </group>
+                <group id="north_america" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>NORTH AMERICA</label>
+                    <field id="us" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>United States</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ca" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Canada</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="mx" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Mexico</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ai" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Anguilla</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ag" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Antigua &amp; Barbuda</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="aw" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Aruba</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="bs" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Bahamas</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="bb" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Barbados</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="bz" translate="label" type="select" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Belize</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="bm" translate="label" type="select" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Bermuda</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="vg" translate="label" type="select" sortOrder="8" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>British Virgin Islands</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    
+                    <field id="ky" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Cayman Islands</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="cu" translate="label" type="select" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Cuba</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="cr" translate="label" type="select" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Costa Rica</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="dm" translate="label" type="select" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Dominica</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="do" translate="label" type="select" sortOrder="13" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Dominican Republic</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="gl" translate="label" type="select" sortOrder="14" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Greenland</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="gd" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Grenada</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="gp" translate="label" type="select" sortOrder="16" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Guadeloupe</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="gt" translate="label" type="select" sortOrder="17" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Guatemala</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ht" translate="label" type="select" sortOrder="18" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Haiti</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="hn" translate="label" type="select" sortOrder="19" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Honduras</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="jm" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Jamaica</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="mq" translate="label" type="select" sortOrder="21" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Martinique</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ms" translate="label" type="select" sortOrder="23" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Montserrat</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="bl" translate="label" type="select" sortOrder="24" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>St. Barthélemy</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="kn" translate="label" type="select" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>St. Kitts &amp; Nevis</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="lc" translate="label" type="select" sortOrder="26" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>St. Lucia</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="mf" translate="label" type="select" sortOrder="27" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>St. Martin</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="pm" translate="label" type="select" sortOrder="28" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>St. Pierre &amp; Miquelon</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="vc" translate="label" type="select" sortOrder="29" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>St. Vincent &amp; Grenadines</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="tt" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Trinidad &amp; Tobago</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="tc" translate="label" type="select" sortOrder="31" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Turks &amp; Caicos Islands</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                </group>
+                <group id="oceania" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>OCEANIA</label>
+                    <field id="as" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>American Samoa</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="au" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Australia</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="io" translate="label" type="select" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>British Indian Ocean Territory</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ck" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Cook Islands</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="cc" translate="label" type="select" sortOrder="9" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Cocos (Keeling) Islands</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="fj" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Fiji</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="pf" translate="label" type="select" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>French Polynesia</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="gu" translate="label" type="select" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Guam</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ki" translate="label" type="select" sortOrder="8" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Kiribati</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="mh" translate="label" type="select" sortOrder="9" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Marshall Islands</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="fm" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Micronesia</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="nr" translate="label" type="select" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Nauru</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="nc" translate="label" type="select" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>New Caledonia</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="nz" translate="label" type="select" sortOrder="13" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>New Zealand</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="nu" translate="label" type="select" sortOrder="14" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Niue</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="nf" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Norfolk Island</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="mp" translate="label" type="select" sortOrder="16" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Northern Mariana Islands</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="pw" translate="label" type="select" sortOrder="17" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Palau</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="pa" translate="label" type="select" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Panama</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="pg" translate="label" type="select" sortOrder="18" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Papua New Guinea</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="pn" translate="label" type="select" sortOrder="19" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Pitcairn Islands</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="tl" translate="label" type="select" sortOrder="51" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Timor-Leste</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ws" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Samoa</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="gs" translate="label" type="select" sortOrder="47" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>South Georgia &amp; South Sandwich Islands</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="sb" translate="label" type="select" sortOrder="21" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Solomon Islands</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="sh" translate="label" type="select" sortOrder="22" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>St. Helena</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="tk" translate="label" type="select" sortOrder="23" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Tokelau</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="to" translate="label" type="select" sortOrder="24" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Tonga</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="tv" translate="label" type="select" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Tuvalu</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="vu" translate="label" type="select" sortOrder="26" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Vanuatu</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="wf" translate="label" type="select" sortOrder="27" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Wallis &amp; Futuna</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                </group>
+                <group id="south_america" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>SOUTH AMERICA</label>
+                    <field id="ar" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Argentina</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="bo" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Bolivia</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="br" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Brazil</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="cl" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Chile</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="co" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Colombia</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ec" translate="label" type="select" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Ecuador</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="fk" translate="label" type="select" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Falkland Islands</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="gf" translate="label" type="select" sortOrder="8" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>French Guiana</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="gy" translate="label" type="select" sortOrder="9" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Guyana</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="py" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Paraguay</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="pe" translate="label" type="select" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Peru</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="sr" translate="label" type="select" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Suriname</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="uy" translate="label" type="select" sortOrder="13" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Uruguay</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ve" translate="label" type="select" sortOrder="14" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Venezuela</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                </group>
+                <group id="others" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>OTHERS</label>
+                    <field id="aq" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Antarctica</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="bv" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Bouvet Island</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ci" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Côte d’Ivoire</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="sv" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>El Salvador</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="tf" translate="label" type="select" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>French Southern Territories</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="hm" translate="label" type="select" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Heard &amp; McDonald Islands</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="an" translate="label" type="select" sortOrder="8" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Netherlands Antilles</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ni" translate="label" type="select" sortOrder="9" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Nicaragua</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="ps" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Palestinian Territories</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="um" translate="label" type="select" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>U.S. Outlying Islands</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                    <field id="vi" translate="label" type="select" sortOrder="13" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>U.S. Virgin Islands</label>
+                        <source_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\Locale\Currency</source_model>
+                        <backend_model>Magefan\AutoCurrencySwitcher\Model\Config\Source\CountryCurrency</backend_model>
+                    </field>
+                </group>
+                <attribute type="expanded">1</attribute>
+                <field id="version" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>Magefan\AutoCurrencySwitcher\Block\Adminhtml\System\Config\Form\DefaultDisplayCurrency</frontend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
+

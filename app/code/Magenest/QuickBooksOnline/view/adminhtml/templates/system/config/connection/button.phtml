@@ -1,0 +1,29 @@
+<?php
+/**
+ * Copyright © 2015 Magenest. All rights reserved.
+ * See COPYING.txt for license details.
+ *
+ * Magenest_QuickBooksOnline extension
+ * NOTICE OF LICENSE
+ *
+ * @category Magenest
+ * @package  Magenest_QuickBooksOnline
+ * @author   ThaoPV <thaopw@gmail.com>
+ */
+?>
+<?php
+/** @var $block \Magenest\QuickBooksOnline\Block\System\Config\Form\Button\Connection */
+?>
+<ipp:connectToIntuit></ipp:connectToIntuit>
+<script>
+    require(['jquery', 'intuit'], function($, intuit){
+        $(document).ready(function(){
+            intuit.ipp.anywhere.setup({
+                menuProxy: '<?= $block->getMenuUrl();?>',
+                grantUrl: '<?= $block->getGrantUrl();?>'
+            });
+            intuit.startConnection();
+        })
+    });
+</script>
+

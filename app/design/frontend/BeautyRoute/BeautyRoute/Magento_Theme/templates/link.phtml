@@ -1,0 +1,32 @@
+<div class="cart_wishlst">
+    <ul>
+        <?php if ($block->isCustomerLoggedIn()): ?>
+            <ul class="customer-account-links">
+                <li>
+                    <a href="javascript: void(0)" class="customer-name">
+                        <i class="fa fa-user-circle"></i>
+                        <p><?= $block->getCustomerName(); ?></p>
+                    </a>
+                    <ul class="customer-account-links-togel" style="display: none;">
+                        <li><a href="<?= $block->getUrl('sales/order/history/'); ?>"><?= __('My Orders'); ?></a>
+                        <li><a href="<?= $block->getUrl('customer/account/login/'); ?>"><?= __('My Account'); ?></a>
+                        <li><a href="<?= $block->getUrl('customer/account/logout'); ?>"><?= __('Logout'); ?></a>
+                    </ul>
+                </li>
+            </ul>
+        <?php else : ?> 
+            <li class="account_icn"><i class="fa fa-user-circle"></i><a href="<?= $block->getUrl('customer/account/create'); ?>"><?= __('My Account') ?></a></li>
+        <?php endif; ?>
+    </ul>
+</div>
+
+<script type="text/x-magento-init">
+{
+   "*": {
+        "Elsnertech_Customization/js/theme/themeCustomization": {
+            "isCustomerLoggedIn": "<?= $block->isCustomerLoggedIn() ?>",
+            "wishlistCount": "<?= $block->getWishlistCountByCustomerId() ?>"
+        }
+  }
+}
+</script>

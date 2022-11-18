@@ -1,0 +1,112 @@
+<script type="text/javascript">
+require(['jquery', 'jquery/ui'], function($){
+$(document).ready(function(){
+    
+  setInterval(function(){
+    
+
+   if (jQuery('.action.compare').length) { jQuery(".content").addClass("after_compare_add")}
+    if(jQuery('.action.compare.no-display').length) { jQuery(".content").removeClass("after_compare_add") }; }, 500);
+  
+  jQuery(".field-recaptcha").prependTo(".page-footer");
+  setInterval(function(){ jQuery(".filter-options-item").find(".filter-options-content").css("display", "block"); }, 500);
+
+  setTimeout(function(){
+  jQuery('.button-search').parents('form').addClass('lofar-drone-search'); 
+  jQuery('.lof-search .button-search').addClass('lofar-drone-button');
+  jQuery('.ui-autocomplete-input').addClass('keypress-event');
+  
+if(jQuery('.ui-autocomplete-input').val() ==0){ jQuery('.ui-autocomplete-input').val('');}
+jQuery('.lofar-drone-search').on('submit', function (e) {
+            e.preventDefault();
+            queryformsubmit();
+      });
+
+  }, 1000);
+
+jQuery(document).on("click",".lofar-drone-button",function() {
+
+       var qry      ='?';
+       var qry1     ='&q=0';
+       var cat      =jQuery('.lofar-drone-search').find('select').val();
+       var text     =jQuery('.ui-autocomplete-input').val();
+       var action   =jQuery('.lofar-drone-search').attr('action');
+       var resact   =action.replace('catalogsearch/result', 'shopbrand');
+       var check    =0;
+
+       // if(jQuery('#brandcheckbox').prop('checked')){
+       //  check = 1;
+       // }
+       
+       if(cat > 2) { qry  ='?cat='+cat; }
+       if(text)    { qry1 ='&q='+text;  }
+
+       // if(check > 0){ 
+       //  action = resact + text.toLowerCase()+'.html'; qry=''; qry1='';
+       // }
+
+       //console.log(check);
+     //  return false;
+
+       var url = action + qry + qry1; 
+       // alert('text:'+qry1+':cat'+cat+':qry:'+qry+':action:'+jQuery('.lofar-drone-search').attr('action'));
+       window.location = url;
+});
+
+ function queryformsubmit(){
+       var qry      ='?';
+       var qry1     ='&q=0';
+       var cat      =jQuery('.lofar-drone-search').find('select').val();
+       var text     =jQuery('.ui-autocomplete-input').val();
+       var action   =jQuery('.lofar-drone-search').attr('action');
+       var resact   =action.replace('catalogsearch/result', 'shopbrand');
+       var check    =0;
+
+       // if(jQuery('#brandcheckbox').prop('checked')){
+       //  check = 1;
+       // }
+       
+       if(cat > 2) { qry  ='?cat='+cat; }
+       if(text)    { qry1 ='&q='+text;  }
+
+       // if(check > 0){ 
+       //  action = resact + text.toLowerCase()+'.html'; qry=''; qry1='';
+       // }
+
+       //console.log(check);
+     //  return false;
+
+       var url = action + qry + qry1; 
+       // alert('text:'+qry1+':cat'+cat+':qry:'+qry+':action:'+jQuery('.lofar-drone-search').attr('action'));
+       window.location = url;
+
+ }
+
+      $(".filter-options-item").addClass("open-filter");
+      $('p').each(function() {
+    var $this = $(this);
+    if($this.html().replace(/\s|&nbsp;/g, '').length == 0)
+        $this.remove();
+});
+    $(function () {
+    $(".category-filter").each(function () {
+        var $this = $(this);
+        $this.html($this.html().replace(/&nbsp;/g, ''));
+    });
+});
+});
+});
+</script>
+<script type="text/javascript">
+  require(['jquery', 'jquery/ui'], function($){   
+
+    setTimeout(function(){
+      jQuery(".lofar-drone-button").removeAttr("disabled") }, 3000);
+    jQuery(".nav-1-1 , .nav-1-2 , .nav-1-3 , .nav-1-4 , .nav-1-5 , .nav-1-6 , .nav-1-7 , .nav-1-8 , .nav-1-9 , .nav-1-10").hover(function(){
+    jQuery(this).addClass('mega-menu-hover');
+    },function(){
+    jQuery(this).removeClass('mega-menu-hover');
+    });
+    jQuery('.shopbrand-brand-view').find('.breadcrumbs').addClass('custom-breadcrumbs');
+  });
+</script>

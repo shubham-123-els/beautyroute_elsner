@@ -1,0 +1,19 @@
+<?php
+/**
+ * Copyright © 2017 Magenest. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php
+/** @var $block \Magenest\QuickBooksOnline\Block\System\Config\Form\Button */
+?>
+<div class="actions button-container">
+    <a href="<?php /* @escapeNotVerified */ echo $block->escapeUrl($block->getButtonUrl()) ?>">
+        <button  class="button action-configure"
+                 type="button"
+                 data-role="<?php /* @escapeNotVerified */ echo $block->getHtmlId() ?>"
+                 id="<?php /* @escapeNotVerified */ echo $block->getHtmlId() ?>">
+            <span><?php /* @escapeNotVerified */ echo $block->escapeHtml($block->getButtonLabel()) ?></span>
+        </button>
+    </a>
+</div>

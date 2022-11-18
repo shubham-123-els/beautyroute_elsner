@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <block class="Magento\Cms\Block\Block" name="top_header_block_second">
+              <arguments>
+                  <argument name="block_id" xsi:type="string">top_header_block</argument>
+              </arguments>
+        </block>
+
+        <block class="Magento\Framework\View\Element\Template" name="closebutton-menu"  template="Magento_Theme::closebutton.phtml" cacheable="false" />
+
+        <referenceBlock name="store.settings" remove="true" />
+        <referenceBlock name="store.links" remove="true" />
+
+        <!-- My account  <referenceBlock name="custom_header_links" remove="true" />  -->
+        <!-- wishlist  <referenceBlock name="top.links" remove="true" />  -->
+
+        <move element="closebutton-menu" destination="store.menu" before="-"/>
+        <move element="top.search" destination="store.menu" before="-"/>
+        <move element="custom_header_links" destination="store.menu" before="minicart"/>
+        <move element="minicart" destination="store.menu" before="top.links" />
+        <move element="top.links" destination="store.menu" after="top.links"/>
+        <move element="top_header_block_second" destination="store.menu" after="-"/>
+    </body>
+</page>

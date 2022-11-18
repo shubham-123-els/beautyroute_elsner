@@ -1,0 +1,193 @@
+.mainform11{
+	background: red;
+} 
+.static-block .account-header h1 {
+    font-size:36px;
+    font-weight:700;
+    color:#000;
+    margin-bottom: 30px;
+    margin-top: 40px;
+}
+
+.static-block .account-header h2{
+    font-size:30px;
+    font-weight:500; 
+    margin:0px;
+    color:#000;
+    margin-bottom: 30px;
+} 
+.static-block .account-header  p{
+	color: #000;
+	margin-bottom:20px;
+	font-size:15px;
+	letter-spacing:1.2;
+} 
+.account-header p{
+    font-size:16px;
+    font-weight:550;
+}
+
+.professionals-index-index .form-data .control {
+    font-size: 14px;
+    line-height: 1.42;
+    color: #555; 
+    display: block;
+}
+
+.professionals-index-index .form-data{
+    margin-bottom:20px;
+}
+
+.professionals-index-index .form-data label{
+    font-size: 16px;
+	line-height: 1;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 7px;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    display:block;
+}
+.professionals-index-index .form-data input,
+.professionals-index-index .form-data select{
+    height:50px;
+    margin:10px 0px;
+}
+
+.professionals-index-index .fomr_data-gride {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between
+}
+
+.professionals-index-index .fomr_data-gride .form-data {
+    width: 48%;
+
+}
+
+.professionals-index-index .form-data input[type="file"] {
+    border: 0;
+}
+
+.professionals-index-index .fomr_data-gride .form-data:nth-child(1),
+.professionals-index-index .fomr_data-gride .form-data:nth-child(2),
+.professionals-index-index .fomr_data-gride .form-data:nth-child(3),
+.professionals-index-index .fomr_data-gride .form-data:nth-child(6){
+    width: 100%;
+    text-align:left
+} 
+
+.professionals-index-index .form-data .control{
+    margin-top:10px;
+    font-weight:600l;
+}
+.professionals-index-index .form-data .action.primary {
+    padding: 15px 20px;
+    background: #000;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 18px;
+    float: right;
+}
+.actions-toolbar {
+    margin:0 auto;
+    display:flex;
+    justify-content:center;
+}
+.actions-toolbar .actions-toolbar .primary {
+    float: unset;
+    max-width: 250px;
+  
+}
+
+.abs-margin-for-forms-desktop, .fieldset .legend, .column:not(.sidebar-main) form .actions-toolbar, .column:not(.sidebar-additional) form .actions-toolbar, .login-container .fieldset:after{
+    margin-left:auto !important;
+}
+.actions-toolbar > .primary .action:last-child, .actions-toolbar > .secondary .action:last-child{
+    background: #BEEEEF !important;
+    color: #000 !important;
+}
+
+.smaple_forms {
+    display:flex;
+    justify-content:space-between
+}
+.smaple_forms .form-data{
+    width:49%;
+}
+@media screen and (max-width:575px){
+ .smaple_forms .form-data{
+    width:100% !important;
+    }   
+}
+
+
+/*25-01-22 changes*/
+.professionals-account-from-main {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+.professionals-account-from-content.account-header h1{
+    text-align:center;
+}
+.account-header p {
+    font-weight:400;
+   
+}
+.static-block .account-header h2 {
+    margin-top: 60px;
+}
+.form_beuty label span {
+    font-size: 28px !important;
+}
+.professionals-index-index .form-data label {
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: -10px;
+}
+.form_beuty {
+    margin-top:30px !important;
+}
+.form_beuty .control{
+    display:flex;
+    flex-direction:column;
+}
+.form_beuty .control input{
+    width:100%;
+    height:30px;
+    margin-top: 45px;
+}
+.form_beuty .control span{
+    margin-top:-20px !important;
+    font-weight:400;
+  
+}
+.form-simples .form-data .field-subtext{
+    font-size:16px;
+}
+
+.form-simples .form-data label span {
+    font-size: 16px;
+      display: flex;
+}
+.form-simples .form-data label span{
+    font-size: 16px;
+}
+.form-simples .form-data label span p{
+    display:inline-block !important;
+    margin-bottom: 0  !important;
+}
+
+.form-simples .form-data .control input ,
+.form-simples .form-data .control  select{
+    border:1px solid black;
+} 
+.form-simples .form-data .control input:nth-child(2){
+    margin-top:30px !important;
+}
+.form-simples .form-data .control input:focus,
+.form-simples .form-data .control  select:focus{
+    box-shadow:none;
+}
+.form_beuty input[type="file"]{
+    border:none !important;
+} 

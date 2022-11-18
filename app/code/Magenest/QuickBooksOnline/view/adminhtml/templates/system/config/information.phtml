@@ -1,0 +1,58 @@
+<?php
+/**
+ * @var \Magenest\QuickBooksOnline\Block\System\Config\Form\Information $block
+ */
+$userInfo = $block->getCompanyInfo();
+?>
+<div class="admin__page-section-item-content">
+    <table class="admin__table-secondary">
+        <tbody>
+        <?php foreach ($userInfo as $label => $value): ?>
+            <tr>
+                <th><?php /* @escapeNotVerified */
+                    echo $block->escapeHtml($label) ?></th>
+                <th><?php /* @escapeNotVerified */
+                    echo $block->escapeHtml($value) ?></th>
+            </tr>
+        <?php endforeach; ?>
+        <tr>
+            <th>
+                <div class="actions button-container">
+                    <button class="button action-configure" id="disconnect_button"
+                            type="button"
+                            data-action="disconnect-app">
+                        <span><?php /* @escapeNotVerified */
+                            echo __('Disconnect'); ?></span>
+                    </button>
+                </div>
+            </th>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script type='text/javascript'>
+    require([
+            'jquery',
+            'Magento_Ui/js/modal/confirm'
+        ],
+        function ($, confirmation) {
+            $('#disconnect_button').click(function (event) {
+                event.preventDefault();
+
+                var url = "<?php /* @escapeNotVerified */ echo $block->escapeUrl($block->getDisconnectUrl()) ?>";
+                confirmation({
+                    title: 'Disconnect from QuickBooks?',
+                    content: 'The mappings of accounts, payment methods and tax codes will also be removed from Magento.',
+                    actions: {
+                        confirm: function () {
+                            window.location.href = url;
+                        },
+                        cancel: function () {
+                        }
+                    }
+                });
+                return false;
+            });
+        });
+</script>

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="MageArray_Faq::css/faq.css"/>
+        <css src="MageArray_Faq::css/font-awesome.css"/>
+    </head>
+    <body>
+        <referenceContainer name="columns.top">
+            <block class="MageArray\Faq\Block\Faq\FaqDescription" name="description" before="content"
+                   template="MageArray_Faq::faq/description.phtml"/>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="MageArray\Faq\Block\Faq\FaqSearch" name="faqsearch"
+                   template="MageArray_Faq::faq/search.phtml"/>
+            <block class="Magento\Cms\Block\Block" name="faq-image">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">faq-image</argument>
+                </arguments>
+            </block>
+            <block class="MageArray\Faq\Block\Faq\FaqList" name="faqcollapse" template="faq/list.phtml"/>
+        </referenceContainer>
+        <referenceContainer name="sidebar.main">
+            <block class="Magento\Cms\Block\Block" name="faq-image">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">faq-image</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="sidebar.additional">
+            <block class="MageArray\Faq\Block\Faq\FaqTop" name="faqtop" template="faq/tops.phtml"/>
+        </referenceContainer>
+        <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+        <referenceBlock name="wishlist_sidebar" remove="true"/>
+        <referenceBlock name="faq.categorytree.left" remove="true"/>
+        <referenceBlock name="faqtop" remove="true"/>
+
+    </body>
+</page>

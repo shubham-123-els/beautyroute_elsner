@@ -1,0 +1,149 @@
+"File to Import","File to Import"
+"Select File","Select File"
+"Download Sample File","Download Sample File"
+"Save and Continue Edit","Save and Continue Edit"
+Duplicate,Duplicate
+"Edit Method ""%1""","Edit Method ""%1"""
+"New Method","New Method"
+ID,ID
+Name,Name
+All,All
+Country,Country
+State/Region,State/Region
+"Zip/Post code","Zip/Post code"
+Weight,Weight
+Price,Price
+"# of Items","# of Items"
+"Shipping Group","Shipping Group"
+"Product Fixed Rate","Product Fixed Rate"
+"Product Percentage Rate","Product Percentage Rate"
+"Weight Fixed Rate","Weight Fixed Rate"
+"Order Fixed Rate","Order Fixed Rate"
+"Estimated Delivery Days","Estimated Delivery Days"
+Labels,Labels
+Label,Label
+Description,Description
+General,General
+"You can use variable {{delivery_days}} to show the estimated delivery days on the shipping method's name on storefront.","You can use variable {{delivery_days}} to show the estimated delivery days on the shipping method's name on storefront."
+"Internal Note","Internal Note"
+Status,Status
+"Calculation Shipping Rate Rule","Calculation Shipping Rate Rule"
+"Select how to calculate shipping fee for cart with different shipping rates.","Select how to calculate shipping fee for cart with different shipping rates."
+Image,Image
+"The image is shown before the shipping method at the backend and frontend.","The image is shown before the shipping method at the backend and frontend."
+"Store View(s)","Store View(s)"
+"Customer Group(s)","Customer Group(s)"
+Conditions,Conditions
+"Is Zip/Postcode Range","Is Zip/Postcode Range"
+Zip/Postcode,Zip/Postcode
+"Zip/Postcode From","Zip/Postcode From"
+"Weight From","Weight From"
+"Price From","Price From"
+"Qty From","Qty From"
+here,here
+"Also shown on product edit page. To add the options, please go to settings %1.","Also shown on product edit page. To add the options, please go to settings %1."
+Settings,Settings
+"The fixed rate for each product in the cart","The fixed rate for each product in the cart"
+"The percentage of each product price, based on which the rate is counted","The percentage of each product price, based on which the rate is counted"
+"Weight Unit Fixed Rate","Weight Unit Fixed Rate"
+"The fixed rate for each weight unit","The fixed rate for each weight unit"
+"The fixed rate for the whole order","The fixed rate for the whole order"
+"Estimated Delivery Time","Estimated Delivery Time"
+days,days
+Action,Action
+CSV,CSV
+Delete,Delete
+"Method Information","Method Information"
+Information,Information
+"Shipping Rates","Shipping Rates"
+Edit,Edit
+"You have added %1 record(s)","You have added %1 record(s)"
+"%1 error(s)","%1 error(s)"
+"The method has been deleted.","The method has been deleted."
+"We can't delete the method right now.","We can't delete the method right now."
+"We can't find a method to delete.","We can't find a method to delete."
+"The method has been duplicated.","The method has been duplicated."
+"This method no longer exists.","This method no longer exists."
+"Create New Method","Create New Method"
+"A total of %1 rate(s) have been imported.","A total of %1 rate(s) have been imported."
+"Shipping Methods","Shipping Methods"
+"Please correct the data sent.","Please correct the data sent."
+"Something went wrong while saving the method.","Something went wrong while saving the method."
+"Something went wrong while deleting the record(s).","Something went wrong while deleting the record(s)."
+"A total of %1 record(s) have been deleted.","A total of %1 record(s) have been deleted."
+"Something went wrong while updating the record(s) status.","Something went wrong while updating the record(s) status."
+"A total of %1 record(s) have been updated.","A total of %1 record(s) have been updated."
+"The rate has been saved","The rate has been saved"
+"The method has been saved.","The method has been saved."
+"Make sure your file isn't more than %1M.","Make sure your file isn't more than %1M."
+"We can't provide the upload settings right now.","We can't provide the upload settings right now."
+"-- Please Select --","-- Please Select --"
+"%1 day(s)","%1 day(s)"
+"%1 - %2 day(s)","%1 - %2 day(s)"
+"Invalid entity","Invalid entity"
+"Column <strong>%1</strong> not found","Column <strong>%1</strong> not found"
+"Sum up rates","Sum up rates"
+"Choose the lowest rate","Choose the lowest rate"
+"Choose the highest rate","Choose the highest rate"
+Disable,Disable
+Enable,Enable
+None,None
+"Volumetric Weight","Volumetric Weight"
+"Volumetric (V)","Volumetric (V)"
+"Volume Attributes","Volume Attributes"
+"To add the options, please go to settings %1.","To add the options, please go to settings %1."
+"Import From Others","Import From Others"
+"Import Rates","Import Rates"
+"New Rate","New Rate"
+"Incl. Tax","Incl. Tax"
+"Click to change shipping method","Click to change shipping method"
+"Sorry, no quotes are available for this order.","Sorry, no quotes are available for this order."
+"Get shipping methods and rates","Get shipping methods and rates"
+"You don't need to select a shipping method.","You don't need to select a shipping method."
+"Address %1 <span>of %2</span>","Address %1 <span>of %2</span>"
+"Shipping To","Shipping To"
+Change,Change
+"Shipping Method","Shipping Method"
+"Sorry, no quotes are available for this order right now.","Sorry, no quotes are available for this order right now."
+"Excl. Tax","Excl. Tax"
+Items,Items
+"Edit Items","Edit Items"
+"Product Name","Product Name"
+Qty,Qty
+"Continue to Billing Information","Continue to Billing Information"
+"Back to Select Addresses","Back to Select Addresses"
+"Import Shipping Rates","Import Shipping Rates"
+Import,Import
+Cancel,Cancel
+"Select Shipping Rates","Select Shipping Rates"
+"Add New Shipping Rate","Add New Shipping Rate"
+"Edit Shipping Rate","Edit Shipping Rate"
+Save,Save
+"Field ","Field "
+" is required."," is required."
+"Mageplaza Table Rate Shipping","Mageplaza Table Rate Shipping"
+"Table Rate Shipping by Mageplaza","Table Rate Shipping by Mageplaza"
+"Select Yes to enable this module","Select Yes to enable this module"
+"Carrier Title","Carrier Title"
+"Ship to Applicable Countries","Ship to Applicable Countries"
+"Ship to Specific Countries","Ship to Specific Countries"
+"Include Virtual Products in Price Calculation","Include Virtual Products in Price Calculation"
+"Use Volumetric Weight Calculation","Use Volumetric Weight Calculation"
+"Select Weight Attribute","Select Weight Attribute"
+"Select Volumetric (V) Attribute","Select Volumetric (V) Attribute"
+"Support both input types: V or LxWxH","Support both input types: V or LxWxH"
+"Attribute 1","Attribute 1"
+"Attribute 2","Attribute 2"
+"Attribute 3","Attribute 3"
+"Shipping Factor","Shipping Factor"
+"<a href=""https://en.wikipedia.org/wiki/Dimensional_weight"" target=""_blank"">What is shipping factor?</a>","<a href=""https://en.wikipedia.org/wiki/Dimensional_weight"" target=""_blank"">What is shipping factor?</a>"
+"Show Method if Not Applicable","Show Method if Not Applicable"
+"Displayed Error Message","Displayed Error Message"
+"Displayed on the View Cart Page, the Checkout Page","Displayed on the View Cart Page, the Checkout Page"
+"Sort Order","Sort Order"
+"All Store Views","All Store Views"
+"Store View","Store View"
+"Are you sure to delete selected items?","Are you sure to delete selected items?"
+"Change Status","Change Status"
+"Customer Groups","Customer Groups"
+"Store Views","Store Views"

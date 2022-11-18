@@ -1,0 +1,15 @@
+<?php
+/**
+ * @category    FishPig
+ * @package     FishPig_WordPress
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<?php if ($text = $block->getIntroText()): ?>
+    <p class="post-list-description"><?= $block->escapeHtml($text) ?></p>
+<?php endif; ?>
+<?php if ($postList = trim($block->getPostListHtml())): ?>
+    <?= $postList ?>
+<?php else: ?>
+    <p class="note-msg"><?= __('There are no posts matching your selection.') ?></p>
+<?php endif; ?>

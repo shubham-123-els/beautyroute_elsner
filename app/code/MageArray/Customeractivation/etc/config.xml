@@ -1,0 +1,13 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <customeractivation>
+            <general>
+                <active>0</active>
+            </general>
+            <message>
+                <registration_success_messagetext>Thank you for registration. We will review your account and update you once activated.</registration_success_messagetext>
+                <errormessagetext>You account is not activate yet.</errormessagetext>
+            </message>
+        </customeractivation>
+    </default>
+</config>

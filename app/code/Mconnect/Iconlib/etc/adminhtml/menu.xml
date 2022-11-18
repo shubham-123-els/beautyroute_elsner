@@ -1,0 +1,7 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+<menu>
+<add id="Mconnect_Iconlib::iconlib_manager" title="Icon Library" module="Mconnect_Iconlib" sortOrder="10" parent="Mconnect_General::general" resource="Mconnect_Iconlib::iconlib_manager"/>
+<add id="Mconnect_Iconlib::icon_head" title="Icon Library" module="Mconnect_Iconlib" sortOrder="100" action="iconlib/icon/index" parent="Mconnect_Iconlib::iconlib_manager" resource="Mconnect_Iconlib::icon_head"/>
+<add id="Mconnect_Iconlib::icon_head_child" title="Settings" module="Mconnect_Iconlib" sortOrder="100" action="adminhtml/system_config/edit/section/mconnect_iconlib" parent="Mconnect_Iconlib::iconlib_manager" resource="Mconnect_Iconlib::icon_head_child"/>
+</menu>
+</config>

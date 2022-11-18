@@ -1,0 +1,72 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_TableRateShipping
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+/** @var $block \Mageplaza\TableRateShipping\Block\Adminhtml\Method\Edit\Tab\Rate\Button */
+$id = $block->getMethodId();
+?>
+
+<div class="button-container" id="mp-button-container">
+    <button type="button" class="action-default primary" id="mp-import-method">
+        <span><?= $block->escapeHtml(__('Import From Others')) ?></span>
+    </button>
+    <button type="button" class="action-default primary" id="mp-import-csv">
+        <span><?= $block->escapeHtml(__('Import Rates')) ?></span>
+    </button>
+    <button type="button" class="action-default primary" id="mp-add-rate">
+        <span><?= $block->escapeHtml(__('New Rate')) ?></span>
+    </button>
+</div>
+
+<div style="clear: both"></div>
+
+<div id="mp-popup-container">
+    <form id="mp-import-grid"></form>
+
+    <form id="mp-csv-form" method="post" enctype="multipart/form-data">
+        <div class="messages">
+            <div class="message message-notice notice">
+                <span><?= $block->escapeHtml($block->getHelper()->getMaxUploadSizeMessage()) ?></span>
+            </div>
+        </div>
+
+        <div class="import-message"></div>
+
+        <?= $block->getChildHtml('import_form') ?>
+    </form>
+</div>
+
+<div id="mp-message-container"></div>
+
+<script type="text/x-magento-init">
+    {
+        "#mp-button-container": {
+            "Mageplaza_TableRateShipping/js/rate/buttons":{
+                "rateFormUrl": "<?= $block->escapeUrl($block->getUrl('*/*/rateForm', ['id' => $id])) ?>",
+                "rateSaveUrl": "<?= $block->escapeUrl($block->getUrl('*/*/rateSave')) ?>",
+                "csvForm": "#mp-csv-form",
+                "csvImportUrl": "<?= $block->escapeUrl($block->getUrl('*/import/process', ['id' => $id])) ?>",
+                "gridImportUrl": "<?= $block->escapeUrl($block->getUrl('*/*/importGrid', ['id' => $id])) ?>",
+                "gridProcessUrl": "<?= $block->escapeUrl($block->getUrl('*/*/importProcess', ['id' => $id])) ?>"
+            }
+        }
+    }
+
+</script>

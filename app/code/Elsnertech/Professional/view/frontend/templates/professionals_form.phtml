@@ -1,0 +1,202 @@
+<?php 
+   $CmsBlock = $block->getCmsblock();
+   $countryList = $block->getCountries();
+   $regionList = $block->getRegion();
+   $Maxsize = $block->getMaxsize();
+   $enable = $block->getenable();
+?>
+
+<?php if (!$enable): ?>
+   <div class="professionals-account-from-disable">
+      <span>
+         <?= __('This feature is temporary disabled. Please contact to administratoer for create a Professional account. 
+            %1Please click here%2', 
+            '<a href="' . $block->getUrl('contact') .'">', '</a>') ?>
+      </span>
+   <div>
+<?php else: ?>   
+   <div class="professionals-account-from-main">
+         <div class="professionals-account-from-content-main static-block">
+            <?= $CmsBlock; ?>
+         </div>
+
+         <form class="professionals-account-from mainform"
+               action="<?= $block->escapeUrl($block->getFormAction()) ?>" 
+               method="post" 
+               enctype=multipart/form-data 
+               data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>"
+               id="professionals-form">
+               
+               <fieldset class="fieldset">
+
+                  <div class="form-simples">
+
+                     <div class="smaple_forms">
+                           
+                           <div class="form-data required">
+                                 <label class="label" for="firstname"><span><?= $block->escapeHtml(__('First Name')) ?><p style="color: red;">*</p></span></label>
+                                 <div class="control">
+                                    <input name="firstname"
+                                       id="firstname"
+                                       title="<?= $block->escapeHtmlAttr(__('First Name')) ?>"
+                                       placeholder="<?= $block->escapeHtmlAttr(__('Enter First Name')) ?>"
+                                       class="input-text"
+                                       type="text"
+                                       data-validate="{required:true}"/>
+                                 </div>
+                           </div>
+
+                           <div class="form-data required">
+                                 <label class="label" for="lastname"><span><?= $block->escapeHtml(__('Last Name')) ?><p style="color: red;">*</p></span></label>
+                                 <div class="control">
+                                    <input name="lastname"
+                                       id="lastname"
+                                       title="<?= $block->escapeHtmlAttr(__('Last Name')) ?>"
+                                       placeholder="<?= $block->escapeHtmlAttr(__('Enter Last Name')) ?>"
+                                       class="input-text"
+                                       type="text"
+                                       data-validate="{required:true}"/>
+                                 </div>
+                           </div>
+
+                     </div>
+
+                     <div class="form-data required">
+                           <label class="label" for="email"><span><?= $block->escapeHtml(__('Email Address')) ?><p style="color: red;">*</p></span></label>
+                           <div class="control">
+                              <input name="email"
+                                    id="email"
+                                    title="<?= $block->escapeHtmlAttr(__('Email Address')) ?>"
+                                    placeholder="<?= $block->escapeHtmlAttr(__('Enter Email Address')) ?>"
+                                    class="input-text"
+                                    type="text"
+                                    data-validate="{required:true, 'validate-email':true}"/>
+                              <span class="field-subtext">
+                                 <?= __('This email address will also be used as a username for your professional stylist account') ?>
+                              </span>
+                           </div>
+                     </div>
+
+                     <div class="form-data form_beuty required">
+                           <label class="label" for="certificate">
+                              <span>
+                                 <?= $block->escapeHtml(__('Please upload your diploma certificate or student card')) ?>
+                              <p style="color: red;">*</p></span>
+                           </label>
+                           <div class="control">
+                              <input name="certificate" type="file" class="input-file" data-validate="{required:true}">
+                              <span class="field-subtext">
+                                 <?= __('Make sure your student card has the name and telephone number of your school Maximum file size %1 MB. Supported formats: pdf, jpg, jpeg, gif, png, doc and docx', 
+                                    $Maxsize) ?>
+                              </span>
+                           </div>
+                     </div> 
+
+                     <div class="form-data form_beuty required">
+                           <label class="label" for="proof-of-identity"><span><?= $block->escapeHtml(__('Proof of Identity')) ?><p style="color: red;">*</p></span></label>
+                           <div class="control">
+                              <input name="proof" type="file" class="input-file" data-validate="{required:true}">
+                              <span class="field-subtext">
+                                 <?= __('Driver\'s license, health insurance card or birth certificate Maximum file size %1 MB. Supported formats: pdf, jpg, jpeg, gif, png, doc and docx', 
+                                    $Maxsize) ?>
+                              </span>
+                           </div>
+                     </div> 
+
+                     <div class="form-data">
+                           <label class="label" for="salon"><span><?= $block->escapeHtml(__('Name of Hair Salon')) ?><p style="color: red;">*</p></span></label>
+                           <div class="control">
+                              <input name="salon"
+                                    id="salon"
+                                    title="<?= $block->escapeHtmlAttr(__('Name of Hair Salon')) ?>"
+                                    class="input-text"
+                                    type="text"
+                                    data-validate="{required:true}"/>
+                           </div>
+                     </div>
+
+                     <div class="form-data required">
+                           <label class="label" for="salon-address"><span><?= $block->escapeHtml(__('Salon Address')) ?><p style="color: red;">*</p></span></label>
+                           <div class="control">
+                              <input name="street1"
+                                    id="street1"
+                                    title="<?= $block->escapeHtmlAttr(__('Salon Address Line 1')) ?>"
+                                    class="input-text"
+                                    type="text"
+                                    data-validate="{required:true}"/>
+                              <input name="street2"
+                                    id="street2"
+                                    title="<?= $block->escapeHtmlAttr(__('Salon Address Line 2')) ?>"
+                                    class="input-text"
+                                    type="text"/>
+                           </div>
+                     </div>
+
+                     <div class="form-data required">
+                           <label class="label" for="city"><span><?= $block->escapeHtml(__('City')) ?><p style="color: red;">*</p></span></label>
+                           <div class="control">
+                              <input name="city"
+                                    id="city"
+                                    title="<?= $block->escapeHtmlAttr(__('City')) ?>"
+                                    class="input-text"
+                                    type="text"
+                                    data-validate="{required:true}"/>
+                           </div>
+                     </div>
+
+                     <div class="smaple_forms">
+                           
+                           <div class="form-data required">
+                                 <label class="label" for="country"><span><?= $block->escapeHtml(__('Country')) ?></span></label>
+                                 <div class="control">
+                                       <?= $countryList ?>
+                                 </div>
+                           </div>
+
+                           <div class="form-data required">
+                                 <label class="label" for="postcode"><span><?= $block->escapeHtml(__('Postal Code')) ?><p style="color: red;">*</p></span></label>
+                                 <div class="control">
+                                    <input name="postcode"
+                                          id="postcode"
+                                          title="<?= $block->escapeHtmlAttr(__('Postal Code')) ?>"
+                                          class="input-text"
+                                          type="text"
+                                          data-validate="{required:true}"/>
+                                 </div>
+                           </div>
+
+
+                     </div>
+                        
+                        <div class="form-data required">
+                           <label class="label" for="phonenumber"><span><?= $block->escapeHtml(__('Salon Phone Number')) ?><p style="color: red;">*</p></span></label>
+                           <div class="control">
+                              <input name="phonenumber"
+                                    id="phonenumber"
+                                    title="<?= $block->escapeHtmlAttr(__('PostCode')) ?>"
+                                    class="input-text"
+                                    type="text"
+                                    data-validate="{required:true}"/>
+                           </div>
+                        </div>
+
+                       </div>
+               </fieldset>
+               <div class="actions-toolbar">
+                  <div class="primary">
+                     <input type="hidden" name="hideit" id="hideit" value="" />
+                     <button type="submit" title="<?= $block->escapeHtmlAttr(__('SEND MAIL')) ?>" class="action submit primary">
+                        <span><?= $block->escapeHtml(__('SEND MAIL')) ?></span>
+                     </button>
+                  </div>
+               </div>
+         </form>
+   </div>
+   <script type="text/x-magento-init">
+      {
+         "#professionals-form": {
+            "validation": {}
+         }
+      }
+   </script>
+<?php endif; ?>

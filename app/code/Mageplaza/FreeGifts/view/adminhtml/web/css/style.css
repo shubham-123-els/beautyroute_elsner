@@ -1,0 +1,50 @@
+/**
+* Mageplaza
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the mageplaza.com license that is
+* available through the world-wide-web at this URL:
+* https://www.mageplaza.com/LICENSE.txt
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade this extension to newer
+* version in the future.
+*
+* @category    Mageplaza
+* @package     Mageplaza_FreeGifts
+* @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+* @license     https://www.mageplaza.com/LICENSE.txt
+*/
+
+#mp-free-gifts-item-rule-reports, #mp-free-gifts-cart-rule-reports {
+    margin-bottom: 3%;
+}
+
+#mp-free-gifts-item-rule-report, #mp-free-gifts-cart-rule-report {
+    width: 75% !important;
+}
+
+#mp-free-gifts-item-rule-table tbody, #mp-free-gifts-cart-rule-table tbody {
+    display: block;
+    overflow: auto;
+}
+
+#mp-free-gifts-item-rule-table thead, #mp-free-gifts-item-rule-table tbody tr, #mp-free-gifts-cart-rule-table thead, #mp-free-gifts-cart-rule-table tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+#mp-free-gifts-reports table {
+    border: 0.1rem solid #d6d6d6;
+}
+
+#mp-free-gifts-reports {
+    display: none;
+}
+
+.scroll-height {
+    height: 400px;
+}

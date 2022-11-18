@@ -1,0 +1,82 @@
+<?php
+/**
+ * Copyright © 2015 Magenest. All rights reserved.
+ * See COPYING.txt for license details.
+ *
+ * Magenest_QuickBooksOnline extension
+ * NOTICE OF LICENSE
+ *
+ * @category Magenest
+ * @package  Magenest_QuickBooksOnline
+ * @author   ThaoPV <thaopw@gmail.com>
+ */
+?>
+<?php
+/** @var $block \Magenest\QuickBooksOnline\Block\System\Config\Form\Button\Connection */
+?>
+<script type="text/javascript">
+    require(['intuit'], function(intuit){
+        intuit.setup({
+            menuProxy: '<?= $block->getMenuUrl();?>',
+            grantUrl: '<?= $block->getGrantUrl();?>'
+        });
+    });
+</script>
+<div class="qbo-connection">
+    <?php if (!$block->check()):?>
+        <div class="qbo-status not-connect">
+            <?= __("<b>NOT</b> Connected");?>
+            <div class="connection-qbo-button">
+                <ipp:connectToIntuit></ipp:connectToIntuit>
+            </div>
+        </div>
+        <div class="qbo-description">
+            <?= __('- You must authenticate to QuickBooks <b>once</b> before you can exchange data with it.</br>');
+            echo __('- <strong>You only have to do this once!</strong></br>');
+            echo __('- After you\'ve authenticated once, you never have to go
+                    through this connection process again.<br>
+                    - Click the button above to
+                    authenticate and connect.');
+            ?>
+        </div>
+
+    <?php else:?>
+        <?php $companyInfo = $block->getCompanyInfo();?>
+        <ipp:blueDot></ipp:blueDot>
+        <div class="qbo-status success">
+            <?= __("Connected");?>
+        </div>
+        <div class="qbo-description">
+            <table>
+                <tbody>
+                <?php foreach ($companyInfo as $label => $value): ?>
+                    <tr>
+                        <td><label class="label-qbo"><?= __($label)?></label></td>
+                        <td class="qbo-info"><?= $value?></td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+            <div class="qbo-button">
+                <!--                <span>--><?php //echo $block->getReconnectButtonHtml()?><!--</span>-->
+                <span><?= $block->getDisconnectButtonHtml()?></span>
+            </div>
+        </div>
+    <?php endif;?>
+</div>
+<script>
+    require(['jquery'], function (jQuery) {
+        jQuery('[data-ui-id="content-schedule-block2-disconnect-button"]').click(function(){
+            var url = '<?= $block->getDisconnectUrl(); ?>';
+            jQuery.ajax({
+                type: "POST",
+                url: url,
+                data: {form_key: FORM_KEY},
+                showLoader: true,
+                success: function(){
+                    location.reload();
+                }
+            });
+        });
+    });
+</script>

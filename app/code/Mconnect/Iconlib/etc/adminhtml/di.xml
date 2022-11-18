@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<virtualType name="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Pool" type="Magento\Ui\DataProvider\Modifier\Pool">
+		<arguments>
+			<argument name="modifiers" xsi:type="array">
+				<item name="customertab" xsi:type="array">
+					<item name="class" xsi:type="string">Mconnect\Iconlib\Ui\DataProvider\Product\Modifier\Iconlib</item>
+					<item name="sortOrder" xsi:type="number">200</item>
+				</item>
+			</argument>
+		</arguments>
+	</virtualType>
+	<type name="Mconnect\Iconlib\Ui\DataProvider\Product\Modifier\Iconlib">
+        <arguments>            
+			<argument name="formName" xsi:type="string">product_form</argument>
+			<argument name="scopeName" xsi:type="string">product_form.product_form</argument>
+            <argument name="dataSourceName" xsi:type="string">product_form.product_form_data_source</argument>
+        </arguments>
+    </type>	
+</config>

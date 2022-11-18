@@ -1,0 +1,28 @@
+<?php
+/**
+ * @category    FishPig
+ * @package     FishPig_WordPress
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<?php $comments = $block->getComments() ?>
+<?php if (count($comments) > 0): ?>
+    <div class="block block-blog block-blog-comments">
+        <?php if ($title = $block->getTitle()): ?>
+            <div class="block-title">
+                <strong><?= $block->escapeHtml(__($title)) ?></strong>
+            </div>
+        <?php endif; ?>
+        <div class="block-content">
+            <ul id="wp-recent-comments-list">
+                <?php foreach ($comments as $comment): ?>
+                    <?php if ($comment->getPost()): ?>
+                    <li class="item">
+                        <?= $block->escapeHtml($comment->getCommentAuthor()) ?> <?= __('on') ?> <a href="<?= $block->escapeUrl($comment->getUrl()) ?>"><?= $block->escapeHtml(__($comment->getPostTitle())) ?></a>
+                    </li>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+<?php endif; ?>

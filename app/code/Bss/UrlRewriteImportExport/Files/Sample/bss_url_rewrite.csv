@@ -1,0 +1,6 @@
+entity_type,product_id,category_id,cms_page_id,store_id,current_request_path,new_request_path,target_path,redirect_type,description,ignore_nonexist_target_path_error
+category,,4,,1,test-category.html,new-category.html,,301,,
+product,1,4,,1,product.html,,,302,,
+custom,,,,1,bss.html,,bss-commerce.html,0,,1
+product,1,,,1,product-without-category.html,,,,,
+cms-page,,,1,1,test-cms.html,,,,,

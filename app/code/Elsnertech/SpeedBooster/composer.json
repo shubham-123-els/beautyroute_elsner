@@ -1,0 +1,36 @@
+{
+  "name": "elsnertech/module-speedbooster",
+  "description": "speed booster magento2 module",
+  "require": {
+    "php": "^7.0.0|^8.0.0"
+  },
+  "type": "magento2-module",
+  "version": "1.0.3",
+  "license": [
+    "OSL-3.0",
+    "AFL-3.0"
+  ],
+  "authors": [
+    {
+      "name": "Brijbhushan Singh",
+      "email": "brijbhushan@elsner.com",
+      "homepage": "-",
+      "role": "Developer"
+    }
+  ],
+    "require-dev": {
+        "phpunit/phpunit": "*",
+        "composer/composer": "*@dev",
+        "phpstan/phpstan": "^0.12.32",
+        "bitexpert/phpstan-magento": "^0.3.0",
+        "rosell-dk/webp-convert": "*"
+    },  
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Elsnertech\\SpeedBooster\\": ""
+    }
+  }
+}

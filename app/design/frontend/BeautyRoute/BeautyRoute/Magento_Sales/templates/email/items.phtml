@@ -1,0 +1,101 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// phpcs:disable Magento2.Templates.ThisInTemplate
+
+/** @var $block \Magento\Sales\Block\Order\Email\Items */
+?>
+<?php $_order = $block->getOrder() ?>
+<?php if ($_order) : ?>
+    <?php $_items = $_order->getAllItems(); ?>
+   <!--------------------------------------------->
+   <table width="640" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+                        <tr>
+                            <td align="center" valign="top">
+                                <table width="90%" border="0" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td align="left" style="color: #646464;">
+                                            <?= $block->escapeHtml(__('Items')) ?>
+                                        </td>
+                                        <td align="left" style="color: #646464;">
+                                            <?= $block->escapeHtml(__('Qty')) ?>
+                                        </td>
+                                        <td align="left" style="color: #646464;">
+                                            <?= $block->escapeHtml(__('Price')) ?>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="10"></td>
+                                    </tr>
+									
+                                    <tr>
+                                        <td height="10" style="border-top: 1px solid #cdcdcd;" colspan="3"></td>
+                                    </tr>
+                                    <tr>
+									 <?php foreach ($_items as $_item) : ?>
+										<?php if (!$_item->getParentItem()) : ?>
+                                        <td align="center" valign="top">
+                                            <?= $block->getItemHtml($_item) ?>
+                                        </td>
+									    <?php endif; ?>
+									<?php endforeach; ?>
+                                    </tr>
+                                    <tr>
+                                        <td height="10"></td>
+                                    </tr>
+                                    <tr>
+                                        <td height="10" style="border-top: 1px solid #cdcdcd;" colspan="3"></td>
+                                    </tr>
+                                   
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" valign="top">
+                                <table width="90%" border="0" cellpadding="0" cellspacing="0" bgcolor="#F5F3F2">
+                                    <tbody align="right"><tr>
+                                        <td height="25" style="border-top: 1px solid #cdcdcd;" colspan="3"></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center" valign="top">
+                                            <table width="43%" align="left" border="0" cellpadding="0" cellspacing="0">
+                                                <tr>
+                                                    <td height="1"></td>
+                                                </tr>
+                                            </table>
+                                            <?= $block->getChildHtml('order_totals') ?>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="25"></td>
+                                    </tr></tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+   <!--------------------------------------------->
+    <?php if ($this->helper(\Magento\GiftMessage\Helper\Message::class)
+            ->isMessagesAllowed('order', $_order, $_order->getStore())
+        && $_order->getGiftMessageId()
+    ) : ?>
+        <?php $_giftMessage = $this->helper(\Magento\GiftMessage\Helper\Message::class)
+            ->getGiftMessage($_order->getGiftMessageId()); ?>
+        <?php if ($_giftMessage) : ?>
+            <br />
+            <table class="message-gift">
+                <tr>
+                    <td>
+                        <h3><?= $block->escapeHtml(__('Gift Message for this Order')) ?></h3>
+                        <strong><?= $block->escapeHtml(__('From:')) ?></strong> <?= $block->escapeHtml($_giftMessage->getSender()) ?>
+                        <br /><strong><?= $block->escapeHtml(__('To:')) ?></strong> <?= $block->escapeHtml($_giftMessage->getRecipient()) ?>
+                        <br /><strong><?= $block->escapeHtml(__('Message:')) ?></strong>
+                        <br /><?= $block->escapeHtml($_giftMessage->getMessage()) ?>
+                    </td>
+                </tr>
+            </table>
+        <?php endif; ?>
+    <?php endif; ?>
+<?php endif; ?>

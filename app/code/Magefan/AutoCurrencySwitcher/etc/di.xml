@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magefan (support@magefan.com). All rights reserved.
+ * See LICENSE.txt for license details (http://opensource.org/licenses/osl-3.0.php).
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Store\Model\Store">
+        <plugin name="magefan_autocurrencyswitcher_magento_store_model_store"
+                type="Magefan\AutoCurrencySwitcher\Plugin\Store\Model\StorePlugin" sortOrder="10" />
+    </type>
+    <type name="Magento\Framework\App\Http\Context">
+        <plugin name="magefan_autocurrencyswitcher_magento_framework_app_http_contex"
+                type="Magefan\AutoCurrencySwitcher\Plugin\Framework\App\Http\ContexPlugin" sortOrder="20" />
+    </type>
+    <type name="Magento\Directory\Model\Currency">
+        <plugin name="magefan_autocurrencyswitcher_magento_directory_model_currency"
+                type="Magefan\AutoCurrencySwitcher\Plugin\Directory\Model\CurrencyPlugin" sortOrder="30" />
+    </type>
+</config>

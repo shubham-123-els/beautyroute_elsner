@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <!-- Add new Tab -->
+        <tab id="magearray" translate="label" sortOrder="400" class="magearray">
+            <label>MageArray Extensions</label>
+        </tab>
+        <section id="logincatalog" translate="label" type="text" sortOrder="150" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <label>Catalog Login</label>
+            <tab>magearray</tab>
+            <!-- resource tag name which we have to defined in the acl.xml -->
+            <resource>MageArray_LoginCatalog::config_logincatalog</resource>
+            <group id="general" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Catalog Login</label>
+                <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Enable Extension</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="hide_navigation" translate="label" type="select" sortOrder="2" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Hide Category Navigation</label>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="redirect_from_all_page" translate="label" type="select" sortOrder="3" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Redirect to login from any page</label>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="redirect_to_catalog" translate="label" type="select" sortOrder="4" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Do redirect on Category Pages</label>
+                    <depends>
+                        <field id="enable">1</field>
+                        <field id="redirect_from_all_page">0</field>
+                    </depends>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="redirect_to_product" translate="label" type="select" sortOrder="4" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Do redirect on Product View Pages</label>
+                    <depends>
+                        <field id="enable">1</field>
+                        <field id="redirect_from_all_page">0</field>
+                    </depends>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="redirect_to_catalogsearch" translate="label" type="select" sortOrder="4" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Do redirect on Catalog Search Pages</label>
+                    <depends>
+                        <field id="enable">1</field>
+                        <field id="redirect_from_all_page">0</field>
+                    </depends>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="message" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Message when a customer is redirected</label>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="redirect_to_page" translate="label" type="select" sortOrder="6" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Redirect to</label>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                    <source_model>MageArray\LoginCatalog\Model\Config\Source\Redirect</source_model>
+                </field>
+                <field id="redirect_to_cms" translate="label" type="select" sortOrder="7" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Target CMS Page</label>
+                    <depends>
+                        <field id="enable">1</field>
+                        <field id="redirect_to_page">2</field>
+                    </depends>
+                    <source_model>Magento\Cms\Model\Config\Source\Page</source_model>
+                </field>
+                <field id="disable_route" translate="label" type="textarea" sortOrder="8" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Disable on routes</label>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                    <comment>
+                        <![CDATA[
+                            Add route/controller/action routes (one per line) where no redirect should happen.<br/>
+                            For Ex.<br/>
+                            checkout/cart/index<br/>
+                            contact<br/>
+                            etc..
+                        ]]>
+                    </comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

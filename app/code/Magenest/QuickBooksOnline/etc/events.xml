@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2019 Magenest. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="sales_order_invoice_save_commit_after">
+        <observer name="qbonline_syncInvoice" instance="Magenest\QuickBooksOnline\Observer\Invoice\Create"/>
+    </event>
+    <event name="order_cancel_after">
+        <observer name="qbonline_void_order" instance="Magenest\QuickBooksOnline\Observer\Order\Cancel"/>
+    </event>
+    <event name="checkout_onepage_controller_success_action">
+        <observer name="qbonline_syncOrder_success" instance="Magenest\QuickBooksOnline\Observer\Order\Create"/>
+    </event>
+    <event name="sales_order_creditmemo_save_after">
+        <observer name="qbonline_syncCreditMemo" instance="Magenest\QuickBooksOnline\Observer\CreditMemo\Create" />
+    </event>
+</config>

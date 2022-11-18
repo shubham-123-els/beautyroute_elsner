@@ -1,0 +1,194 @@
+<?php /* @var $block \Magento\Catalog\Block\Product\AbstractProduct */ ?>
+
+<?php
+    $itemsCollection = $block->getData('collection');
+    $helper = $this->helper('WeltPixel\SearchAutoComplete\Helper\Data');
+    $storeId = $helper->getStoreId();
+    $sanitize = $helper->isEmptyCollection($itemsCollection);
+    $collectionSize = isset($itemsCollection) ? count($itemsCollection) : 0;
+    $helperPrice = $this->helper('Magento\Framework\Pricing\Helper\Data');
+    $elsnerhelper = $this->helper('Elsnertech\ProductCustomization\Helper\Data');
+    $isEnable = $helper->isEnabled();
+    $productDividerClass = $helper->isEnableProductDivider();
+    $resultHeader = $helper->getSearchResultHeaderText();
+    $maxItemsDisplayed = $helper->getMaxNumberItemsDisplayed($storeId);
+    $isShowImageThumbnail = $helper->isShowImageThumbnail();
+    $WidthOfTheImage = empty(trim($helper->getWidthOfTheImage())) ?  80 : (int) $helper->getWidthOfTheImage();
+    $isShowPrice = $helper->isShowPrice();
+    $getTextForNoSearchResult = $helper->getTextForNoSearchResult();
+    $isShowDescription = $helper->isShowDescription();
+    $MaxWordsProductDescription = empty(trim($helper->getMaxWordsProductDescription())) ?  10 : (int) $helper->getMaxWordsProductDescription() + 1;
+    $containerTextColor = $helper->getContainerTextColor() ;
+    $dividerColor = $helper->getDividerColor() ;
+    $searchVersion = $helper->getSearchVersion();
+    $displayResults = $helper->getTemplateResultsContainer();
+    $currentCountry = $elsnerhelper->getCountryName();
+    if ($currentCountry=="United States") {
+        $currentCountry = "US";
+    }
+
+    $new_helper = $this->helper("Elsnertech\StorePrice\Helper\NewData");
+    $groupType = $new_helper->getCurrentCustomeType();
+?>
+
+
+<?php if($isEnable) : ?>
+        <?php $i = 1; ?>
+        <?php if($collectionSize >= 1):?>
+            <?php if(!$searchVersion) : ?>
+                <!-- <div class="search-results-items"><?php echo __('Search result(s):')?><span> <?php //echo $collectionSize; ?><?php echo __(' item(s)')?></span></div> -->
+            <?php endif; ?>
+                
+            <ul class="product-list">
+
+                <?php foreach ($itemsCollection as $_product): ?>
+                    <?php if($i <= $maxItemsDisplayed && is_null($_product->getTitle())): ?>
+                        <?php $productImage = $_product->getImage();?>
+                        <li <?php if($productDividerClass && $displayResults != 1):  ?> style="border-bottom: 1px solid <?php echo $dividerColor; ?>" <?php endif;?>>
+                            <?php $productCountry = $elsnerhelper->getAttributeOpetion($_product->getId(),"country");?>
+                            <?php if($productCountry==$currentCountry) : ?>
+                                <div class="block-flex">
+                                        <?php if($isShowImageThumbnail) : ?>
+                                            <div class="block-left">
+                                                <a href="<?php echo $_product->getUrl();?>">
+                                                    <img class="prod-img" src="<?php echo $productImage; ?>" width="<?php echo $WidthOfTheImage; ?>">
+                                                </a>
+                                            </div>
+                                        <?php endif; ?>
+                                    <div class="block-right full-time">
+                                        <a href="<?php echo $_product->getUrl();?>" class="product-title" style="color: <?php echo $containerTextColor; ?>">
+                                           <?php echo $_product->getName(); ?>
+                                        </a>
+                                        <?php if($isShowPrice) : ?>
+                                            <?php $discountprice = $new_helper->getProductPrice($_product->getId()); ?>
+                                            <?php $discount_code = $new_helper->getCureentDiscountType($_product->getId()); ?>
+                                            <?php $discount = $new_helper->ProdoctDiscountCode($_product->getId(),$discount_code); ?>
+                                            
+
+                                    <?php if($helper->getAttributeOpetion($_product->getId(),"profession_type")=="B2B"): ?>
+                                        <?php if($groupType!="Salon"): ?>
+                                            <a href="<?= $block->geturl('customer/account/create') ?>">
+                                                <p class="professional-login"><?= __("Professional Use Only") ?></p>
+                                            </a>
+                                        <?php else: ?>                                                
+                                            <?php if(!empty($discountprice)) : ?>
+                                                <?php if($new_helper->getProductPrice($_product->getId())>0) : ?>
+                                                    <?php $discountprice = number_format((float)$discountprice, 2, '.', '') ?>
+                                                    <span class="price"><?= __('As low as :') ?><?= $new_helper->getStoreCurrency().$discountprice ?></span>
+                                                    <span class="old-price"><?= $_product->getFinalPrice() ?></span><br>
+                                                <?php else : ?>
+                                                    <span class="price"><?= $_product->getFinalPrice() ?></span>
+                                                <?php endif; ?>
+                                            <?php else : ?>
+                                                <span class="price"><?= $_product->getFinalPrice() ?></span>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                    <?php else: ?>
+                                        <?php if(!empty($discountprice)) : ?>
+                                            <?php if($new_helper->getProductPrice($_product->getId())>0) : ?>
+                                                <?php $discountprice = number_format((float)$discountprice, 2, '.', '') ?>
+                                                <span class="price"><?= __('As low as :') ?><?= $new_helper->getStoreCurrency().floatval($discountprice) ?></span>
+                                                <span class="old-price"><?= $_product->getFinalPrice() ?></span><br>
+                                            <?php else : ?>
+                                                <span class="price"><?= $_product->getFinalPrice() ?></span>
+                                            <?php endif; ?>
+                                        <?php else : ?>
+                                            <span class="price"><?= $_product->getFinalPrice() ?></span>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+
+                                        <?php endif; ?>
+                                        <?php if($isShowDescription) : ?> <?php echo $helper->limitText($_product->getDescription(), $MaxWordsProductDescription)?><?php endif; ?>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            <?php else : ?>   
+                                <?php if($productCountry=="Both" or $productCountry=="") : ?>
+                                    <div class="block-flex">
+                                            <?php if($isShowImageThumbnail) : ?>
+                                                <div class="block-left">
+                                                    <a href="<?php echo $_product->getUrl();?>">
+                                                        <img class="prod-img" src="<?php echo $productImage; ?>" width="<?php echo $WidthOfTheImage; ?>">
+                                                    </a>
+                                                </div>
+                                            <?php endif; ?>
+                                        <div class="block-right part-time">
+                                            <a href="<?php echo $_product->getUrl();?>" class="product-title" style="color: <?php echo $containerTextColor; ?>">
+                                            <?php echo $_product->getName(); ?>
+                                            </a>
+                                        <?php if($isShowPrice) : ?>
+                                                <?php $discountprice = $new_helper->getProductPrice($_product->getId()); ?>
+                                                <?php $new_discountprice = substr($discountprice, 0, 6);?>
+                                                <?php $newprice_discountprice = substr($discountprice, 0, 5);?>
+                                                <?php $discount_code = $new_helper->getCureentDiscountType($_product->getId()); ?>
+                                                <?php $discount = $new_helper->ProdoctDiscountCode($_product->getId(),$discount_code); ?>
+                                                
+                                            <?php if($new_helper->getAttributeOpetion($_product->getId(),"profession_type")=="B2B"): ?>        
+                                                <?php if($groupType!="Salon"): ?>
+                                                    <a href="<?= $block->geturl('customer/account/create') ?>" >
+                                                        <p class="professional-login"><?= __("Professional Use Only") ?></p>
+                                                    </a>
+                                                <?php else: ?>   
+                                                    <?php if(!empty($discountprice) && $new_discountprice!=$_product->getFinalPrice()) : ?>
+                                                        <?php if($new_helper->getProductPrice($_product->getId())>0) : ?>
+                                                            <?php $new_discountprice = number_format((float)$new_discountprice, 2, '.', '') ?>
+                                                            <span class="price"><?= __('As low as :') ?><?= $new_helper->getStoreCurrency().$new_discountprice ?></span>
+                                                            <?php 
+                                                                $mainprice =  $new_helper->getStoreCurrency().$new_discountprice; 
+                                                                $new_mainprice =  $new_helper->getStoreCurrency().$newprice_discountprice; 
+                                                            ?>
+                                                                <?php if($mainprice!=$_product->getFinalPrice() && $new_mainprice!=$_product->getFinalPrice()) : ?>
+                                                                    <span class="old-price"><?= $_product->getFinalPrice() ?></span><br>
+                                                                <?php endif; ?>
+                                                            <?php else : ?>
+                                                            <span class="price"><?= $_product->getFinalPrice() ?></span>
+                                                        <?php endif; ?>
+                                                    <?php else : ?>
+                                                        <span class="price"><?= $_product->getFinalPrice() ?></span>
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
+                                            <?php else : ?>
+                                                <?php if(!empty($discountprice) && $new_discountprice!=$_product->getFinalPrice()) : ?>
+                                                        <?php if($new_helper->getProductPrice($_product->getId())>0) : ?>
+                                                            <?php $new_discountprice = number_format((float)$new_discountprice, 2, '.', '') ?>
+                                                            <span class="price"><?= __('As low as :') ?><?= $new_helper->getStoreCurrency().$new_discountprice ?></span>
+                                                            <?php 
+                                                                $mainprice =  $new_helper->getStoreCurrency().$new_discountprice; 
+                                                                $new_mainprice =  $new_helper->getStoreCurrency().$newprice_discountprice; 
+                                                            ?>
+                                                                <?php if($mainprice!=$_product->getFinalPrice() && $new_mainprice!=$_product->getFinalPrice()) : ?>
+                                                                    <span class="old-price"><?= $_product->getFinalPrice() ?></span><br>
+                                                                <?php endif; ?>
+                                                            <?php else : ?>
+                                                            <span class="price"><?= $_product->getFinalPrice() ?></span>
+                                                        <?php endif; ?>
+                                                    <?php else : ?>
+                                                        <span class="price"><?= $_product->getFinalPrice() ?></span>
+                                                    <?php endif; ?>
+                                            <?php endif; ?>    
+
+                                                
+                                        <?php endif; ?>
+                                            <?php if($isShowDescription) : ?> <?php echo $helper->limitText($_product->getDescription(), $MaxWordsProductDescription)?><?php endif; ?>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                <?php endif; ?>                   
+                            <?php endif; ?>
+                            
+                        </li>
+                        <?php   $i++;  ?>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </ul>
+            <?php if($collectionSize > $maxItemsDisplayed ): ?>
+
+                    <div class="more-results">
+                        <a class="advanced_search" onclick="document.getElementById('search_mini_form').submit()" style="color:<?php echo $containerTextColor; ?>"><?php echo __('See all results')?></a>
+                    </div>
+
+            <?php endif; ?>
+        <?php elseif($collectionSize != 0): ?>
+            <div class="text-no-result"><?php echo $getTextForNoSearchResult; ?></div>
+        <?php endif; ?>
+<?php endif; ?>

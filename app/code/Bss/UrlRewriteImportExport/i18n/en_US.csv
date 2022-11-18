@@ -1,0 +1,37 @@
+Export Settings,Export Settings
+Entity Type,Entity Type
+Export File Format,Export File Format
+There is no sample file for this entity,There is no sample file for this entity
+Import and Export Url Rewrite,Import and Export Url Rewrite
+Url Rewrite,Url Rewrite
+Invalid Entity Type,Invalid Entity Type
+Request path does not exist,Request path does not exist
+Invalid Redirect Type,Invalid Redirect Type
+Empty Entity Type,Empty Entity Type
+Product Id does not exist,Product Id does not exist
+Category Id does not exist,Category Id does not exist
+CMS Page Id does not exist,CMS Page Id does not exist
+Empty Product Id,Empty Product Id
+Empty Category Id,Empty Category Id
+Empty CMS Page Id,Empty CMS Page Id
+Empty Target Path,Empty Target Path
+Empty Request Path,Empty Request Path
+"Entity type is custom, target_path must not be empty","Entity type is custom, target_path must not be empty"
+Existed request_path and the system cannot update new request path,Existed request_path and the system cannot update new request path
+Entity Attributes,Entity Attributes
+Export By,Export By
+All,All
+Entity Type,Entity Type
+Store ID,Store ID
+Redirect Type,Redirect Type
+Choose Entity Type,Choose Entity Type
+Product,Product
+Category,Category
+Cms Page,Cms Page
+Choose Store,Choose Store
+Admin,Admin
+Choose Redirect Type,Choose Redirect Type
+No,No
+Yes (301 Moved Permanently),Yes (301 Moved Permanently)
+Yes (302 found),Yes (302 found)
+Continue,Continue

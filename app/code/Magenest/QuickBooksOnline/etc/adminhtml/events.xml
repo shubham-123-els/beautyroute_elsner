@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2017 Magenest. All rights reserved.
+ * See COPYING.txt for license details.
+ *
+ * Magenest_QuickBooksOnline extension
+ * NOTICE OF LICENSE
+ *
+ * @category Magenest
+ * @package  Magenest_QuickBooksOnline
+ * @author   Magenest JSC
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="customer_save_after_data_object">
+        <observer name="qbonline_updateCustomer" instance="Magenest\QuickBooksOnline\Observer\Customer\Adminhtml\Edit"/>
+    </event>
+    <event name="adminhtml_customer_save_after">
+        <observer name="qbonline_updateCustomer" instance="Magenest\QuickBooksOnline\Observer\Customer\Adminhtml\Edit"/>
+    </event>
+    <event name="controller_action_catalog_product_save_entity_after">
+        <observer name="qbonline_syncItem_m23" instance="Magenest\QuickBooksOnline\Observer\Item\UpdateInventory"/>
+    </event>
+    <event name="catalog_product_save_after">
+        <observer name="qbonline_syncItem" instance="Magenest\QuickBooksOnline\Observer\Item\Update"/>
+    </event>
+    <event name="sales_order_save_commit_after">
+        <observer name="qbonline_syncOrder" instance="Magenest\QuickBooksOnline\Observer\Order\Create"/>
+    </event>
+</config>

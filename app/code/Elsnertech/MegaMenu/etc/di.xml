@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="WeltPixel\NavigationLinks\Block\Adminhtml\System\Config\DependeciesJsTemplate" type="Elsnertech\MegaMenu\Block\Adminhtml\System\Config\DependeciesJsTemplate"/>
+    <preference for="WeltPixel\NavigationLinks\Block\Html\Topmenu" type="Elsnertech\MegaMenu\Block\Html\Topmenu" />
+
+    <!-- <preference for="Magiccart\Shopbrand\Block\ListBrand" type="Elsnertech\MegaMenu\Block\ListBrand" /> -->
+    
+</config>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Magefan (support@magefan.com). All rights reserved.
+ * Please visit Magefan.com for license details (https://magefan.com/end-user-license-agreement).
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <listingToolbar name="listing_top">
+        <massaction name="listing_massaction">
+           <action name="change_attribute_set">
+               <argument name="data" xsi:type="array">
+                   <item name="config" xsi:type="array">
+                       <item name="type" xsi:type="string">change_attribute_set</item>
+                       <item name="label" xsi:type="string" translate="true">Change Attribute Set</item>
+                   </item>
+               </argument>
+               <argument name="actions" xsi:type="configurableObject">
+                   <argument name="class" xsi:type="string">Magefan\ProductGridInline\Ui\Component\MassAction\AttributeSet\Options</argument>
+                   <argument name="data" xsi:type="array">
+                       <item name="urlPath" xsi:type="string">mfproductgrid/attribute/MassAttribute</item>
+                       <item name="paramName" xsi:type="string">attribute_set</item>
+                       <item name="confirm" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">Change Attribute Set</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure to change Attribute Set?</item>
+                       </item>
+                   </argument>
+               </argument>
+           </action>
+        </massaction>
+    </listingToolbar>
+    <columns name="product_columns">
+        <column name="category" class="Magefan\ProductGridInline\Ui\Component\Product\Listing\Column\Category" sortOrder="110">
+            <settings>
+                <addField>true</addField>
+                <options class="Magefan\ProductGridInline\Model\Config\Source\Category"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <sortable>false</sortable>
+                <label translate="true">Categories</label>
+            </settings>
+        </column>
+    </columns>
+</listing>

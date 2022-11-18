@@ -1,0 +1,10 @@
+<?php
+	$id = $block->getBrand()->getshopbrandId();
+	$mobile_image = $block->getshopBrand($id)->getmobile_image();
+	$mediaurl = $block->geturl('media');
+?>
+<?php if (!empty($mobile_image)): ?>
+	<div class="mobile_screen">
+		<img src="<?= $block->getMainurl().'media/'.$mobile_image ?>">
+	</div>
+<?php endif; ?>

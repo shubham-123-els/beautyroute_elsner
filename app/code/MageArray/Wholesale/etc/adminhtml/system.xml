@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <!-- Add new Tab -->
+        <tab id="magearray" translate="label" sortOrder="100" class="magearray">
+            <label>MageArray Extensions</label>
+        </tab>
+        <section id="wholesale" translate="label" type="text" sortOrder="150" showInDefault="1" showInWebsite="0"
+                 showInStore="0">
+            <label>Wholesale - B2B</label>
+            <tab>magearray</tab>
+            <!-- resource tag name which we have to defined in the acl.xml -->
+            <resource>MageArray_Wholesale::config_wholesale</resource>
+            <group id="general" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Activate Script</label>
+                <field id="wholesale_type" translate="label" type="select" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Wholesale Type</label>
+                    <source_model>MageArray\Wholesale\Model\Config\Source\WholesaleType</source_model>
+                    <comment>
+                        <![CDATA[
+						    <b>Wholesale Store</b> - seprate store, extended registration link
+						    <br/>
+						    <b>Wholesale Website</b> - seprate website,extended registration
+                        ]]>
+                    </comment>
+                </field>
+
+                <field id="wholesale_store" translate="label" type="multiselect" sortOrder="2" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Wholesale Store</label>
+                    <depends>
+                        <field id="wholesale_type">w-store</field>
+                    </depends>
+                    <source_model>Magento\Store\Model\System\Store</source_model>
+                    <comment>
+                        <![CDATA[
+                            Select multiple wholesale store from list.
+                        ]]>
+                    </comment>
+                </field>
+                <field id="wholesale_select_type" translate="label" type="select" sortOrder="3" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Select Wholesale Website</label>
+                    <depends>
+                        <field id="wholesale_type">w-webs</field>
+                    </depends>
+                    <source_model>MageArray\Wholesale\Model\Config\Source\WholesaleSelectType</source_model>
+                    <comment>
+                        <![CDATA[
+                            <b>Select Existing Website</b> - Select multiple website from existing websites.
+                            <br/>
+                            <b>Create New Website</b> - Create new website for wholesale.
+                        ]]>
+                    </comment>
+                </field>
+                <field id="create_web" translate="button_label" sortOrder="4" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <button_label>Create Now!</button_label>
+                    <depends>
+                        <field id="wholesale_type">w-webs</field>
+                        <field id="wholesale_select_type">2</field>
+                    </depends>
+                    <frontend_model>MageArray\Wholesale\Block\System\Config\Form\Button</frontend_model>
+                    <comment>
+                        <![CDATA[
+                            Create wholesale website with wholsale store.
+                        ]]>
+                    </comment>
+                </field>
+                <field id="wholesale_websites" translate="label" type="multiselect" sortOrder="4" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Wholesale Website</label>
+                    <depends>
+                        <field id="wholesale_type">w-webs</field>
+                        <field id="wholesale_select_type">1</field>
+                    </depends>
+                    <source_model>Magento\Store\Model\ResourceModel\Website\Collection</source_model>
+                    <comment>
+                        <![CDATA[
+                            Select wholesale multiple website from list.
+                        ]]>
+                    </comment>
+                </field>
+                <field id="wholesale_hide_pricecatalog" translate="label" type="select" sortOrder="5" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Hide Price/Catalog</label>
+                    <depends>
+                        <field id="wholesale_type" separator="|">w-webs|w-store</field>
+                    </depends>
+                    <source_model>MageArray\Wholesale\Model\Config\Source\Hide</source_model>
+                    <comment>
+                        <![CDATA[
+                            <b>Hide Price</b> - Select Hide Price to enable require login to see the product price.
+                            <br/>
+                            <b>Hide Catalog</b> - Select Hide catalog to enable redirect to login page to see the catalog.
+                        ]]>
+                    </comment>
+                </field>
+                <field id="wholesale_customer_activation" translate="label" type="select" sortOrder="5"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Customer Activation</label>
+                    <depends>
+                        <field id="wholesale_type" separator="|">w-webs|w-store</field>
+                    </depends>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>
+                        <![CDATA[
+                            Customer who registered from the wholesale registration form require activation by admin.
+                        ]]>
+                    </comment>
+                </field>
+                <field id="show_address" translate="label" type="select" sortOrder="5" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Show Address Fields In Registration Form?</label>
+                    <depends>
+                        <field id="wholesale_type" separator="|">w-webs|w-store</field>
+                    </depends>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>
+                        <![CDATA[
+                            Select Yes/No to enable or disable address field in wholesale registration form.
+                        ]]>
+                    </comment>
+                </field>
+                <field id="taxvat_show" translate="label" type="select" sortOrder="6" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Show Tax/VAT Number In Registration Form?</label>
+                    <depends>
+                        <field id="wholesale_type" separator="|">w-webs|w-store</field>
+                    </depends>
+                    <source_model>MageArray\Wholesale\Model\Config\Source\VatTax</source_model>
+                    <comment>
+                        <![CDATA[
+                            Select value for Show Tax/VAT Number field in wholesale registration form.
+                        ]]>
+                    </comment>
+                </field>
+                <field id="wholesale_customer" translate="label" type="select" sortOrder="7" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Wholesale Customer Group</label>
+                    <depends>
+                        <field id="wholesale_type" separator="|">w-webs|w-store</field>
+                    </depends>
+                    <source_model>Magento\Customer\Model\Config\Source\Group</source_model>
+                    <comment>
+                        <![CDATA[
+                            Assign customer group for wholesale customers from the list.
+                        ]]>
+                    </comment>
+                </field>
+				<field id="wholesale_file_upload" translate="label" type="select" sortOrder="8" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Do you want to add file upload field in wholesale registration?</label>
+                    <depends>
+                        <field id="wholesale_type" separator="|">w-webs|w-store</field>
+                    </depends>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

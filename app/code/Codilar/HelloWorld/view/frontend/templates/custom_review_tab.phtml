@@ -1,0 +1,139 @@
+<?php
+$ratingReview  =  $this->getProductSummary();
+$ratingSummary = (isset($ratingReview[0]) ? $ratingReview[0]:'');
+$reviewCount   = (isset($ratingReview[1]) ? $ratingReview[1]: '');
+$blockObj      = $block->getLayout()->createBlock('Codilar\HelloWorld\Block\ProductNewTrend');
+$ratingbar     = $blockObj->getAllStart($this->getProductId());
+$productId     = $this->getProductId();
+$collection    = $this->getReviewCollectionData();
+$reviewcustomCount=count($collection);
+?>
+<?php if ($ratingSummary): ?>
+    <div class="rating-title_"><h3><?= __('ratings & reviews') ?></h3></div>   
+    <div class="rating-title-main rating-status">
+        <div class="rating-rev review_bar_str">
+            <div class="bars_main">
+                <span>
+                    <?= $reviewCount ?>
+                    <?php
+                    if ($reviewCount == 1): echo __('review');
+                    else: echo __('reviews');
+                    endif;
+                    ?>
+                </span>
+                <?php foreach ($ratingbar as $code => $value): ?>
+                    <?php $revbar = number_format($value['value']*100/$reviewCount, 2); ?>
+                    <div class="bars"><span><?= $code ?> <?= __('Stars')?></span>  
+                        <div title="<?php echo (int)$revbar; ?>%" class="rating-bar">
+                            <span style="width:<?php echo (int)$revbar; ?>%"><span><?= (int)$revbar; ?>%</span></span>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>  
+        </div>
+        <div class="product-reviews-summary short review_bar_str">
+            <div class="summry_sec">
+                <div class="rating-summary">
+                    <div title="<?php echo (int)$ratingSummary; ?>%" class="rating-result">
+                        <span style="width:<?php echo (int)$ratingSummary; ?>%">
+                            <span><?php echo (int)$ratingSummary; ?>%</span>
+                        </span>
+                    </div>
+                </div>
+                <?php
+                    $blockObj = $block->getLayout()->createBlock('Codilar\HelloWorld\Block\ProductNewTrend');
+                    $vote = $blockObj->getRating($productId);
+                    $totalavg = $vote['count']['avg'];
+                ?>
+                <div class="rating-summary">
+                    <span><?=$totalavg ?><?php echo __('/5')?></span>
+                </div>
+            </div>
+        </div>
+        <div class="rating-per review_bar_str">
+            <div class="summry_percent_">
+                <span><?=$ratingSummary?>%</span>
+                <span class="would-recommend"><?php echo __('would recommend')?></span>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+<?php
+if ($reviewcustomCount >0): ?>
+    <table id="reviewrating" class="display reviewratingculoum" style="width:100%">
+        <thead>
+            <tr>
+                <th></th>   
+            </tr>
+        </thead>
+        <tbody>
+        
+        <?php
+        $countallrating=[];
+        foreach ($collection as $review):
+            $reviewdate=$review->getCreatedAt();
+            $reviewtitle=$review->getTitle();
+            $reviewdetail=$review->getDetail();
+            $eachrating=$review->getReviewId();
+            $date1 = date_create(date("Y-m-d G:i:s"));
+            $date2 = date_create($reviewdate);
+            $diff = date_diff($date1, $date2);
+            $diffdate= $diff->format("%a d ago"); ?>
+            <tr>
+                <td>
+                    <div class="main_all_rev">
+                        <div class="left_imge_text_">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        </div>
+                        <div class="right_info_text_btn">
+                            <div class="diff-date">
+                                <h3><?= $reviewtitle ?></h3>
+                                <span><img src="<?php echo $this->getViewFileUrl('img/daydate.png'); ?>" /><?= $diffdate ?></span>
+                            </div>
+                            <div class="each-rating">
+                                <?php
+                                $countallrating[]=$countRatings = count($review->getRatingVotes());
+                                if (!empty($countRatings) > 0): ?>
+                                    <div class="review-ratings">
+                                        <?php
+                                        $allRatings = 0;
+                                        foreach ($review->getRatingVotes() as $vote):
+                                            $allRatings = $allRatings + $vote->getPercent();
+                                        endforeach;
+                                        $allRatingsAvg = $allRatings / $countRatings;
+                                        ?>
+                                        <div class="rating-summary">
+                                            <div class="rating-result" title="<?php echo $allRatingsAvg; ?>%">
+                                                <meta itemprop="worstRating" content = "1"/>
+                                                <meta itemprop="bestRating" content = "100"/>
+                                                <span style="width:<?php echo $allRatingsAvg; ?>%">
+                                                    <span itemprop="ratingValue"><?php echo $allRatingsAvg; ?>%</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>  
+                            </div>
+                            <div class="review-detail">
+                                <p><?= $reviewdetail ?></p>                
+                            </div>
+                            <div class="rating_rew_rugh_button_">
+                                <a href="#" ><?php echo __('rouge')?></a>
+                                <a href="#" ><?php echo __('rookie')?></a>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+<?php endif; ?>
+
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Codilar_HelloWorld/js/homeCustomization": {}
+    }
+}
+</script>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+/**
+/**
+ * Copyright Â© 2015 Magenest. All rights reserved.
+ * See COPYING.txt for license details.
+ *
+ * Magenest_QuickBooksOnline extension
+ * NOTICE OF LICENSE
+ *
+ * @category Magenest
+ * @package  Magenest_QuickBooksOnline
+ * @author   Magenest JSC
+ *
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magenest_QuickBooksOnline::integration" title="QuickBooks Online" module="Magenest_QuickBooksOnline" sortOrder="60" resource="Magenest_QuickBooksOnline::integration"/>
+
+        <add id="Magenest_QuickBooksOnline::mappings" title="Setup" module="Magenest_QuickBooksOnline" parent="Magenest_QuickBooksOnline::integration" resource="Magenest_QuickBooksOnline::toquickbook" sortOrder="10"/>
+        <add id="Magenest_QuickBooksOnline::payment_methods" title="Payment Methods Mapping" module="Magenest_QuickBooksOnline" sortOrder="30" parent="Magenest_QuickBooksOnline::mappings" action="qbonline/payment_methods/index" resource="Magenest_QuickBooksOnline::payment_methods"/>
+        <add id="Magenest_QuickBooksOnline::tax" title="Tax Code Mapping" module="Magenest_QuickBooksOnline" sortOrder="35" parent="Magenest_QuickBooksOnline::mappings" action="qbonline/tax/index" resource="Magenest_QuickBooksOnline::tax"/>
+
+        <add id="Magenest_QuickBooksOnline::monitoring" title="Monitoring" module="Magenest_QuickBooksOnline" parent="Magenest_QuickBooksOnline::integration" resource="Magenest_QuickBooksOnline::toquickbook" sortOrder="20"/>
+        <add id="Magenest_QuickBooksOnline::queue" title="Sync Queue" module="Magenest_QuickBooksOnline" sortOrder="40" parent="Magenest_QuickBooksOnline::monitoring" action="qbonline/queue/index" resource="Magenest_QuickBooksOnline::queue"/>
+        <add id="Magenest_QuickBooksOnline::logs" title="History Logs" module="Magenest_QuickBooksOnline" sortOrder="50" parent="Magenest_QuickBooksOnline::monitoring" action="qbonline/log/index" resource="Magenest_QuickBooksOnline::logs"/>
+        <add id="Magenest_QuickBooksOnline::logviewer" title="Debug Log Viewer" module="Magenest_QuickBooksOnline" sortOrder="50" parent="Magenest_QuickBooksOnline::monitoring" action="qbonline/logviewer/index" dependsOnConfig="qbonline/debug/view" resource="Magenest_QuickBooksOnline::config_qbonline"/>
+
+        <add id="Magenest_QuickBooksOnline::toquickbook" title="Settings" module="Magenest_QuickBooksOnline" sortOrder="30" parent="Magenest_QuickBooksOnline::integration" resource="Magenest_QuickBooksOnline::toquickbook"/>
+        <add id="Magenest_QuickBooksOnline::config_qbonline" title="Configuration" module="Magenest_QuickBooksOnline" sortOrder="100" parent="Magenest_QuickBooksOnline::toquickbook" action="adminhtml/system_config/edit/section/qbonline" resource="Magenest_QuickBooksOnline::config_qbonline"/>
+    </menu>
+</config>

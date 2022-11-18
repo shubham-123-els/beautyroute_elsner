@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<csp_whitelist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Csp:etc/csp_whitelist.xsd">
+    <policies>
+        <policy id="script-src">
+            <values>
+                <value id="sezzle-sdk" type="host">checkout-sdk.sezzle.com</value>
+                <value id="sandbox-sezzle-sdk" type="host">sandbox.checkout-sdk.sezzle.com</value>
+            </values>
+        </policy>
+        <policy id="frame-src">
+            <values>
+                <value id="sezzle-incontext-checkout" type="host">checkout.sezzle.com</value>
+                <value id="sandbox-sezzle-incontext-checkout" type="host">sandbox.checkout.sezzle.com</value>
+            </values>
+        </policy>
+    </policies>
+</csp_whitelist>

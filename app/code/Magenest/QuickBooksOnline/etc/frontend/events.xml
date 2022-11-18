@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2017 Magenest. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <!--<event name="customer_register_success">-->
+        <!--<observer name="qbonline_register" instance="Magenest\QuickBooksOnline\Observer\Customer\Register"/>-->
+    <!--</event>-->
+    <event name="customer_address_save_commit_after">
+        <observer name="qbonline_updateCustomer_address" instance="Magenest\QuickBooksOnline\Observer\Customer\Update"/>
+    </event>
+    <event name="customer_save_after_data_object">
+        <observer name="qbonline_updateCustomer" instance="Magenest\QuickBooksOnline\Observer\Customer\Update"/>
+    </event>
+    <!--<event name="sales_order_invoice_save_commit_after">-->
+        <!--<observer name="qbonline_syncInvoice" instance="Magenest\QuickBooksOnline\Observer\Invoice\Create"/>-->
+    <!--</event>-->
+    <!--<event name="checkout_onepage_controller_success_action">-->
+        <!--<observer name="qbonline_syncOrder_success" instance="Magenest\QuickBooksOnline\Observer\Order\Create"/>-->
+    <!--</event>-->
+</config> 

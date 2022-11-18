@@ -1,0 +1,115 @@
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_TableRateShipping
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+.tree-store-scope.admin__fieldset > .admin__field {
+    margin-left: 0;
+}
+
+.admin__scope-old .form-inline div:not([class*='fields-group']) > .field > .label:before, .admin__scope-old .form-inline .fieldset > .field > .label:before {
+    margin-left: 0;
+    content: unset;
+}
+
+.admin__scope-old .form-inline .label.admin__field-label {
+    margin-left: 30px;
+    width: calc((100%) * 0.25 - 30px);
+}
+
+.store-scope .admin__legend .admin__field-tooltip {
+    margin-left: .5em;
+}
+
+#method_tabs_main_content img {
+    display: inline-block;
+    margin: 0 5px 0 0;
+    vertical-align: middle;
+    width: auto;
+}
+
+#method_tabs_main_content input[type="file"],
+#mp-csv-form input[type="file"] {
+    padding: 0;
+}
+
+#method_tabs_main_content .delete-image {
+    display: block;
+    margin: 5px 0;
+    white-space: nowrap;
+}
+
+#image_delete {
+    margin-top: 0;
+}
+
+.button-container {
+    float: right;
+    margin-bottom: 2rem;
+}
+
+#settings_fieldset .admin__field.with-addon .admin__field {
+    position: relative;
+}
+
+#settings_fieldset .admin__field.with-addon .admin__field .admin__control-text {
+    padding-left: 25px;
+}
+
+#settings_fieldset .admin__field.with-addon .admin__field label.addafter {
+    position: absolute;
+    left: 1rem;
+    top: 6px;
+    color: #858585;
+}
+
+#cond_fieldset .admin__field.with-addon .admin__field .admin__control-text {
+    max-width: 16rem;
+    display: inline-block;
+}
+
+#cond_fieldset .admin__field.with-addon .admin__field label.addafter span {
+    margin-left: 30px;
+    margin-right: 30px;
+    font-weight: 600;
+}
+
+#mp-popup-container {
+    display: none;
+}
+
+#import_file-error {
+    display: inline-block;
+    margin: 0 5px 0 0;
+    vertical-align: middle;
+}
+
+#cond_fieldset label.mage-error {
+    display: inline-block;
+    margin: 0 0 0 2px;
+    line-height: unset;
+    vertical-align: bottom;
+}
+
+#mp-csv-form .messages .message {
+    margin-bottom: 1rem;
+}
+
+#labels_fieldset > legend > .admin__field-tooltip {
+    display: none;
+}

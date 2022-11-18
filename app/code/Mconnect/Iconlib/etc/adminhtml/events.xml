@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="layout_render_before">
+        <observer name="iconlib_render" instance="Mconnect\Iconlib\Helper\InitializeModuleObserver" />
+    </event>
+	<event name="catalog_product_save_before">
+        <observer name="iconlib_catalog_productsave" instance="Mconnect\Iconlib\Observer\IconlibProductSaveBefore"/>
+    </event>
+</config>

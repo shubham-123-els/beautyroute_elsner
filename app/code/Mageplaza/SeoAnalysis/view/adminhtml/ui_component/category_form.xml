@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_SeoAnalysis
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="search_engine_optimization">
+        <field name="mp_meta_data_preview" formElement="input" sortOrder="0">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">category</item>
+                    <item name="component" xsi:type="string">Mageplaza_SeoAnalysis/js/view/extend-element-abstract</item>
+                    <item name="elementTmpl" xsi:type="string">Mageplaza_SeoAnalysis/form/element/field-meta-data-preview</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Meta Data Preview</label>
+                <dataScope>mp_meta_data_preview</dataScope>
+            </settings>
+        </field>
+        <container name="url_key_group" component="Magento_Ui/js/form/components/group" sortOrder="10">
+            <argument name="data" xsi:type="array">
+                <item name="type" xsi:type="string">group</item>
+                <item name="config" xsi:type="array">
+                    <item name="required" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+            <field name="url_key" sortOrder="10" formElement="input">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">category</item>
+                        <item name="component" xsi:type="string">Mageplaza_SeoAnalysis/js/view/extend-element-abstract</item>
+                        <item name="elementTmpl" xsi:type="string">Mageplaza_SeoAnalysis/form/element/input</item>
+                    </item>
+                </argument>
+                <settings>
+                    <dataType>text</dataType>
+                    <label translate="true">URL Key</label>
+                </settings>
+            </field>
+        </container>
+        <field name="meta_title" sortOrder="20" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">category</item>
+                    <item name="component" xsi:type="string">Mageplaza_SeoAnalysis/js/view/extend-import-handler</item>
+                    <item name="elementTmpl" xsi:type="string">Mageplaza_SeoAnalysis/form/element/field-progress</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Meta Title</label>
+                <dataScope>meta_title</dataScope>
+            </settings>
+        </field>
+        <field name="meta_description" sortOrder="30" formElement="textarea">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">category</item>
+                    <item name="component" xsi:type="string">Mageplaza_SeoAnalysis/js/view/extend-import-handler</item>
+                    <item name="elementTmpl" xsi:type="string">Mageplaza_SeoAnalysis/form/element/field-progress</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Meta Description</label>
+                <dataScope>meta_description</dataScope>
+            </settings>
+        </field>
+        <field name="meta_keywords" sortOrder="40" formElement="textarea">
+            <settings>
+                <dataType>string</dataType>
+                <label translate="true">Meta Keywords</label>
+            </settings>
+        </field>
+        <field name="mp_main_keyword" sortOrder="50" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">category</item>
+                    <item name="component" xsi:type="string">Mageplaza_SeoAnalysis/js/view/extend-element-abstract</item>
+                    <item name="elementTmpl" xsi:type="string">Mageplaza_SeoAnalysis/form/element/input</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Focus Keyword</label>
+                <dataScope>mp_main_keyword</dataScope>
+            </settings>
+        </field>
+        <field name="mp_seo_insights" sortOrder="60" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">category</item>
+                    <item name="component" xsi:type="string">Mageplaza_SeoAnalysis/js/view/extend-element-abstract</item>
+                    <item name="elementTmpl" xsi:type="string">Mageplaza_SeoAnalysis/form/element/field-seo-insights</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">SEO insights</label>
+                <dataScope>mp_seo_insights</dataScope>
+            </settings>
+        </field>
+    </fieldset>
+</form>

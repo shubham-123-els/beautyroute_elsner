@@ -1,0 +1,17 @@
+MageArray_HidePrice
+
+-------------
+  CHANGELOG
+-------------
+
+===== 1.0.0 =====
+ * Initial stable M2 release
+
+===== 1.0.1 =====
+ * Various bug fixes, code optimizations
+ 
+===== 1.0.2 =====
+ * Compatibility with Magento 2.3
+ 
+===== 1.0.3 =====
+ * Compatibility with Magento 2.3.3

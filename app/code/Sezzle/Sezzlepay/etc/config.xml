@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * @category    Sezzle
+ * @package     Sezzle_Sezzlepay
+ * @copyright   Copyright (c) Sezzle (https://www.sezzle.com/)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <payment>
+            <sezzlepay>
+		        <active>0</active>
+                <model>Sezzle\Sezzlepay\Model\Sezzle</model>
+                <order_status>pending</order_status>
+                <merchant_country>US</merchant_country>
+                <payment_mode>sandbox</payment_mode>
+                <log_tracker>1</log_tracker>
+                <payment_action>authorize_capture</payment_action>
+                <active_in_context>0</active_in_context>
+                <tokenize>1</tokenize>
+                <sort_order>0</sort_order>
+                <send_logs_via_cron>0</send_logs_via_cron>
+                <title>Sezzle</title>
+                <active_in_context>0</active_in_context>
+                <settlement_reports>0</settlement_reports>
+                <widget_pdp>0</widget_pdp>
+                <widget_cart>0</widget_cart>
+                <widget_installment>1</widget_installment>
+                <widget_installment_price_path>.grand.totals>.amount</widget_installment_price_path>
+	        </sezzlepay>
+        </payment>
+    </default>
+</config>

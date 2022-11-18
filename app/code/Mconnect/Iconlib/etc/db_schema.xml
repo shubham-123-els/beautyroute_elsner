@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+   <table name="mcs_product_icon" resource="default" engine="innodb" comment="mcs_product_icon">
+
+            <column xsi:type="varchar" name="store_id" nullable="false"  comment="store_id" length="20" default="0" />
+  
+   </table>
+</schema>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2017 Magenest. All rights reserved.
+ * See COPYING.txt for license details.
+ *
+ * Magenest_QuickBooksOnline extension
+ * NOTICE OF LICENSE
+ *
+ * @category Magenest
+ * @package  Magenest_QuickBooksOnline
+ * @author   Magenest JSC
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Magenest_QuickBooksOnline" setup_version="2.5.1">
+        <sequence>
+            <module name="Magento_Customer"/>
+            <module name="Magento_Catalog"/>
+            <module name="Magento_Backend"/>
+        </sequence>
+    </module>
+</config>

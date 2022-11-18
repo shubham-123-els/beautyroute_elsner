@@ -1,0 +1,17 @@
+<?php
+/**
+ * @category    FishPig
+ * @package     FishPig_WordPress
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<div class="block block-blog block-blog-text">
+    <?php if ($title = $block->getTitle()): ?>
+        <div class="block-title">
+            <strong><?= $block->escapeHtml(__($title)) ?></strong>
+        </div>
+    <?php endif; ?>
+    <div class="block-content">
+        <?= $block->getWidgetText() ?>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Elsnertech_Professional::css/professionals.css"/>
+    </head>
+    <referenceContainer name="content">
+        <block class="Elsnertech\Professional\Block\Index" name="professionals" template="Elsnertech_Professional::professionals_form.phtml" />
+    </referenceContainer>
+</page>

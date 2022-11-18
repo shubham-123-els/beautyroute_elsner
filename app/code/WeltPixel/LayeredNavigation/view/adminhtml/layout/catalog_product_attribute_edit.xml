@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="attribute_edit_tabs">
+            <action method="addTabAfter">
+                <argument name="name" xsi:type="string">weltpixellayerednavigation</argument>
+                <argument name="block" xsi:type="string">WeltPixel\LayeredNavigation\Block\Adminhtml\Product\Attribute\Edit\Tab\Options</argument>
+                <argument name="after" xsi:type="string">front</argument>
+            </action>
+        </referenceBlock>
+    </body>
+</page>

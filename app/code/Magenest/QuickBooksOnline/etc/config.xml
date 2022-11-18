@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <qbonline>
+            <connection>
+                <is_connected>0</is_connected>
+            </connection>
+            <production_mode>
+                <application_token>f759120aba6a2b4963bbf39b54396f76067d</application_token>
+                <consumer_key>qyprdpVThNYHuDhwNCvLiyaySwNpSY</consumer_key>
+                <consumer_secret>kbvFpw0jmAdTcle9plav69tqfk0nG2ciQeZ4dDxl</consumer_secret>
+            </production_mode>
+            <sandbox_mode>
+                <application_token>317dba72ba552b451fb885db6fa9901fb96a</application_token>
+                <consumer_key>qyprdPp6duLqyjObEeOXu2KrSX2Z6q</consumer_key>
+                <consumer_secret>ikBzS1XqUQhOK2i1CWJtMqAU1vDwHfSu6YbMGuZC</consumer_secret>
+            </sandbox_mode>
+            <account>
+                <asset_name>Asset Account using sync with Magento</asset_name>
+                <expense_name>Expense Account using sync with Magento</expense_name>
+                <income_name>Income Account using sync with Magento</income_name>
+            </account>
+            <item>
+                <name_rule>1</name_rule>
+                <character_number>100</character_number>
+                <track_qty>1</track_qty>
+                <sync_new>1</sync_new>
+                <description>1</description>
+            </item>
+            <creditmemo>
+                <adjustment>Refund Adjustment</adjustment>
+            </creditmemo>
+            <debug>
+                <enable>0</enable>
+                <view>0</view>
+            </debug>
+        </qbonline>
+    </default>
+</config>

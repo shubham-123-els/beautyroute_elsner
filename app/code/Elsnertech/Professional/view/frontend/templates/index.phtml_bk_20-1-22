@@ -1,0 +1,93 @@
+<?php 
+   $CmsBlock = $block->getCmsblock();
+   $countryList = $block->getCountries();
+   $regionList = $block->getRegion();
+   $Maxsize = $block->getMaxsize();
+   $enable = $block->getenable();
+?>
+
+<?php if ($enable==1): ?>
+
+   <div class="static-block">
+      <?= $CmsBlock; ?>
+   </div> 
+
+   <form action="<?= $block->escapeUrl($block->getFormAction()) ?>" method="post" enctype=multipart/form-data class="mainform" id="professionals-form">
+
+   <div class="form-data">
+      <label><?= __('Email Adress') ?></label>
+      <input name="email" type="email" placeholder="Enter Email" data-validate="{required:true, 'validate-email':true}"> 
+      <div class="control">
+           <p><?= __('This email address will also be used as a username for your professional stylist accoun') ?></p>
+      </div>
+   </div>     
+
+   <div class="form-data">
+      <input name="certificate" type="file">
+      <div class="control">
+           <p><?= __('Make sure your student card has the name and telephone number of your school
+             Maximum file size '.$Maxsize.' MB. Supported formats: pdf, jpg, jpeg, gif, png, doc and docx') ?></p>
+      </div>
+   </div>   
+
+   <div class="form-data">
+      <label><?= __('Proof of Identity') ?></label>
+      <input name="proof" type="file" >
+      <div class="control">
+           <p><?= __('Driver s license, health insurance card or birth certificate
+            Maximum file size '.$Maxsize.' MB. Supported formats: pdf, jpg, jpeg, gif, png, doc and docx') ?></p>
+      </div>
+   </div>   
+   <div class="fomr_data-gride">
+   <div class="form-data">
+      <label><?= __('Name of Hair Salon') ?></label>
+      <input name="salon" type="text" data-validate="{required:true, 'validate-salon':true}">
+   </div> 
+
+   <div class="form-data">
+      <label><?= __('Salon Address') ?></label>
+      <input name="street1" type="text" data-validate="{required:true, 'validate-street':true}">
+      <input name="street2" type="text" >
+   </div> 
+
+   <div class="form-data">
+      <label><?= __('City') ?></label>
+      <input name="city" type="text" data-validate="{required:true, 'validate-city':true}" >
+   </div> 
+
+   <div class="form-data">
+    <label><?= __('Country') ?></label>
+    <?= $countryList ?>
+   </div> 
+
+   <div class="form-data">
+     <label><?= __('PostCode') ?></label>
+     <input name="postcode" type="text" data-validate="{required:true, 'validate-postcode':true}" >
+   </div>  
+
+   <div class="form-data">
+      <label><?= __('Salon Phone Number') ?></label>
+      <input name="phonenumber" type="text" data-validate="{required:true, 'validate-phonenumber':true}">
+   </div> 
+      
+   </div>
+
+   <div class="actions-toolbar">
+      <div class="primary">
+            <input type="hidden" name="hideit" id="hideit" value="" />
+            <button type="submit" title="<?= $block->escapeHtmlAttr(__('send email')) ?>" class="action submit primary">
+                <span><?= $block->escapeHtml(__('send email')) ?></span>
+            </button>
+        </div>
+   </div> 
+     
+</form>
+
+<script type="text/x-magento-init">
+   {
+       "#professionals-form": {
+           "validation": {}
+       }
+   }
+</script>
+<?php endif; ?>

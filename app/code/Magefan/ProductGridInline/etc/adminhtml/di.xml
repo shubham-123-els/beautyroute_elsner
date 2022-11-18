@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Copyright © Magefan (support@magefan.com). All rights reserved.
+ * Please visit Magefan.com for license details (https://magefan.com/end-user-license-agreement).
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<type name="Magento\Catalog\Ui\DataProvider\Product\ProductDataProvider">
+		<plugin disabled="false" name="Magefan_ProductGridInline_Plugin_Backend_Magento_Catalog_Ui_DataProvider_Product_ProductDataProvider" sortOrder="10" type="Magefan\ProductGridInline\Plugin\Backend\Magento\Catalog\Ui\DataProvider\Product\ProductDataProvider"/>
+	</type>
+	<type name="Magento\Catalog\Ui\Component\Listing\Columns">
+		<plugin disabled="false" name="Magefan_ProductGridInline_Plugin_Backend_Magento_Catalog_Ui_Component_Listing_Columns" sortOrder="10" type="Magefan\ProductGridInline\Plugin\Backend\Magento\Catalog\Ui\Component\Listing\Columns"/>
+	</type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\Sanitizer">
+        <plugin disabled="false" name="Magefan_ProductGridInline_Plugin_Backend_Magento_Framework_View_Element_UiComponent_DataProvider_Sanitizer" sortOrder="10" type="Magefan\ProductGridInline\Plugin\Backend\Magento\Framework\View\Element\UiComponent\DataProvider\Sanitizer"/>
+    </type>
+    <type name="Sparsh\ProductLabel\Model\Product\Attribute\Backend\File">
+        <plugin disabled="false" name="Magefan_ProductGridInline_Plugin_Backend_Sparsh_ProductLabel_Model_Product_Attribute_Backend_File" sortOrder="10" type="Magefan\ProductGridInline\Plugin\Backend\Sparsh\ProductLabel\Model\Product\Attribute\Backend\FilePlugin"/>
+    </type>
+</config>

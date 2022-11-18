@@ -1,0 +1,447 @@
+<?php
+/**
+ * @author Elsner Team
+ * @copyright Copyright © Elsner Technologies Pvt. Ltd (https://www.elsner.com/)
+ * @package Elsnertech_SpeedBooster
+ */
+?>
+<?php // phpcs:ignoreFile ?>
+<script data="lezzy">
+
+    var lazy_load_js=1;
+    var lazy_load_by_px=200;
+    var internal_js_delay_load = 10000;
+    var js_delay_load = 500;
+    var internal_css_delay_load = 10000;
+    var google_fonts_delay_load = 100;
+    var lazy_load_css=[];
+    var googlefont=[];
+    blank_image_webp_url = "";
+    var upload_path=""; 
+    var webp_path="";
+    var w3_first_js = false;
+            
+            var w3_int_first_js = false;
+            var wnw_first_inner_js = false;
+            var wnw_first_css = false;
+            var wnw_first_google_css = false;
+            var wnw_first = false;
+            var w3_external_single_loaded = 1;
+            var w3_internal_js = document.querySelectorAll("script[type=lazyload_int]");
+            var w3_inline_js = document.querySelectorAll("script[type=lazyload]");
+            var w3_mousemoveloadimg = false;
+            var page_is_scrolled = false;
+            var w3_internal_js_loaded = false;
+            var w3_internal_js_called = false;
+            var w3_inner_js_counter1 = -1;
+            var s1={};
+            function fixwebp(){
+                if(!hasWebP){
+                    var elementNames = ["*"];
+                    var elementImg = document.querySelectorAll("img[src$='w3.webp']");
+                    for (var ig = 0; ig < elementImg.length; ig++) {
+                        if(elementImg[ig].getAttribute("data-src") != null && elementImg[ig].getAttribute("data-src") != ""){
+                            var datasrc = elementImg[ig].getAttribute("data-src");
+                            elementImg[ig].setAttribute("data-src",datasrc.replace("w3.webp","").replace(webp_path,upload_path));
+                        }
+                        if(elementImg[ig].getAttribute("data-srcset") != null && elementImg[ig].getAttribute("data-srcset") != ""){
+                            var datasrcset = elementImg[ig].getAttribute("data-srcset");
+                            elementImg[ig].setAttribute("data-srcset",datasrcset.replace(/w3.webp/g,"").split(webp_path).join(upload_path));
+                        }
+                        if(elementImg[ig].src != null && elementImg[ig].src != ""){
+                            var src = elementImg[ig].src;
+                            elementImg[ig].src = src.replace("w3.webp","").replace(webp_path,upload_path);
+                        }
+                        if(elementImg[ig].srcset != null && elementImg[ig].srcset != ""){
+                            var srcset = elementImg[ig].srcset;
+                            elementImg[ig].srcset = srcset.replace(/w3.webp/g,"").split(webp_path).join(upload_path);
+                        }   
+                    }
+                    elementNames.forEach( function(tagName) {
+                        var tags = document.getElementsByTagName(tagName);
+                        var numTags = tags.length;
+                        for (var i = 0; i < numTags; i++) {
+                            var tag = tags[i];
+                            var style = tag.currentStyle || window.getComputedStyle(tag, false);
+                            var bg = style.backgroundImage;
+                            if (bg.match("w3.webp")) {
+                                if ( document.all ) {
+                                    tag.style.setAttribute( "cssText", ";background-image: "+bg.replace("w3.webp","").replace(webp_path,upload_path)+" !important;" );
+                                } else {
+                                    tag.setAttribute( "style", tag.getAttribute("style")+";background-image: "+bg.replace("w3.webp","").replace(webp_path,upload_path)+" !important;" );
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+            function w3_change_webp(){
+                if (bg.match("w3.webp")) {
+                    if ( document.all ) {
+                        tag.style.setAttribute( "cssText", "background-image: "+bg.replace("w3.webp","").replace(webp_path,upload_path)+" !important" );
+                        var style1 = tag.currentStyle || window.getComputedStyle(tag, false);
+                    } else {
+                        tag.setAttribute( "style", "background-image: "+bg.replace("w3.webp","").replace(webp_path,upload_path)+" !important" );
+                        var style1 = tag.currentStyle || window.getComputedStyle(tag, false);
+                    }
+                }
+            }
+            var hasWebP = false;
+            (function(){
+                var img = new Image();
+                img.onload = function() {
+                    hasWebP = !!(img.height > 0 && img.width > 0);
+                };
+                img.onerror = function() {
+                    hasWebP = false;
+                    fixwebp();
+                };
+                img.src = blank_image_webp_url;
+            })();
+            setTimeout(function(){load_googlefont();},google_fonts_delay_load);
+            if(lazy_load_js){
+                window.addEventListener("DOMContentLoaded", function(event){
+                    setTimeout(function(){load_intJS_main();},internal_js_delay_load);
+                });
+            }
+            window.addEventListener("DOMContentLoaded", function(event){
+                setTimeout(function(){load_extCss();},internal_css_delay_load);
+                lazyloadimages(0);
+            });
+            
+    
+            window.addEventListener("scroll", function(event){
+                load_googlefont();
+                var top = this.scrollY;
+                lazyloadimages(top);
+                lazyloadiframes(top);
+                js_delay_load=500;
+                if(lazy_load_js){
+                    load_all_js();
+                }
+                load_extCss();
+               
+            }, {passive: true});
+    
+            window.addEventListener("mousemove", function(){
+                load_googlefont();              
+                js_delay_load=500;
+                if(lazy_load_js){
+                    load_all_js();
+                }
+                load_extCss();
+            }, {passive: true});
+    
+            window.addEventListener("touchstart", function(){ 
+                load_googlefont();
+                js_delay_load=500;
+                if(lazy_load_js){
+                    load_all_js();
+                }
+                load_extCss();
+            }, {passive: true});
+    
+            function load_all_js(){
+                var element = document.getElementsByTagName("html")[0];
+                element.classList.add("w3_start");
+                load_intJS_main();
+                if(w3_mousemoveloadimg == false){
+                    var top = this.scrollY;
+                    lazyloadimages(top);
+                    w3_mousemoveloadimg = true;
+                }
+            }
+
+            function insertAfter(newNode, referenceNode) {
+                if(referenceNode.parentNode != null){
+                    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+                }else{
+                    var html_tag = document.getElementsByTagName("html")[0];
+                    html_tag.insertBefore(newNode, referenceNode.nextSibling);
+                }
+            }
+            
+            var w3_inner_js_counter = -1;
+            var w3_s={};
+            function load_extJS() {
+                if(w3_first_js){
+                    return;
+                }
+                if(!w3_int_first_js){
+                    setTimeout(function(){load_extJS();},1000);
+                    return;
+                }
+                w3_first_js = true;
+                load_extJS_execute();
+                
+                
+            }
+            function load_extJS_execute(){
+                var static_script = document.querySelectorAll("script[type=lazyload_ext]");
+                if(static_script.length < 1){
+                    return;
+                }
+                if(static_script[0].getAttribute("data-src")!==null){
+                    var js_obj = w3_load_js_uri(static_script[0]);
+                    js_obj.onload=function(){
+                        load_extJS_execute();
+                    }
+                    js_obj.onerror=function(){
+                        load_extJS_execute();
+                    }
+                }else{
+                    w3_load_inline_js_single(static_script[0]);
+                    load_extJS_execute();
+                }
+            }
+            function w3_load_js_uri(static_script){
+                var ext_js_element = document.createElement("script");
+                ext_js_element.async=true;
+                if(typeof(static_script.attributes) != "undefined"){
+                    for (var att, i3 = 0, atts = static_script.attributes, n3 = atts.length; i3 < n3; i3++){
+                        att = atts[i3];
+                        if(att.nodeName != "data-src" && att.nodeName != "type"){
+                            ext_js_element.setAttribute(att.nodeName,att.nodeValue);
+                        }
+                    }
+                }
+                if(static_script.innerHTML != ""){
+                    ext_js_element.innerHTML = static_script.innerHTML;
+                }
+                ext_js_element.src=static_script.getAttribute("data-src");
+
+                insertAfter(ext_js_element, static_script);
+                delete static_script.dataset.src;
+                delete static_script.type;
+                if (static_script.parentNode !== null) {
+                    static_script.parentNode.removeChild(static_script);
+                }
+                return ext_js_element;
+            }
+            
+            function load_intJS_main(){
+                if(w3_internal_js_called){
+                    return;
+                }
+                w3_internal_js_called = true;
+                load_intJS();
+            }
+            function load_intJS() {
+                if(w3_int_first_js){
+                    return;
+                }
+                if(w3_inner_js_counter1+1 < w3_internal_js.length){             
+                    w3_inner_js_counter1++;
+                    var script = w3_internal_js[w3_inner_js_counter1];
+                    if(script.getAttribute("type") !== null && script.getAttribute("type") == "lazyload_int"){
+                        if(script.getAttribute("data-src") != null){
+                            var s = w3_load_js_uri(script);
+                                s.onload=function(){
+                                    w3_external_single_loaded = 1;
+                                    load_intJS();
+                                };
+                                s.onerror=function(){
+                                    w3_external_single_loaded = 1;
+                                    load_intJS();
+                                    w3_redirect_resource_404(this.src);
+                                }
+                            
+                        }else{
+                            w3_load_inline_js_single(script);
+                            load_intJS();
+                        }
+                    }else{
+                        load_intJS();
+                    }
+                }else{
+                    w3_load_inline_js();
+                }
+                
+            }
+            function w3_load_inline_js_single(script){
+
+                if(!w3_external_single_loaded){
+                    setTimeout(function(){w3_load_inline_js_single(script);},200);
+                    return false;
+                }
+                var s = document.createElement("script");
+                for (var i2 = 0; i2 < script.attributes.length; i2++) {
+                    var attrib = script.attributes[i2];
+                    if(attrib.name != "type"){
+                        s.setAttribute(attrib.name, attrib.value);
+                    }   
+                }
+                s.innerHTML = script.innerHTML;
+
+                insertAfter(s,script);
+                if(script.parentNode !== null){
+                    script.parentNode.removeChild(script);
+                }
+            }
+            function w3_load_inline_js(){
+                for (var i3 = 0; i3 < w3_inline_js.length; i3++){
+                    var script = w3_inline_js[i3];
+                    w3_load_inline_js_single(script);
+                }
+                w3_int_first_js = true;
+                w3_internal_js_loaded =1;
+                var element = document.getElementsByTagName("html")[0];
+                setTimeout(function(){element.classList.add("w3_js");},1000);
+                load_extJS();
+            }
+            function w3_redirect_resource_404(js_src){
+                if(js_src.indexOf("wnw-cache") != -1){
+                    var data = {
+                        "action": "w3_speedup_cache_purge",
+                        "resource_url" : js_src
+                        };
+
+                    jQuery.get("http://www.authentickratom.com/images", data, function(response) {
+                        location.reload();
+                    });
+                }
+            }
+            function load_googlefont(){
+                if(wnw_first_google_css == false && typeof googlefont != undefined && googlefont != null && googlefont.length > 0){
+                    googlefont.forEach(function(src) {
+                        var load_css = document.createElement("link");
+                        load_css.rel = "stylesheet";
+                        load_css.href = src;
+                        load_css.type = "text/css";
+                        var godefer2 = document.getElementsByTagName("link")[0];
+                        if(godefer2 == undefined){
+                            document.getElementsByTagName("head")[0].appendChild(load_css);
+                        }else{
+                            godefer2.parentNode.insertBefore(load_css, godefer2);
+                        }
+                    });
+                    wnw_first_google_css = true;
+                }
+            } 
+        var exclude_lazyload = null;
+    
+        var win_width = screen.availWidth;
+        function w3_load_css_uri(static_css){
+            var css_element = document.createElement("link");
+            css_element.href=static_css.getAttribute("data-href");
+            css_element.rel = "stylesheet";
+            delete static_css.dataset.href;
+            static_css.parentNode.insertBefore(css_element, static_css);
+            static_css.parentNode.removeChild(static_css);
+        }
+        function load_extCss(){
+            if(wnw_first_css == false){
+                lazyloadimages(0);
+                lazyloadiframes(0);
+                var static_css = document.querySelectorAll("link[data-href]");
+                for(i=0;i<static_css.length;i++){
+                    if(static_css[i].getAttribute("data-href")!==null){
+                        w3_load_css_uri(static_css[i]);
+                    }
+                }
+                wnw_first_css = true;
+           }
+       }
+        setInterval(function(){lazyloadiframes(top);},8000);
+
+        setInterval(function(){lazyloadimages(0);fixwebp();},3000);
+        document.addEventListener("click",function(){
+            lazyloadimages(0);
+        });
+        function getDataUrl(img1, width, height) {
+            var myCanvas = document.createElement("canvas");
+            var ctx = myCanvas.getContext("2d");
+            var img = new Image();
+            myCanvas.width = parseInt(width);
+            myCanvas.height = parseInt(height);
+            ctx.drawImage(img, 0, 0);
+            img1.src = myCanvas.toDataURL("image/png");
+        }
+       function lazyload_img(imgs,bodyRect,window_height,win_width){
+           for (i = 0; i < imgs.length; i++) {
+                if(imgs[i].getAttribute("data-class") == "LazyLoad"){
+                    var elemRect = imgs[i].getBoundingClientRect(),
+                    offset   = elemRect.top - bodyRect.top;
+                    if(elemRect.top != 0 && elemRect.top - window_height < lazy_load_by_px ){
+                        compStyles = window.getComputedStyle(imgs[i]);
+                        if(compStyles.getPropertyValue("opacity") == 0){
+                            continue;
+                        }
+                        var src = imgs[i].getAttribute("data-src") ? imgs[i].getAttribute("data-src") : imgs[i].src ;
+                        var srcset = imgs[i].getAttribute("data-srcset") ? imgs[i].getAttribute("data-srcset") : "";
+                        imgs[i].src = src;
+                        imgs[i].onload = function () {
+                           this.setAttribute("data-done","Loaded");
+                           if(typeof(w3speedup_after_iframe_img_load) == "function"){
+                                w3speedup_after_iframe_img_load(this);
+                           }
+                        }
+                        if(srcset != null & srcset != ""){
+                            imgs[i].srcset = srcset;
+                        }
+                        delete imgs[i].dataset.class;
+                        
+                    }else{
+                        if(typeof(load_dynamic_img) != "undefined"){
+                            var blanksrc = imgs[i].src;
+                            if(blanksrc.indexOf("data:") == -1){
+                                if(imgs[i].getAttribute("width") != null && imgs[i].getAttribute("height") != null){
+                                    var width = parseInt(imgs[i].getAttribute("width"));
+                                    var height = parseInt(imgs[i].getAttribute("height"));
+                                    getDataUrl(imgs[i],width, height);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    
+        function lazyload_video(imgs,top,window_height,win_width){
+            for (i = 0; i < imgs.length; i++) {
+                var elemRect = imgs[i].getBoundingClientRect();
+                if(typeof(imgs[i].getElementsByTagName("source")[0]) == "undefined"){
+                    lazyload_video_source(imgs[i],top,window_height,win_width);
+                }else{
+                    var sources = imgs[i].getElementsByTagName("source");
+                    for (j = 0; j < sources.length; j++){
+                        var source = sources[j];
+                        lazyload_video_source(source,top,window_height,win_width,elemRect);
+                    }
+                }
+            }
+        }
+        function lazyload_video_source(source,top,window_height,win_width,elemRect){
+            if(typeof source != "undefined" && source.getAttribute("data-class") == "LazyLoad"){
+                if(elemRect.top - window_height < 0 && (top > 0 || w3_internal_js_loaded == 1)){
+                    var src = source.getAttribute("data-src") ? source.getAttribute("data-src") : source.src ;
+                    var srcset = source.getAttribute("data-srcset") ? source.getAttribute("data-srcset") : "";
+                    if(source.srcset != null & source.srcset != ""){
+                        source.srcset = srcset;
+                    }
+                    source.parentNode.src = src;
+                    delete source.dataset.class;
+                    source.setAttribute("data-done","Loaded");
+                }
+            }
+        }
+        function lazyloadimages(top){
+            var imgs = document.querySelectorAll("img[data-class=LazyLoad]");
+            var ads = document.getElementsByClassName("lazyload-ads");
+            var sources = document.getElementsByTagName("video");
+            var bodyRect = document.body.getBoundingClientRect();
+            var window_height = window.innerHeight;
+            var win_width = screen.availWidth;
+            lazyload_img(imgs,bodyRect,window_height,win_width);
+            lazyload_video(sources,top,window_height,win_width);
+        }
+    
+        lazyloadimages(0);
+    
+        function lazyloadiframes(top){
+            var bodyRect = document.body.getBoundingClientRect();
+            var window_height = window.innerHeight;
+            var win_width = screen.availWidth;
+            var iframes = document.querySelectorAll("iframe[data-class=LazyLoad]");
+            lazyload_img(iframes,bodyRect,window_height,win_width);
+        }</script>

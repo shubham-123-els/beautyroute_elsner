@@ -1,0 +1,66 @@
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_TableRateShipping
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<tr class="row" data-bind="click: $parent.selectShippingMethod">
+    <td class="col col-method">
+        <input type="radio" class="radio" data-bind="
+               value: method.carrier_code + '_' + method.method_code,
+               checked: $parent.isSelected,
+               attr: {
+               'id': 's_method_' + method.carrier_code + '_' + method.method_code,
+               'aria-labelledby': 'label_method_' + method.method_code + '_' + method.carrier_code + ' ' + 'label_carrier_' + method.method_code + '_' + method.carrier_code
+               }"/>
+    </td>
+    <td class="col col-price">
+        <!-- ko foreach: $parent.getRegion('price') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!-- /ko -->
+    </td>
+    <td class="col col-method"
+        data-bind="attr: {'id': 'label_method_' + method.method_code + '_' + method.carrier_code}">
+        <!-- ko if: (method.extension_attributes && method.extension_attributes.mptablerate_image) -->
+        <img data-bind="attr: {src: method.extension_attributes.mptablerate_image, alt: 'method-image'}" alt="" src="">
+        <!-- /ko -->
+        <!-- ko text: method.method_title --><!-- /ko -->
+    </td>
+    <td class="col col-carrier"
+        data-bind="attr: {'id': 'label_carrier_' + method.method_code + '_' + method.carrier_code}, text: method.carrier_title"></td>
+</tr>
+<!-- ko if: (method.extension_attributes && method.extension_attributes.mptablerate_comment) -->
+<tr class="row mp-row-comment">
+    <td class="col mp-col-comment" colspan="4">
+        <div data-bind="html: method.extension_attributes.mptablerate_comment"></div>
+    </td>
+</tr>
+<!-- /ko -->
+<!-- ko if: method.error_message -->
+<tr class="row row-error">
+    <td class="col col-error" colspan="4">
+        <div role="alert" class="message error">
+            <div data-bind="text: method.error_message"></div>
+        </div>
+        <span class="no-display">
+            <input type="radio"
+                   data-bind="attr: {'value' : method.method_code, 'id': 's_method_' + method.method_code}"/>
+        </span>
+    </td>
+</tr>
+<!-- /ko -->

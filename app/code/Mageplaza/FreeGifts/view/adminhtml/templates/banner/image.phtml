@@ -1,0 +1,139 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_FreeGifts
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+use Mageplaza\FreeGifts\Block\Adminhtml\Rule\Edit\Tab\Banner\Image;
+use Mageplaza\FreeGifts\Helper\Data;
+use Mageplaza\FreeGifts\Model\Source\Apply;
+
+/** @var Image $block */
+$ruleId           = $block->getRuleId() ?: 0;
+$bannerCollection = $block->getBannerCollection($ruleId);
+$applyFor         = $block->getApplyFor();
+?>
+<?php if ($applyFor === Apply::CART) : ?>
+    <script type="text/javascript">
+        require(['jquery'], function ($) {
+            $('#mpfreegifts_rule_tabs_mpfreegifts_banner_tab').remove();
+        });
+    </script>
+<?php endif; ?>
+<div id="mp_free_gifts_content" class="mp-ui-sortable">
+    <?php if ($bannerCollection && $bannerCollection->getSize()) : ?>
+        <?php foreach ($bannerCollection as $banner) : ?>
+            <div class="image item" data-role="mp_file">
+                <input type="checkbox" name="rule[banner][<?= /* @noEscape */ $banner->getBannerId() ?>][status]"
+                       <?= /* @noEscape */ $banner->getStatus() ? 'checked' : '' ?> class="status"/>
+                <div data-role="mp_fg_file">
+                    <input class="banner-id"
+                           name="rule[banner][<?= /* @noEscape */ $banner->getBannerId() ?>][banner_id]"
+                           value="<?= /* @noEscape */ $banner->getBannerId() ?>"
+                           type="hidden">
+                    <input class="banner-alt"
+                           name="rule[banner][<?= /* @noEscape */ $banner->getBannerId() ?>][alt]"
+                           value="<?= /* @noEscape */ $banner->getAlt() ?>"
+                           type="hidden">
+                    <input class="banner-size"
+                           name="rule[banner][<?= /* @noEscape */ $banner->getBannerId() ?>][size]"
+                           value="<?= /* @noEscape */ $banner->getSize() ?>"
+                           type="hidden">
+                    <input class="banner-path"
+                           name="rule[banner][<?= /* @noEscape */ $banner->getBannerId() ?>][file_path]"
+                           value="<?= /* @noEscape */ $banner->getFilePath() ?>"
+                           type="hidden">
+                    <input class="banner-resolution"
+                           name="rule[banner][<?= /* @noEscape */ $banner->getBannerId() ?>][resolution]"
+                           value="<?= /* @noEscape */ $banner->getResolution() ?>"
+                           type="hidden">
+                    <input class="is-removed"
+                           name="rule[banner][<?= /* @noEscape */ $banner->getBannerId() ?>][removed]"
+                           value=""
+                           type="hidden">
+                    <input class="banner-position"
+                           name="rule[banner][<?= /* @noEscape */ $banner->getBannerId() ?>][position]"
+                           value="<?= /* @noEscape */ $banner->getPosition() ?>"
+                           type="hidden">
+                    <?php $tooltip = $block->getTooltip($banner->getTooltip()) ?>
+                    <?php if ($block->getStores()) : ?>
+                        <?php foreach ($block->getStores() as $store) : ?>
+                            <input class="banner-tooltip"
+                                   code="<?= /* @noEscape */ $store['code'] ?>"
+                                   name="rule[banner][<?= /* @noEscape */ $banner->getBannerId() ?>][tooltip][<?= /* @noEscape */ $store['code'] ?>]"
+                                   value="<?= /* @noEscape */ isset($tooltip[$store['code']]) ? $tooltip[$store['code']] : '' ?>"
+                                   type="hidden">
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                    <div class="product-image-wrapper">
+                        <img class="product-image" data-role="image-element"
+                             src="<?= $block->escapeUrl($block->getUrlBanner($banner->getFilePath())) ?>"
+                             alt="<?= $block->escapeHtmlAttr($banner->getAlt()) ?>">
+                        <div class="actions">
+                            <button type="button" class="action-remove" title="Delete file">
+                                <span><?= $block->escapeHtml(__('Delete file')) ?></span>
+                            </button>
+                            <div class="draggable-handle"></div>
+                        </div>
+                        <div class="image-fade"><span><?= $block->escapeHtml(__('Hidden')) ?></span></div>
+                    </div>
+                    <div class="item-description">
+                        <div class="item-title" data-role="img-title"><?= $block->escapeHtml($banner->getAlt()) ?></div>
+                        <div class="item-size">
+                            <span data-role="image-dimens"><?= $block->escapeHtml($banner->getResolution()) ?></span>,
+                            <span data-role="image-size">
+                                <?= $block->escapeHtml($block->fileSizeFormat($banner->getSize())) ?>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+    <div id="mp-image-placeholder" class="image image-placeholder">
+        <div id="mp_free_gifts_uploader" class="uploader">
+            <div class="fileinput-button form-buttons button">
+                <span><?= $block->escapeHtml(__('Browse Files...')) ?></span>
+                <input id="fileupload" name="image" multiple="multiple" type="file">
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div id="mp-product-image-wrapper" class="product-image-wrapper">
+            <p class="image-placeholder-text"><?= $block->escapeHtml(__('Browse to find or drag file here')) ?></p>
+        </div>
+        <div class="mp_image_loader">
+            <img src="<?= $block->escapeUrl($block->getViewFileUrl('images/loader-1.gif')) ?>"
+                 alt="Loading...">
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    require(['jquery', 'mp_fgBannerGallery'], function ($, mp_fgBannerGallery) {
+        var config = {
+            options: {
+                storeView: JSON.parse('<?= /* @noEscape */ Data::jsonEncode($block->getStores()) ?>'),
+            },
+            rule_id: <?= /* @noEscape */ $ruleId ?>,
+            ajaxUrl: '<?= /* @noEscape */ $block->getUrl(
+                'mpfreegifts/rule_banner/upload',
+                ['form_key' => $block->getFormKey()]
+            ) ?>'
+        };
+        mp_fgBannerGallery(config);
+    });
+</script>

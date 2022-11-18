@@ -1,0 +1,29 @@
+<?php
+/**
+ * @category    FishPig
+ * @package     FishPig_WordPress
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+    $currentStore =$this->helper('Elsnertech\Customization\Helper\Data')->getStoreName();
+
+?>
+
+<?php if ($content = $block->getContent()): ?>
+    <div class="block block-blog block-blog-custom-html-bootom-sidebar">
+        <?php if ($currentStore=="French"): ?>
+            <?php if ($title = $block->getTitle()=="French"): ?>
+                <div class="block-title"><?= __('Blog') ?></div>
+                <div class="block-title">
+                    <div class="block-content"><?= $content ?></div>
+                </div>
+            <?php endif; ?>
+        <?php else: ?>
+            <?php if ($title = $block->getTitle()=="English"): ?>
+                <div class="block-title"><?= __('Blog') ?></div>
+                <div class="block-title">
+                    <div class="block-content"><?= $content ?></div>
+                </div>
+            <?php endif; ?>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="order_conform" label="This is email demo" file="order_conform.html" type="html" module="Elsner_Email" area="frontend"/>
+    <template id="shipping_conform" label="This Shipping email demo" file="shipping_conform.html" type="html" module="Elsner_Email" area="frontend"/>
+    <template id="cancle_order" label="This Cancle email demo" file="order_cancle.html" type="html" module="Elsner_Email" area="frontend"/>
+</config>

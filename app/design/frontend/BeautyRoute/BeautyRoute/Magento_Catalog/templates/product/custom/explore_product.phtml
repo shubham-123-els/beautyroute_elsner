@@ -1,0 +1,176 @@
+<?php use Magento\Framework\App\Action\Action; ?>
+<?php
+/**
+ *
+ * @var $block \Codilar\HelloWorld\Block\SimilarProduct
+ * @var \Magento\Framework\Escaper $escaper
+ * @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer
+ */
+?>
+<?php $currentProduct = $block->getCurrentProduct(); ?>
+<?php $crossellProducts = $currentProduct->getCrossSellProducts(); ?>
+<?php $helper = $this->helper('Elsnertech\StorePrice\Helper\NewData'); ?>
+<div class="pdp-cross-sell-wrapper pdp-crossell-products" id="pdp-similar-products-slider">
+    <?php if (!empty($crossellProducts)): ?>
+        <div class="pdp-crossell-products heading_sec">
+            <h2><?= __('Frequently Brought Together') ?></h2>
+        </div>
+        
+        <div class="pdp-crossell-products products wrapper grid products-grid">
+            <ol class="products list items product-items">
+            <div id="owl-slider-crossell-products" class="product_slider-featured pdp-product-slider">
+                <?php foreach ($crossellProducts as $product): ?>
+                  <?php $_product = $block->getProduct($product->getId()); ?>
+                        <li class="item product product-item">
+                            <div class="product-item-info" 
+                                id="product-item-info_<?= /* @noEscape */ $_product->getId() ?>" 
+                                data-container="product-grid">
+                                <?php
+                                $productImage = $block->getImage($_product, 'category_page_grid');
+                                $position = 'left:500px;' . 'top:500px;';
+                                ?>
+                                <?php // Product Image ?>
+                                <a href="<?= $escaper->escapeUrl($_product->getProductUrl()) ?>"
+                                class="product photo product-item-photo"
+                                tabindex="-1">
+                                    <?= $productImage->toHtml() ?>
+                                </a>
+                                <div class="product details product-item-details">
+                                    <?php $_productNameStripped = $block->stripTags($_product->getName(), null, true); ?>
+                                    <strong class="product name product-item-name">
+                                        <a class="product-item-link"
+                                        href="<?= $escaper->escapeUrl($_product->getProductUrl()) ?>">
+                                            <?=/* @noEscape */  $this->helper('Magento\Catalog\Helper\Output')->productAttribute($_product, $_product->getName(), 'name') ?>
+
+                                        </a>
+                                        <div class="brand-name-featured"><span><?= $_product->getResource()->getAttribute('manufacturer')->getFrontend()->getValue($_product); ?></span></div> 
+                                        
+                                    </strong>
+                                    <span class="ft-dec">
+                                        <div class="product description product-item-description"><p>
+                                            <?= /* @noEscape */  $this->helper('Magento\Catalog\Helper\Output')->productAttribute(
+                                                    $_product,
+                                                    $_product->getShortDescription(),
+                                                    'short_description'
+                                                ) ?></p>
+                                        </div>
+                                    </span>
+                                    <div class="price-box price-final_price">            
+                                        <span class="price-container price-final_price tax weee">
+                                            <span id="product-price" class="price-wrapper ">
+                                            <span class="price">
+                                                <?php if($helper->getAttributeOpetion($_product->getId(),"profession_type")=="B2B"): ?>
+                                                    <?php if($helper->getCurrentCustomeType()=="Salon"): ?>
+                                                    <span class="price"><?= $helper->getStoreCurrency() ?><?=  (!empty($helper->getDetailsProductPrice($_product))) ? (substr($helper->getDetailsProductPrice($_product), 0, 5)) : (substr($_product->getPrice(), 0, 5))?></span> 
+                                                    <?php endif; ?>
+                                                <?php else: ?>
+                                                    <span class="price"><?= $helper->getStoreCurrency() ?><?=  (!empty($helper->getDetailsProductPrice($_product))) ? (substr($helper->getDetailsProductPrice($_product), 0, 5)) : (substr($_product->getPrice(), 0, 5))?></span> 
+                                                <?php endif; ?>                              
+                                            </span>   
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div data-role="add-to-links" class="actions-secondary compare-product">
+                                            <a href="#"
+                                                class="action tocompare"
+                                                title="<?= $block->escapeHtml(__('Add to Compare')) ?>"
+                                                aria-label="<?= $block->escapeHtml(__('Add to Compare')) ?>"
+                                                data-post='<?= /* @noEscape */ $block->getPostDataParams($_product) ?>'
+                                                role="button">
+                                                    <i class="fa fa-retweet icons"></i>
+                                            </a>
+                                    </div>
+                                <div class="product-item-inner">
+                                    <div class="actions-primary">
+                                        <?php if ($_product->isSaleable()):?>
+                                            <?php $postParams = $block->getAddToCartPostParams($_product); ?>
+                                            <!-- <a href=""><img src="<?php echo $this->getViewFileUrl('img/eyeicon.png'); ?>" /><?php echo __('Quick Look'); ?></a> -->
+                                            <form data-role="tocart-form"
+                                                data-product-sku="<?= $escaper->escapeHtml($_product->getSku()) ?>"
+                                                action="<?= $escaper->escapeUrl($postParams['action']) ?>"
+                                                method="post">
+                                                <input type="hidden"
+                                                    name="product"
+                                                    value="<?= /* @noEscape */ $postParams['data']['product'] ?>">
+                                                <input type="hidden"
+                                                    name="<?= /* @noEscape */ Action::PARAM_NAME_URL_ENCODED ?>"
+                                                    value="<?=
+                                                    /* @noEscape */ $postParams['data'][Action::PARAM_NAME_URL_ENCODED]
+                                                        ?>">
+                                                <?= $block->getBlockHtml('formkey') ?>
+                                                    <?php if($helper->getAttributeOpetion($_product->getId(),"profession_type")=="B2B"): ?>
+                                                        <?php if($helper->getCurrentCustomeType()!="Salon"): ?>
+                                                            <a href="<?= $block->geturl('customer/account/create') ?>" class="professional-search">
+                                                                <p class="professional-login"><?= __("Professional Use Only") ?></p>
+                                                            </a>
+                                                        <?php else: ?>
+                                                        <button type="submit"
+                                                                title="<?php echo __('Add to cart'); ?>"
+                                                                class="action tocart primary"
+                                                                disabled>
+                                                            <span><i class="fa fa-shopping-cart" aria-hidden="true"></i><?= $escaper->escapeHtml(__('Add to Cart')) ?></span>
+                                                        </button>
+                                                        <?php endif; ?>
+                                                    <?php else: ?>
+                                                        <button type="submit"
+                                                            title="<?php echo __('Add to cart'); ?>"
+                                                            class="action tocart primary"
+                                                            disabled>
+                                                            <span><i class="fa fa-shopping-cart" aria-hidden="true"></i><?= $escaper->escapeHtml(__('Add to Cart')) ?></span>
+                                                        </button>
+                                                    <?php endif; ?>
+                                            </form>
+                                        <?php else:?>
+                                            <?php if ($_product->isAvailable()):?>
+                                                <div class="stock available">
+                                                    <span><?= $escaper->escapeHtml(__('In stock')) ?></span></div>
+                                            <?php else:?>
+                                                <div class="stock unavailable">
+                                                    <span><?= $escaper->escapeHtml(__('Out of stock')) ?></span></div>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                    </div>
+
+                                    
+                    
+                                    <div class="product actions product-item-actions">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    
+                <?php endforeach; ?>
+                </div>
+            </ol>
+        </div>
+        <script type="text/x-magento-init">
+            {
+                "#owl-slider-crossell-products": {
+                    "OwlCarousel": {
+                        "autoPlay": false,
+                        "items": 5,
+                        "dots": false,
+                        "pagination":false,
+                        "itemsDesktop": [1199, 3],
+                        "itemsDesktopSmall": [768, 3],
+                        "itemsMobile": [575, 1],
+                        "navigation": true
+                       
+                    } 
+                }
+            }
+        </script>
+        <script type="text/x-magento-init">
+          {
+              "[data-role=tocart-form], .form.map.checkout": {
+                  "catalogAddToCart": {
+                      "product_sku": "<?= $escaper->escapeJs($_product->getSku()) ?>"
+                  }
+              }
+          }
+        </script>
+    <?php endif; ?>
+</div>

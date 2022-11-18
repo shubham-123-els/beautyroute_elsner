@@ -1,0 +1,17 @@
+{
+  "name": "magearray/module-hideprice",
+  "description": "Hide Price Magento 2 Extension By MageArray",
+  "type": "magento2-module",
+  "version": "1.0.3",
+  "license": [
+    "proprietary"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "MageArray\\HidePrice\\": ""
+    }
+  }
+}

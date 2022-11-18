@@ -1,0 +1,124 @@
+<head>
+    <style>
+        .custom-modal .modal-inner-wrap {
+            width: 480px;
+        }
+    </style>
+</head>
+
+<div id="modal" class="block" style="display:none;">
+    <h3><span id="title"></span></h3>
+    <div class="block-content" aria-labelledby="block-order">
+        From <input name="from-date" id="range-from" title="From" value="" type="date">
+        &nbsp;&nbsp; to <input name="to-date" id="range-to" title="To" value="" type="date">
+    </div>
+    <br><br>
+    <div class="actions-toolbar" align="right">
+        <div class="primary">
+            <button type="submit" name="send" id="send"><span><?= $block->escapeHtml(__('Add')) ?></span></button>
+            &nbsp;&nbsp;<button type="submit" name="send" id="sendAll">
+                <span><?= $block->escapeHtml(__('Add All')) ?></span></button>
+        </div>
+    </div>
+</div>
+
+<script>
+    require([
+            'jquery',
+            'Magento_Ui/js/modal/modal',
+        ], function ($, modal) {
+            const cusButton = $("#add_cus_button");
+            const productButton = $("#add_product_button");
+            const orderButton = $("#add_order_button");
+            const invoiceButton = $("#add_invoice_button");
+            const memoButton = $("#add_creditmemo_button");
+
+            const submit = $('#send');
+            const submitAll = $('#sendAll');
+
+            let url = '';
+
+            const options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                title: 'Select Date Range',
+                modalClass: 'custom-modal',
+            };
+
+            var modal = modal(options, $('#modal'));
+
+            cusButton.on('click', function () {
+                    url = '<?= $this->getUrl('qbonline/queue/customer')?>';
+                    $('#title').text('Customers Modified');
+                    $("#modal").modal('openModal');
+                    $(".modal-footer").hide();
+                }
+            );
+
+            productButton.on('click', function () {
+                    url = '<?= $this->getUrl('qbonline/queue/item')?>';
+                    $('#title').text('Products Modified');
+                    $("#modal").modal('openModal');
+                    $(".modal-footer").hide();
+                }
+            );
+
+            orderButton.on('click', function () {
+                    url = '<?= $this->getUrl('qbonline/queue/order')?>';
+                    $('#title').text('Orders Created');
+                    $("#modal").modal('openModal');
+                    $(".modal-footer").hide();
+                }
+            );
+
+            invoiceButton.on('click', function () {
+                    url = '<?= $this->getUrl('qbonline/queue/invoice')?>';
+                    $('#title').text('Invoices Created');
+                    $("#modal").modal('openModal');
+                    $(".modal-footer").hide();
+                }
+            );
+
+            memoButton.on('click', function () {
+                    url = '<?= $this->getUrl('qbonline/queue/creditmemos')?>';
+                    $('#title').text('Credit Memos Created');
+                    $("#modal").modal('openModal');
+                    $(".modal-footer").hide();
+                }
+            );
+
+            submit.on('click', function () {
+                let fromDate = $('#range-from').val();
+                let toDate = $('#range-to').val();
+                let formKey = window.FORM_KEY;
+                $.ajax({
+                    url: url,
+                    data: {form_key: formKey, from: fromDate, to: toDate},
+                    contentType: "application/json; charset=utf-8",
+                    showLoader: true,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function () {
+                        location.reload();
+                    }
+                })
+            });
+
+            submitAll.on('click', function () {
+                let formKey = window.FORM_KEY;
+                $.ajax({
+                    url: url,
+                    data: {form_key: formKey},
+                    contentType: "application/json; charset=utf-8",
+                    showLoader: true,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function () {
+                        location.reload();
+                    }
+                })
+            });
+        }
+    );
+</script>

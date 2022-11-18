@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+	<body>
+		<referenceContainer name="page.top">
+	        <block class="Codilar\HelloWorld\Block\Crumbblock" name="crumbs" as="crumbs" template="Codilar_HelloWorld::crumbs.phtml" />
+	    </referenceContainer>
+	    
+		<referenceBlock name="product.info.description">
+            <arguments>
+                <argument name="priority" xsi:type="string">1</argument>
+            </arguments>
+        </referenceBlock>
+		<referenceBlock name="product.info.details">
+			<block class="Magento\Catalog\Block\Product\View" name="how_to_use.tab" template="Magento_Theme::Custom_Tab/how_to_use.phtml" group="detailed_info" >
+				<arguments>
+					<argument translate="true" name="title" xsi:type="string">HOW TO USE</argument>
+					<argument name="priority" xsi:type="string">2</argument>
+				</arguments>
+			</block>
+			<block class="Magento\Catalog\Block\Product\View" name="ingredients.tab" template="Magento_Theme::Custom_Tab/ingredients.phtml" group="detailed_info" >
+				<arguments>
+					<argument translate="true" name="title" xsi:type="string">INGREDIENTS</argument>
+					<argument name="priority" xsi:type="string">3</argument>
+				</arguments>
+			</block>
+			<block class="Magento\Catalog\Block\Product\View" name="about_the_brand.tab" template="Magento_Theme::Custom_Tab/about_the_brand.phtml" group="detailed_info" >
+				<arguments>
+					<argument translate="true" name="title" xsi:type="string">ABOUT THE BRAND</argument>
+					<argument name="priority" xsi:type="string">4</argument>
+				</arguments>
+			</block>
+			<block class="Magento\Catalog\Block\Product\View" name="shipping_and_returns.tab" template="Magento_Theme::Custom_Tab/shipping_and_returns.phtml" group="detailed_info" >
+				<arguments>
+					<argument translate="true" name="title" xsi:type="string">SHIPPING AND RETURNS</argument>
+					<argument name="priority" xsi:type="string">5</argument>
+				</arguments>
+			</block>
+		</referenceBlock>
+		
+		<referenceContainer name="product.info.main">
+			<block class="Magento\Catalog\Block\Product\View" name="product.info.options.productname" as="productname" template="Magento_Catalog::product/view/options/productname.phtml"/>
+			<block class="Elsnertech\Customization\Block\Cart\CustomShipping" name="product.info.custom_shipping" template="Magento_Catalog::product/view/custom_shipping.phtml" after="view.addto.wishlist" />
+			<block class="Magento\Cms\Block\Block" name="free_payment_block">
+				<arguments>
+					<argument name="block_id" xsi:type="string">free_payment_block</argument>
+				</arguments>
+			</block>
+			<block class="Elsnertech\Customization\Block\ProductDetailPage" name="custom_rating" template="Magento_Catalog::product/view/rating.phtml"/>
+		</referenceContainer>
+		<referenceContainer name="page.bottom.container">
+	        <block class="Codilar\HelloWorld\Block\Reviewcustom" name="product.info.custom-review" template="Codilar_HelloWorld::custom_review_tab.phtml"/>
+	        <block class="Codilar\HelloWorld\Block\SimilarProduct" name="similar_products" template="Magento_Catalog::product/custom/similar_product.phtml"/>
+			<block class="Codilar\HelloWorld\Block\SimilarProduct" name="explore_product" template="Magento_Catalog::product/custom/explore_product.phtml"/>
+			<block class="Codilar\HelloWorld\Block\SimilarProduct" name="like_product" template="Magento_Catalog::product/custom/youmay_product.phtml"/>
+				
+		</referenceContainer>
+		
+		<referenceBlock name="product.info.addtocart">
+			<arguments>
+				<argument name="template" xsi:type="array">
+					<item name="0" xsi:type="string">Magento_Catalog::product/view/addtocart.phtml</item>
+				</argument>
+				<argument name="view_model" xsi:type="object">Elsnertech\ProductCustomization\ViewModel\CountryCode</argument>
+			</arguments>
+		</referenceBlock>
+		
+		<referenceBlock name="product.info.upsell" remove="true"/>
+		<referenceBlock name="catalog.product.related" remove="true"/>
+		<referenceBlock name="view.addto.compare" remove="true" />
+		<referenceBlock name="product.info.review" remove="true"/>
+		<referenceBlock name="view.addto.wishlist" remove="true" />
+  		<referenceBlock name="product.price.final" remove="true"/> 
+  		<referenceBlock name="breadcrumbs" remove="true" />
+	    <move element="product.info.custom_shipping" destination="product.info.main" after="product.addto.wishlist" /> 
+		<move element="page.main.title" destination="product.info.main" before="free_payment_block"/>
+		<move element="product.info.overview" destination="product.info.main" />
+		<move element="custom_rating" destination="product.info.main" />
+		<move element="product.info.options.productname" destination="product.info.main" before="-" />
+		<referenceBlock name="product.info.type" remove="true" />
+		<referenceBlock name="page.main.title" remove="true" />
+		<referenceBlock name="product.attributes" remove="true" />
+
+		<!-- cross sell -->
+		<move element="explore_product" destination="content" as="new_aliassss" after="product.info.media"/>
+
+		<!-- upsell -->
+		<!-- <move element="like_product" destination="content" as="new_alias" after="explore_product"/> -->
+
+	</body>
+</page>

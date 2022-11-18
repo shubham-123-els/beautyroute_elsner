@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2021 Amasty (https://www.amasty.com)
+ * @package Amasty_Base
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Amasty\Base\Model\Response\OctetResponseInterfaceFactory">
+        <arguments>
+            <argument name="responseFactoryAssociationMap" xsi:type="array">
+                <item name="file" xsi:type="object">Amasty\Base\Model\Response\File\FileOctetResponseFactory</item>
+                <item name="url" xsi:type="object">Amasty\Base\Model\Response\File\FileUrlOctetResponseFactory</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\View\TemplateEngine\Php">
+        <plugin name="Amasty_Base::AddEscaperToPhpRenderer" type="Amasty\Base\Plugin\Framework\View\TemplateEngine\Php" sortOrder="10"/>
+    </type>
+    <type name="Magento\Framework\Setup\Declaration\Schema\Diff\Diff">
+        <plugin name="Amasty_Base::AllowDropReference" type="Amasty\Base\Plugin\Framework\Setup\Declaration\Schema\Diff\Diff\RestrictDropTables"/>
+    </type>
+</config>

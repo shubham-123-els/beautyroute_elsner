@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="home_customization" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+            <label>Home Customization Block</label>
+            <tab>catalog</tab>
+            <resource>Codilar_HelloWorld::config_codilar_helloworld</resource>
+            <group id="product_block" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+                <label>Product Tab Block</label>
+                <field id="select_trending_product" type="select" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+                    <label>Select Trending Product</label>
+                    <comment/>
+                    <source_model>Codilar\HelloWorld\Model\Config\Categorylist</source_model>
+                </field>
+
+                <field id="select_new_product" type="select" sortOrder="20" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+                    <label>Select New Product</label>
+                    <comment/>
+                    <source_model>Codilar\HelloWorld\Model\Config\Categorylist</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

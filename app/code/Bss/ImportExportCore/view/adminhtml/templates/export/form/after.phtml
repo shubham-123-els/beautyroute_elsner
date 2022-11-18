@@ -1,0 +1,48 @@
+<?php
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_ImportExportCore
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2020 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+
+//  @codingStandardsIgnoreFile
+
+?>
+
+<?php /** @var  $block \Magento\ImportExport\Block\Adminhtml\Form\After */?>
+<div id="export_filter_container" style="display:none;">
+    <div id="export_filter_form_container">
+        <form id="export_filter_form" action="<?= $block->escapeUrl($block->getUrl('*/*/export')) ?>" method="post">
+            <input name="form_key" type="hidden" value="<?= /* @noEscape */ $block->getFormKey() ?>" />
+            <fieldset class="admin__fieldset">
+                <legend class="admin__legend">
+                    <span><?= $block->escapeHtml(__('Entity Attributes')) ?></span>
+                </legend>
+                <br />
+            </fieldset>
+        </form>
+    </div>
+    <button id="bss-export-btn" class="action-scalable" type="button"><span><?=
+            $block->escapeHtml(__('Continue'))
+    ?></span></button>
+</div>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Bss_ImportExportCore/js/export/get-file": {
+
+            }
+        }
+    }
+</script>
